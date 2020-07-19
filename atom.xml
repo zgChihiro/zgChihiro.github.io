@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zgChihiro.github.io</id>
-    <title>Gridea</title>
-    <updated>2020-07-19T07:55:35.723Z</updated>
+    <title>董国政</title>
+    <updated>2020-07-19T08:05:59.571Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zgChihiro.github.io"/>
     <link rel="self" href="https://zgChihiro.github.io/atom.xml"/>
-    <subtitle>温故而知新</subtitle>
+    <subtitle>一位独立闲散与世无争的穷码农</subtitle>
     <logo>https://zgChihiro.github.io/images/avatar.png</logo>
     <icon>https://zgChihiro.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, Gridea</rights>
+    <rights>All rights reserved 2020, 董国政</rights>
     <entry>
         <title type="html"><![CDATA[批量生成UE4图标]]></title>
         <id>https://zgChihiro.github.io/post/pi-liang-sheng-cheng-ue4-tu-biao/</id>
