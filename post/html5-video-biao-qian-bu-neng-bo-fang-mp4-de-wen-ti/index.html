@@ -1,0 +1,185 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>html5 video标签不能播放mp4的问题 | Gridea</title>
+<link rel="shortcut icon" href="https://zgChihiro.github.io/favicon.ico?v=1595144549666">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zgChihiro.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="html5 video标签不能播放mp4的问题 | Gridea - Atom Feed" href="https://zgChihiro.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="最近项目中遇到的问题如下：
+利用html5中的 video 标签去播放视频，但是发现有的mp4格式的视频可以播放，有的mp4格式的视频不能播放。
+视频格式
+首先 video 标签只支持MPEG4，Ogg，WebM 三种视频格式，浏览器支持情..." />
+    <meta name="keywords" content="建站" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zgChihiro.github.io">
+  <img class="avatar" src="https://zgChihiro.github.io/images/avatar.png?v=1595144549666" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              html5 video标签不能播放mp4的问题
+            </h2>
+            <div class="post-info">
+              <span>
+                2017-06-09
+              </span>
+              <span>
+                1 min read
+              </span>
+              
+                <a href="https://zgChihiro.github.io/tag/Sq_nCV-zOQO/" class="post-tag">
+                  # 建站
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>最近项目中遇到的问题如下：<br>
+利用html5中的 video 标签去播放视频，但是发现有的mp4格式的视频可以播放，有的mp4格式的视频不能播放。</p>
+<p>视频格式</p>
+<p>首先 video 标签只支持MPEG4，Ogg，WebM 三种视频格式，浏览器支持情况如下：<br>
+<img src="https://i.loli.net/2019/08/04/cDrtvlNPzM5RdUC.jpg" alt="20150812183446934.jpg" loading="lazy"></p>
+<p>但是，video标签对这三种视频格式是有具体要求的</p>
+<p>Ogg = 带有 Theora 视频编码 + Vorbis 音频编码<br>
+MPEG4 = 带有 H.264 视频编码 + AAC 音频编码<br>
+WebM = 带有 VP8 视频编码 + Vorbis 音频编码</p>
+<p>所以，就找到问题的原因了，不能被播放的mp4的视频，视频的编码格式不是 h264。<br>
+利用格式工厂对mp4视频，用h264视频编码格式重新编码，得到的视频就可以使用了。</p>
+<figure data-type="image" tabindex="1"><img src="https://i.loli.net/2019/08/04/v1DXmSZfr47aKEk.jpg" alt="20150813151431975.jpg" loading="lazy"></figure>
+<p>不得不说，html5 的 video 标签 对视频的限制太大了，还有待于改善提高。</p>
+<p>转自：http://blog.csdn.net/u012193330/article/details/47448981</p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zgChihiro.github.io/post/czhong-string-de-ji-chong-fu-zhi-fang-fa/">
+              <h3 class="post-title">
+                c++中string的几种赋值方法
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://zgChihiro.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

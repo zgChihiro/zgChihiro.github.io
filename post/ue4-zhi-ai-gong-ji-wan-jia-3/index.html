@@ -1,0 +1,217 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>UE4之AI攻击玩家(3) | Gridea</title>
+<link rel="shortcut icon" href="https://zgChihiro.github.io/favicon.ico?v=1595144549666">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zgChihiro.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="UE4之AI攻击玩家(3) | Gridea - Atom Feed" href="https://zgChihiro.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="首先我们打开玩家的蓝图
+
+添加一个int变量用来存放玩家的血量
+并命名为“HP”
+
+编译保存之后再细节里将默认值设置为10
+
+右键添加一个自定义事件(custom event)
+F2对其重命名为“Player_Die”
+用来存放玩家死亡所执..." />
+    <meta name="keywords" content="UE4" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zgChihiro.github.io">
+  <img class="avatar" src="https://zgChihiro.github.io/images/avatar.png?v=1595144549666" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              UE4之AI攻击玩家(3)
+            </h2>
+            <div class="post-info">
+              <span>
+                2017-06-22
+              </span>
+              <span>
+                2 min read
+              </span>
+              
+                <a href="https://zgChihiro.github.io/tag/jCDMJY3wK2/" class="post-tag">
+                  # UE4
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>首先我们打开玩家的蓝图<br>
+<img src="https://www.z4a.net/images/2019/08/04/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNjIyMDgwMjM3NTE0.gif" alt="aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNjIyMDgwMjM3NTE0.gif" loading="lazy"><br>
+添加一个int变量用来存放玩家的血量<br>
+并命名为“HP”<br>
+<img src="https://www.z4a.net/images/2019/08/04/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNjIxMjAyNTMwOTE3.png" alt="aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNjIxMjAyNTMwOTE3.png" loading="lazy"><br>
+编译保存之后再细节里将默认值设置为10<br>
+<img src="https://www.z4a.net/images/2019/08/04/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNjIyMDgxMjA0ODcw.png" alt="aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNjIyMDgxMjA0ODcw.png" loading="lazy"><br>
+右键添加一个自定义事件(custom event)<br>
+F2对其重命名为“Player_Die”<br>
+用来存放玩家死亡所执行的函数<br>
+把HP拉入蓝图中链接蓝图<br>
+<img src="https://www.z4a.net/images/2019/08/04/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNjIxMjAyNjM4NzE1.png" alt="aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNjIxMjAyNjM4NzE1.png" loading="lazy"><br>
+意思是判断玩家的血量是否&lt;=0<br>
+如果小于等于0那么销毁玩家自身<br>
+然后打开AI的蓝图<br>
+在之前创建的类型转换Character节点的<br>
+As Character引脚上拉出<br>
+类型转换为ThirdPersonCharacter<br>
+<img src="https://www.z4a.net/images/2019/08/04/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNjIxMjAzMDMyNzcx.png" alt="aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNjIxMjAzMDMyNzcx.png" loading="lazy"><br>
+右键添加一个自定义事件(custom event)<br>
+命名为&quot;Remove_Play_HP&quot;<br>
+用来减掉玩家的血量<br>
+链接如下图所示的蓝图<br>
+<img src="https://www.z4a.net/images/2019/08/04/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNjIyMDgxNzE3NjM1.png" alt="aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNjIyMDgxNzE3NjM1.png" loading="lazy"><br>
+链接好之后编译保存<br>
+打开关卡蓝图<br>
+添加一个事件Tick<br>
+分别获取AI和玩家的引用<br>
+<img src="https://www.z4a.net/images/2019/08/04/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNjIyMDgyMTQyNzAw.png" alt="aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNjIyMDgyMTQyNzAw.png" loading="lazy"><br>
+在分别从他们的引脚拉出获取位置的节点<br>
+<img src="https://www.z4a.net/images/2019/08/04/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNjIyMDgyMjM5ODY4.png" alt="aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNjIyMDgyMjM5ODY4.png" loading="lazy"><br>
+然后用分支判断它们的位置是否相同<br>
+如果相同说明AI已经追上了玩家<br>
+则调用Remove_Play_HP函数<br>
+<img src="https://www.z4a.net/images/2019/08/04/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNjIyMDgyNTI5OTY0.png" alt="aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNjIyMDgyNTI5OTY0.png" loading="lazy"><br>
+编译保存<br>
+然后在关卡中运行<br>
+当AI追上玩家之后玩家的HP会减少<br>
+当玩家的HP&lt;=0的时候<br>
+玩家会消失</p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zgChihiro.github.io/post/ue4-zhi-ai-yuan-di-xun-luo-2/">
+              <h3 class="post-title">
+                UE4之AI原地巡逻( 2 )
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://zgChihiro.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,300 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>UE4球体根据镜头方向前进 | Gridea</title>
+<link rel="shortcut icon" href="https://zgChihiro.github.io/favicon.ico?v=1595144549666">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zgChihiro.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="UE4球体根据镜头方向前进 | Gridea - Atom Feed" href="https://zgChihiro.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="做了一个仓鼠球游戏；
+
+球体根据自身滚动而产生位置移动
+开始球体的滚动是根据世界方向
+经过研究终于改成了根究镜头方向
+
+代码如下：
+Begin Object Class=/Script/BlueprintGraph.K2Node_Input..." />
+    <meta name="keywords" content="UE4" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zgChihiro.github.io">
+  <img class="avatar" src="https://zgChihiro.github.io/images/avatar.png?v=1595144549666" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              UE4球体根据镜头方向前进
+            </h2>
+            <div class="post-info">
+              <span>
+                2017-07-09
+              </span>
+              <span>
+                22 min read
+              </span>
+              
+                <a href="https://zgChihiro.github.io/tag/jCDMJY3wK2/" class="post-tag">
+                  # UE4
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>做了一个仓鼠球游戏；<br>
+<img src="https://www.z4a.net/images/2019/08/04/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNzA5MTgzMzA0NDY0.png" alt="aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNzA5MTgzMzA0NDY0.png" loading="lazy"><br>
+球体根据自身滚动而产生位置移动<br>
+开始球体的滚动是根据世界方向<br>
+经过研究终于改成了根究镜头方向<br>
+<img src="https://www.z4a.net/images/2019/08/04/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNzA5MTgzMjQyMjQy.png" alt="aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNzA5MTgzMjQyMjQy.png" loading="lazy"></p>
+<p>代码如下：</p>
+<pre><code>Begin Object Class=/Script/BlueprintGraph.K2Node_InputAxisEvent Name=&quot;K2Node_InputAxisEvent_0&quot;
+   InputAxisName=&quot;MoveForward&quot;
+   EventReference=(MemberParent=Package'&quot;/Script/Engine&quot;')
+   CustomFunctionName=&quot;InpAxisEvt_MoveForward_K2Node_InputAxisEvent_0&quot;
+   NodePosX=-128
+   NodePosY=32
+   NodeGuid=EE8EADDC4D903AC8EFC2A38ECF570453
+   CustomProperties Pin (PinId=1BDBB6584197AA60DEBFF79E88AEE567,PinName=&quot;OutputDelegate&quot;,Direction=&quot;EGPD_Output&quot;,PinType.PinCategory=&quot;delegate&quot;,PinType.PinSubCategory=&quot;&quot;,PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(MemberParent=BlueprintGeneratedClass'/Game/Player/BallPawn.BallPawn_C',MemberName=&quot;InpAxisEvt_MoveForward_K2Node_InputAxisEvent_0&quot;),PinType.PinValueType=(),PinType.bIsMap=False,PinType.bIsSet=False,PinType.bIsArray=False,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,)
+   CustomProperties Pin (PinId=F7D8CDC24FE81E160903BD8508DC5DB8,PinName=&quot;then&quot;,Direction=&quot;EGPD_Output&quot;,PinType.PinCategory=&quot;exec&quot;,PinType.PinSubCategory=&quot;&quot;,PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.bIsMap=False,PinType.bIsSet=False,PinType.bIsArray=False,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,LinkedTo=(K2Node_CallFunction_55839 B5E6D1F4441B021DC777CDBCF2A2B4BC,),PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,)
+   CustomProperties Pin (PinId=5F7DF0EC46D70DC29EFC1891DD71896B,PinName=&quot;AxisValue&quot;,PinToolTip=&quot;Axis Value\n浮点型&quot;,Direction=&quot;EGPD_Output&quot;,PinType.PinCategory=&quot;float&quot;,PinType.PinSubCategory=&quot;&quot;,PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.bIsMap=False,PinType.bIsSet=False,PinType.bIsArray=False,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,AutogeneratedDefaultValue=&quot;0.0&quot;,LinkedTo=(K2Node_CommutativeAssociativeBinaryOperator_4 AF66E8774C30143F7BF98B824C733A41,),PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,)
+End Object
+Begin Object Class=/Script/BlueprintGraph.K2Node_VariableGet Name=&quot;K2Node_VariableGet_1214&quot;
+   VariableReference=(MemberName=&quot;Ball&quot;,bSelfContext=True)
+   NodePosX=288
+   NodePosY=96
+   NodeGuid=E6B248584F9059EF928BB185A1A4FD1D
+   CustomProperties Pin (PinId=D6C345D24F060C9C296908AA923C39FD,PinName=&quot;Ball&quot;,Direction=&quot;EGPD_Output&quot;,PinType.PinCategory=&quot;object&quot;,PinType.PinSubCategory=&quot;&quot;,PinType.PinSubCategoryObject=Class'/Script/Engine.StaticMeshComponent',PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.bIsMap=False,PinType.bIsSet=False,PinType.bIsArray=False,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,LinkedTo=(K2Node_CallFunction_55839 A80F19604B9A4849BF98869F3397574E,),PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,)
+   CustomProperties Pin (PinId=0AEB84E6478BDA46D65C978BA51FADAD,PinName=&quot;self&quot;,PinFriendlyName=NSLOCTEXT(&quot;K2Node&quot;, &quot;Target&quot;, &quot;Target&quot;),PinType.PinCategory=&quot;object&quot;,PinType.PinSubCategory=&quot;&quot;,PinType.PinSubCategoryObject=BlueprintGeneratedClass'/Game/Player/BallPawn.BallPawn_C',PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.bIsMap=False,PinType.bIsSet=False,PinType.bIsArray=False,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PersistentGuid=00000000000000000000000000000000,bHidden=True,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,)
+End Object
+Begin Object Class=/Script/BlueprintGraph.K2Node_CallFunction Name=&quot;K2Node_CallFunction_55839&quot;
+   FunctionReference=(MemberParent=Class'/Script/Engine.PrimitiveComponent',MemberName=&quot;AddTorque&quot;)
+   NodePosX=704
+   NodePosY=16
+   ErrorType=1
+   ErrorMsg=&quot;Error Pin  Target  must have a connection\nError Pin  Target  must have a connection&quot;
+   NodeGuid=0848E76C49F9167A6D54B7BAFC9064B1
+   CustomProperties Pin (PinId=B5E6D1F4441B021DC777CDBCF2A2B4BC,PinName=&quot;execute&quot;,PinToolTip=&quot;\nExec&quot;,PinType.PinCategory=&quot;exec&quot;,PinType.PinSubCategory=&quot;&quot;,PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.bIsMap=False,PinType.bIsSet=False,PinType.bIsArray=False,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,LinkedTo=(K2Node_InputAxisEvent_0 F7D8CDC24FE81E160903BD8508DC5DB8,),PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,)
+   CustomProperties Pin (PinId=A7D65CCC4E5545797552CE926F9598B1,PinName=&quot;then&quot;,PinToolTip=&quot;\nExec&quot;,Direction=&quot;EGPD_Output&quot;,PinType.PinCategory=&quot;exec&quot;,PinType.PinSubCategory=&quot;&quot;,PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.bIsMap=False,PinType.bIsSet=False,PinType.bIsArray=False,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,)
+   CustomProperties Pin (PinId=A80F19604B9A4849BF98869F3397574E,PinName=&quot;self&quot;,PinFriendlyName=NSLOCTEXT(&quot;K2Node&quot;, &quot;Target&quot;, &quot;Target&quot;),PinToolTip=&quot;目标\nPrimitive Component 引用&quot;,PinType.PinCategory=&quot;object&quot;,PinType.PinSubCategory=&quot;&quot;,PinType.PinSubCategoryObject=Class'/Script/Engine.PrimitiveComponent',PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.bIsMap=False,PinType.bIsSet=False,PinType.bIsArray=False,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,LinkedTo=(K2Node_VariableGet_1214 D6C345D24F060C9C296908AA923C39FD,),PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,)
+   CustomProperties Pin (PinId=C7036DFE411115CED19CE1B515B3F0A5,PinName=&quot;Torque&quot;,PinToolTip=&quot;Torque\nVector \n\nTorque to apply. Direction is axis of rotation and magnitude is strength of torque.&quot;,PinType.PinCategory=&quot;struct&quot;,PinType.PinSubCategory=&quot;&quot;,PinType.PinSubCategoryObject=ScriptStruct'/Script/CoreUObject.Vector',PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.bIsMap=False,PinType.bIsSet=False,PinType.bIsArray=False,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,DefaultValue=&quot;0, 0, 0&quot;,AutogeneratedDefaultValue=&quot;0, 0, 0&quot;,LinkedTo=(K2Node_CallFunction_25 A6E71CB3422D0A40CE11C8A92E10CFF0,),PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,)
+   CustomProperties Pin (PinId=08DF3E2A421EC36587753C801F81DD15,PinName=&quot;BoneName&quot;,PinToolTip=&quot;Bone Name\n名称\n\nIf a SkeletalMeshComponent, name of body to apply torque to. \'None\' indicates root body.&quot;,PinType.PinCategory=&quot;name&quot;,PinType.PinSubCategory=&quot;&quot;,PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.bIsMap=False,PinType.bIsSet=False,PinType.bIsArray=False,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,DefaultValue=&quot;None&quot;,AutogeneratedDefaultValue=&quot;None&quot;,PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,)
+   CustomProperties Pin (PinId=C9EF4EF343C018B013744482E341E546,PinName=&quot;bAccelChange&quot;,PinToolTip=&quot;Accel Change\n布尔型\n\nIf true, Torque is taken as a change in angular acceleration instead of a physical torque (i.e. mass will have no affect).&quot;,PinType.PinCategory=&quot;bool&quot;,PinType.PinSubCategory=&quot;&quot;,PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.bIsMap=False,PinType.bIsSet=False,PinType.bIsArray=False,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,DefaultValue=&quot;false&quot;,AutogeneratedDefaultValue=&quot;false&quot;,PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,)
+End Object
+Begin Object Class=/Script/BlueprintGraph.K2Node_VariableGet Name=&quot;K2Node_VariableGet_31&quot;
+   VariableReference=(MemberName=&quot;Strength&quot;,MemberGuid=1AACE23C40687A57F3C3DA8FA8307672,bSelfContext=True)
+   NodePosX=-32
+   NodePosY=192
+   NodeGuid=FD5AA0254B9067E8D75A6D9AC89FC7AB
+   CustomProperties Pin (PinId=5B516AFA413F0BAF24114EB2C2FB5451,PinName=&quot;Strength&quot;,Direction=&quot;EGPD_Output&quot;,PinType.PinCategory=&quot;float&quot;,PinType.PinSubCategory=&quot;&quot;,PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.bIsMap=False,PinType.bIsSet=False,PinType.bIsArray=False,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,AutogeneratedDefaultValue=&quot;0.0&quot;,LinkedTo=(K2Node_CommutativeAssociativeBinaryOperator_4 A6C79D7F446FE11D9A829A9B048740CC,),PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,)
+   CustomProperties Pin (PinId=E6AE50C44F5E43F65545CDBA40BE0F65,PinName=&quot;self&quot;,PinFriendlyName=NSLOCTEXT(&quot;K2Node&quot;, &quot;Target&quot;, &quot;Target&quot;),PinType.PinCategory=&quot;object&quot;,PinType.PinSubCategory=&quot;&quot;,PinType.PinSubCategoryObject=BlueprintGeneratedClass'/Game/Player/BallPawn.BallPawn_C',PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.bIsMap=False,PinType.bIsSet=False,PinType.bIsArray=False,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PersistentGuid=00000000000000000000000000000000,bHidden=True,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,)
+End Object
+Begin Object Class=/Script/BlueprintGraph.K2Node_VariableGet Name=&quot;K2Node_VariableGet_32&quot;
+   VariableReference=(MemberName=&quot;Camera&quot;,bSelfContext=True)
+   NodePosX=-336
+   NodePosY=320
+   NodeGuid=AF5FED0E422560B6F424A69CC17A46EC
+   CustomProperties Pin (PinId=4737336345A7DB34437D9EB16DE959A0,PinName=&quot;Camera&quot;,Direction=&quot;EGPD_Output&quot;,PinType.PinCategory=&quot;object&quot;,PinType.PinSubCategory=&quot;&quot;,PinType.PinSubCategoryObject=Class'/Script/Engine.CameraComponent',PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.bIsMap=False,PinType.bIsSet=False,PinType.bIsArray=False,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,LinkedTo=(K2Node_CallFunction_21 0C489CCD4E3C86BFC984E99814EB8241,),PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,)
+   CustomProperties Pin (PinId=B7E84F584BA641B75B9EE98FABE1D39C,PinName=&quot;self&quot;,PinFriendlyName=NSLOCTEXT(&quot;K2Node&quot;, &quot;Target&quot;, &quot;Target&quot;),PinType.PinCategory=&quot;object&quot;,PinType.PinSubCategory=&quot;&quot;,PinType.PinSubCategoryObject=BlueprintGeneratedClass'/Game/Player/BallPawn.BallPawn_C',PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.bIsMap=False,PinType.bIsSet=False,PinType.bIsArray=False,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PersistentGuid=00000000000000000000000000000000,bHidden=True,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,)
+End Object
+Begin Object Class=/Script/BlueprintGraph.K2Node_CallFunction Name=&quot;K2Node_CallFunction_21&quot;
+   bIsPureFunc=True
+   bIsConstFunc=True
+   FunctionReference=(MemberParent=Class'/Script/Engine.SceneComponent',MemberName=&quot;GetSocketRotation&quot;)
+   NodePosX=-128
+   NodePosY=288
+   NodeGuid=8332002847FB7AE3130163AF24A47FDE
+   CustomProperties Pin (PinId=0C489CCD4E3C86BFC984E99814EB8241,PinName=&quot;self&quot;,PinFriendlyName=NSLOCTEXT(&quot;K2Node&quot;, &quot;Target&quot;, &quot;Target&quot;),PinToolTip=&quot;目标\nScene Component 引用&quot;,PinType.PinCategory=&quot;object&quot;,PinType.PinSubCategory=&quot;&quot;,PinType.PinSubCategoryObject=Class'/Script/Engine.SceneComponent',PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.bIsMap=False,PinType.bIsSet=False,PinType.bIsArray=False,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,LinkedTo=(K2Node_VariableGet_32 4737336345A7DB34437D9EB16DE959A0,),PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,)
+   CustomProperties Pin (PinId=9C772F624AAA975A74A571A4065AA8E3,PinName=&quot;InSocketName&quot;,PinToolTip=&quot;In Socket Name\n名称\n\nName of the socket or the bone to get the transform&quot;,PinType.PinCategory=&quot;name&quot;,PinType.PinSubCategory=&quot;&quot;,PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.bIsMap=False,PinType.bIsSet=False,PinType.bIsArray=False,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,DefaultValue=&quot;None&quot;,AutogeneratedDefaultValue=&quot;None&quot;,PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,)
+   CustomProperties Pin (PinId=A700C18A4795761030C76BB9D4F42F01,PinName=&quot;ReturnValue&quot;,PinToolTip=&quot;Return Value\nRotator \n\nSocket transform in world space if socket if found. Otherwise it will return component\'s transform in world space.&quot;,Direction=&quot;EGPD_Output&quot;,PinType.PinCategory=&quot;struct&quot;,PinType.PinSubCategory=&quot;&quot;,PinType.PinSubCategoryObject=ScriptStruct'/Script/CoreUObject.Rotator',PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.bIsMap=False,PinType.bIsSet=False,PinType.bIsArray=False,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,AutogeneratedDefaultValue=&quot;0, 0, 0&quot;,LinkedTo=(K2Node_CallFunction_22 E55135FD4B70C12A840C3EA5F86FB937,),PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,)
+End Object
+Begin Object Class=/Script/BlueprintGraph.K2Node_CallFunction Name=&quot;K2Node_CallFunction_22&quot;
+   bIsPureFunc=True
+   FunctionReference=(MemberParent=Class'/Script/Engine.KismetMathLibrary',MemberName=&quot;BreakRotator&quot;)
+   NodePosX=224
+   NodePosY=304
+   NodeGuid=2E8F216044E93CB1A14C568F4E33C9F8
+   CustomProperties Pin (PinId=E0108C7A4ACF94E7EA9FBC921F6FCC1A,PinName=&quot;self&quot;,PinFriendlyName=NSLOCTEXT(&quot;K2Node&quot;, &quot;Target&quot;, &quot;Target&quot;),PinToolTip=&quot;目标\nKismet Math Library 引用&quot;,PinType.PinCategory=&quot;object&quot;,PinType.PinSubCategory=&quot;&quot;,PinType.PinSubCategoryObject=Class'/Script/Engine.KismetMathLibrary',PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.bIsMap=False,PinType.bIsSet=False,PinType.bIsArray=False,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,DefaultObject=&quot;/Script/Engine.Default__KismetMathLibrary&quot;,PersistentGuid=00000000000000000000000000000000,bHidden=True,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,)
+   CustomProperties Pin (PinId=E55135FD4B70C12A840C3EA5F86FB937,PinName=&quot;InRot&quot;,PinFriendlyName=NSLOCTEXT(&quot;&quot;, &quot;5FCBB0C849096BD68891F1ABA2A0EC36&quot;, &quot;Rotation&quot;),PinToolTip=&quot;Rotation\nRotator &quot;,PinType.PinCategory=&quot;struct&quot;,PinType.PinSubCategory=&quot;&quot;,PinType.PinSubCategoryObject=ScriptStruct'/Script/CoreUObject.Rotator',PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.bIsMap=False,PinType.bIsSet=False,PinType.bIsArray=False,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,DefaultValue=&quot;0, 0, 0&quot;,AutogeneratedDefaultValue=&quot;0, 0, 0&quot;,LinkedTo=(K2Node_CallFunction_21 A700C18A4795761030C76BB9D4F42F01,),PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,)
+   CustomProperties Pin (PinId=BB45DD25439E2EDE4A4A34B8B375046C,PinName=&quot;Roll&quot;,PinFriendlyName=NSLOCTEXT(&quot;&quot;, &quot;206613644A18304B7898BD8B883E79D0&quot;, &quot;X (Roll)&quot;),PinToolTip=&quot;X (Roll)\n浮点型&quot;,Direction=&quot;EGPD_Output&quot;,PinType.PinCategory=&quot;float&quot;,PinType.PinSubCategory=&quot;&quot;,PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.bIsMap=False,PinType.bIsSet=False,PinType.bIsArray=False,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,DefaultValue=&quot;0.0&quot;,AutogeneratedDefaultValue=&quot;0.0&quot;,PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,)
+   CustomProperties Pin (PinId=FD7D376748AE815EE9E043832FFE5855,PinName=&quot;Pitch&quot;,PinFriendlyName=NSLOCTEXT(&quot;&quot;, &quot;6BD325E04B6529569DC209B956C75CEB&quot;, &quot;Y (Pitch)&quot;),PinToolTip=&quot;Y (Pitch)\n浮点型&quot;,Direction=&quot;EGPD_Output&quot;,PinType.PinCategory=&quot;float&quot;,PinType.PinSubCategory=&quot;&quot;,PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.bIsMap=False,PinType.bIsSet=False,PinType.bIsArray=False,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,DefaultValue=&quot;0.0&quot;,AutogeneratedDefaultValue=&quot;0.0&quot;,PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,)
+   CustomProperties Pin (PinId=3F1C33484CDDC71CEFF74E932BAB37FF,PinName=&quot;Yaw&quot;,PinFriendlyName=NSLOCTEXT(&quot;&quot;, &quot;5F19FAED4D8C198814D89CB982CE3B8E&quot;, &quot;Z (Yaw)&quot;),PinToolTip=&quot;Z (Yaw)\n浮点型&quot;,Direction=&quot;EGPD_Output&quot;,PinType.PinCategory=&quot;float&quot;,PinType.PinSubCategory=&quot;&quot;,PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.bIsMap=False,PinType.bIsSet=False,PinType.bIsArray=False,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,AutogeneratedDefaultValue=&quot;0.0&quot;,LinkedTo=(K2Node_CallFunction_23 44F04C5E47C5609CA0BB109BA28E7CF8,),PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,)
+End Object
+Begin Object Class=/Script/BlueprintGraph.K2Node_CallFunction Name=&quot;K2Node_CallFunction_23&quot;
+   bIsPureFunc=True
+   FunctionReference=(MemberParent=Class'/Script/Engine.KismetMathLibrary',MemberName=&quot;MakeRotator&quot;)
+   NodePosX=432
+   NodePosY=288
+   NodeGuid=CF22A4744C4CBCFF3B0D6FB3FB3F4FC4
+   CustomProperties Pin (PinId=BA219324425C9891799EEA8F484F819C,PinName=&quot;self&quot;,PinFriendlyName=NSLOCTEXT(&quot;K2Node&quot;, &quot;Target&quot;, &quot;Target&quot;),PinToolTip=&quot;目标\nKismet Math Library 引用&quot;,PinType.PinCategory=&quot;object&quot;,PinType.PinSubCategory=&quot;&quot;,PinType.PinSubCategoryObject=Class'/Script/Engine.KismetMathLibrary',PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.bIsMap=False,PinType.bIsSet=False,PinType.bIsArray=False,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,DefaultObject=&quot;/Script/Engine.Default__KismetMathLibrary&quot;,PersistentGuid=00000000000000000000000000000000,bHidden=True,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,)
+   CustomProperties Pin (PinId=3A017C1649336F70E818B8B40C2FF30D,PinName=&quot;Roll&quot;,PinFriendlyName=NSLOCTEXT(&quot;&quot;, &quot;F955019C4FC89D4BB0EF4B9C28A92765&quot;, &quot;X (Roll)&quot;),PinToolTip=&quot;X (Roll)\n浮点型&quot;,PinType.PinCategory=&quot;float&quot;,PinType.PinSubCategory=&quot;&quot;,PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.bIsMap=False,PinType.bIsSet=False,PinType.bIsArray=False,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,DefaultValue=&quot;0.0&quot;,AutogeneratedDefaultValue=&quot;0.0&quot;,PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,)
+   CustomProperties Pin (PinId=F3082F2E4ED5FA0783ED3580020CADAD,PinName=&quot;Pitch&quot;,PinFriendlyName=NSLOCTEXT(&quot;&quot;, &quot;068F007745757C0D848933AED720E624&quot;, &quot;Y (Pitch)&quot;),PinToolTip=&quot;Y (Pitch)\n浮点型&quot;,PinType.PinCategory=&quot;float&quot;,PinType.PinSubCategory=&quot;&quot;,PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.bIsMap=False,PinType.bIsSet=False,PinType.bIsArray=False,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,DefaultValue=&quot;0.0&quot;,AutogeneratedDefaultValue=&quot;0.0&quot;,PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,)
+   CustomProperties Pin (PinId=44F04C5E47C5609CA0BB109BA28E7CF8,PinName=&quot;Yaw&quot;,PinFriendlyName=NSLOCTEXT(&quot;&quot;, &quot;6C35BB9A41B37F40840F51A921A68075&quot;, &quot;Z (Yaw)&quot;),PinToolTip=&quot;Z (Yaw)\n浮点型&quot;,PinType.PinCategory=&quot;float&quot;,PinType.PinSubCategory=&quot;&quot;,PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.bIsMap=False,PinType.bIsSet=False,PinType.bIsArray=False,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,DefaultValue=&quot;0.0&quot;,AutogeneratedDefaultValue=&quot;0.0&quot;,LinkedTo=(K2Node_CallFunction_22 3F1C33484CDDC71CEFF74E932BAB37FF,),PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,)
+   CustomProperties Pin (PinId=255F9B4145798758084A6E97A631372B,PinName=&quot;ReturnValue&quot;,PinToolTip=&quot;Return Value\nRotator &quot;,Direction=&quot;EGPD_Output&quot;,PinType.PinCategory=&quot;struct&quot;,PinType.PinSubCategory=&quot;&quot;,PinType.PinSubCategoryObject=ScriptStruct'/Script/CoreUObject.Rotator',PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.bIsMap=False,PinType.bIsSet=False,PinType.bIsArray=False,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,AutogeneratedDefaultValue=&quot;0, 0, 0&quot;,LinkedTo=(K2Node_CallFunction_24 B52D734B4A87B0A88F66C7B33475B2DE,),PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,)
+End Object
+Begin Object Class=/Script/BlueprintGraph.K2Node_CallFunction Name=&quot;K2Node_CallFunction_24&quot;
+   bIsPureFunc=True
+   FunctionReference=(MemberParent=Class'/Script/Engine.KismetMathLibrary',MemberName=&quot;GetRightVector&quot;)
+   NodePosX=720
+   NodePosY=288
+   NodeGuid=1293AEF94930831104447690588F3838
+   CustomProperties Pin (PinId=1EDD347F413D517DB081D9B9DC14509C,PinName=&quot;self&quot;,PinFriendlyName=NSLOCTEXT(&quot;K2Node&quot;, &quot;Target&quot;, &quot;Target&quot;),PinToolTip=&quot;目标\nKismet Math Library 引用&quot;,PinType.PinCategory=&quot;object&quot;,PinType.PinSubCategory=&quot;&quot;,PinType.PinSubCategoryObject=Class'/Script/Engine.KismetMathLibrary',PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.bIsMap=False,PinType.bIsSet=False,PinType.bIsArray=False,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,DefaultObject=&quot;/Script/Engine.Default__KismetMathLibrary&quot;,PersistentGuid=00000000000000000000000000000000,bHidden=True,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,)
+   CustomProperties Pin (PinId=B52D734B4A87B0A88F66C7B33475B2DE,PinName=&quot;InRot&quot;,PinToolTip=&quot;In Rot\nRotator &quot;,PinType.PinCategory=&quot;struct&quot;,PinType.PinSubCategory=&quot;&quot;,PinType.PinSubCategoryObject=ScriptStruct'/Script/CoreUObject.Rotator',PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.bIsMap=False,PinType.bIsSet=False,PinType.bIsArray=False,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,DefaultValue=&quot;0, 0, 0&quot;,AutogeneratedDefaultValue=&quot;0, 0, 0&quot;,LinkedTo=(K2Node_CallFunction_23 255F9B4145798758084A6E97A631372B,),PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,)
+   CustomProperties Pin (PinId=DF185542481427D46325D3995F3D2E6D,PinName=&quot;ReturnValue&quot;,PinToolTip=&quot;Return Value\nVector &quot;,Direction=&quot;EGPD_Output&quot;,PinType.PinCategory=&quot;struct&quot;,PinType.PinSubCategory=&quot;&quot;,PinType.PinSubCategoryObject=ScriptStruct'/Script/CoreUObject.Vector',PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.bIsMap=False,PinType.bIsSet=False,PinType.bIsArray=False,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,AutogeneratedDefaultValue=&quot;0, 0, 0&quot;,LinkedTo=(K2Node_CallFunction_25 283D3E394016E8D9FF7EE18B247C2118,),PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,)
+End Object
+Begin Object Class=/Script/BlueprintGraph.K2Node_CommutativeAssociativeBinaryOperator Name=&quot;K2Node_CommutativeAssociativeBinaryOperator_4&quot;
+   bIsPureFunc=True
+   FunctionReference=(MemberParent=Class'/Script/Engine.KismetMathLibrary',MemberName=&quot;Multiply_FloatFloat&quot;)
+   NodePosX=144
+   NodePosY=160
+   NodeGuid=C97B92A845929B21E51FD4BCA20C0037
+   CustomProperties Pin (PinId=3F463D8D47830EEB5A23428AC02424EE,PinName=&quot;self&quot;,PinFriendlyName=NSLOCTEXT(&quot;K2Node&quot;, &quot;Target&quot;, &quot;Target&quot;),PinToolTip=&quot;目标\nKismet Math Library 引用&quot;,PinType.PinCategory=&quot;object&quot;,PinType.PinSubCategory=&quot;&quot;,PinType.PinSubCategoryObject=Class'/Script/Engine.KismetMathLibrary',PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.bIsMap=False,PinType.bIsSet=False,PinType.bIsArray=False,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,DefaultObject=&quot;/Script/Engine.Default__KismetMathLibrary&quot;,PersistentGuid=00000000000000000000000000000000,bHidden=True,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,)
+   CustomProperties Pin (PinId=AF66E8774C30143F7BF98B824C733A41,PinName=&quot;A&quot;,PinToolTip=&quot;A\n浮点型&quot;,PinType.PinCategory=&quot;float&quot;,PinType.PinSubCategory=&quot;&quot;,PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.bIsMap=False,PinType.bIsSet=False,PinType.bIsArray=False,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,DefaultValue=&quot;0.0&quot;,AutogeneratedDefaultValue=&quot;0.0&quot;,LinkedTo=(K2Node_InputAxisEvent_0 5F7DF0EC46D70DC29EFC1891DD71896B,),PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,)
+   CustomProperties Pin (PinId=A6C79D7F446FE11D9A829A9B048740CC,PinName=&quot;B&quot;,PinToolTip=&quot;B\n浮点型&quot;,PinType.PinCategory=&quot;float&quot;,PinType.PinSubCategory=&quot;&quot;,PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.bIsMap=False,PinType.bIsSet=False,PinType.bIsArray=False,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,DefaultValue=&quot;0.0&quot;,AutogeneratedDefaultValue=&quot;0.0&quot;,LinkedTo=(K2Node_VariableGet_31 5B516AFA413F0BAF24114EB2C2FB5451,),PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,)
+   CustomProperties Pin (PinId=00A1B8DB4EBE6D20090A38A36026C9F7,PinName=&quot;ReturnValue&quot;,PinToolTip=&quot;Return Value\n浮点型&quot;,Direction=&quot;EGPD_Output&quot;,PinType.PinCategory=&quot;float&quot;,PinType.PinSubCategory=&quot;&quot;,PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.bIsMap=False,PinType.bIsSet=False,PinType.bIsArray=False,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,AutogeneratedDefaultValue=&quot;0.0&quot;,LinkedTo=(K2Node_CallFunction_25 0C8031A440FB5BA31EFE07BE6AC7F247,),PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,)
+End Object
+Begin Object Class=/Script/BlueprintGraph.K2Node_CallFunction Name=&quot;K2Node_CallFunction_25&quot;
+   bIsPureFunc=True
+   FunctionReference=(MemberParent=Class'/Script/Engine.KismetMathLibrary',MemberName=&quot;Multiply_VectorFloat&quot;)
+   NodePosX=576
+   NodePosY=128
+   NodeGuid=8A12A22D436D7514F36030AC5044BDD9
+   CustomProperties Pin (PinId=1C4DDE504E71DFFA82D3FD9EFE6E3348,PinName=&quot;self&quot;,PinFriendlyName=NSLOCTEXT(&quot;K2Node&quot;, &quot;Target&quot;, &quot;Target&quot;),PinToolTip=&quot;目标\nKismet Math Library 引用&quot;,PinType.PinCategory=&quot;object&quot;,PinType.PinSubCategory=&quot;&quot;,PinType.PinSubCategoryObject=Class'/Script/Engine.KismetMathLibrary',PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.bIsMap=False,PinType.bIsSet=False,PinType.bIsArray=False,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,DefaultObject=&quot;/Script/Engine.Default__KismetMathLibrary&quot;,PersistentGuid=00000000000000000000000000000000,bHidden=True,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,)
+   CustomProperties Pin (PinId=283D3E394016E8D9FF7EE18B247C2118,PinName=&quot;A&quot;,PinToolTip=&quot;A\nVector &quot;,PinType.PinCategory=&quot;struct&quot;,PinType.PinSubCategory=&quot;&quot;,PinType.PinSubCategoryObject=ScriptStruct'/Script/CoreUObject.Vector',PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.bIsMap=False,PinType.bIsSet=False,PinType.bIsArray=False,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,DefaultValue=&quot;0, 0, 0&quot;,AutogeneratedDefaultValue=&quot;0, 0, 0&quot;,LinkedTo=(K2Node_CallFunction_24 DF185542481427D46325D3995F3D2E6D,),PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,)
+   CustomProperties Pin (PinId=0C8031A440FB5BA31EFE07BE6AC7F247,PinName=&quot;B&quot;,PinToolTip=&quot;B\n浮点型&quot;,PinType.PinCategory=&quot;float&quot;,PinType.PinSubCategory=&quot;&quot;,PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.bIsMap=False,PinType.bIsSet=False,PinType.bIsArray=False,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,DefaultValue=&quot;0.0&quot;,AutogeneratedDefaultValue=&quot;0.0&quot;,LinkedTo=(K2Node_CommutativeAssociativeBinaryOperator_4 00A1B8DB4EBE6D20090A38A36026C9F7,),PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,)
+   CustomProperties Pin (PinId=A6E71CB3422D0A40CE11C8A92E10CFF0,PinName=&quot;ReturnValue&quot;,PinToolTip=&quot;Return Value\nVector &quot;,Direction=&quot;EGPD_Output&quot;,PinType.PinCategory=&quot;struct&quot;,PinType.PinSubCategory=&quot;&quot;,PinType.PinSubCategoryObject=ScriptStruct'/Script/CoreUObject.Vector',PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.bIsMap=False,PinType.bIsSet=False,PinType.bIsArray=False,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,AutogeneratedDefaultValue=&quot;0, 0, 0&quot;,LinkedTo=(K2Node_CallFunction_55839 C7036DFE411115CED19CE1B515B3F0A5,),PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,)
+End Object
+
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zgChihiro.github.io/post/git-shang-chuan-chu-xian-da-wen-jian-wen-ti/">
+              <h3 class="post-title">
+                git上传出现大文件问题
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://zgChihiro.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

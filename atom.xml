@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zgChihiro.github.io</id>
     <title>Gridea</title>
-    <updated>2020-07-19T07:40:32.442Z</updated>
+    <updated>2020-07-19T07:42:59.787Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zgChihiro.github.io"/>
     <link rel="self" href="https://zgChihiro.github.io/atom.xml"/>
@@ -11,35 +11,413 @@
     <icon>https://zgChihiro.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Gridea</rights>
     <entry>
-        <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https://zgChihiro.github.io/post/hello-gridea/</id>
-        <link href="https://zgChihiro.github.io/post/hello-gridea/">
+        <title type="html"><![CDATA[批量生成UE4图标]]></title>
+        <id>https://zgChihiro.github.io/post/pi-liang-sheng-cheng-ue4-tu-biao/</id>
+        <link href="https://zgChihiro.github.io/post/pi-liang-sheng-cheng-ue4-tu-biao/">
         </link>
-        <updated>2018-12-11T16:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+        <updated>2020-07-08T01:29:04.000Z</updated>
+        <content type="html"><![CDATA[<!-- more -->
+<p>UE4 开发项目需要设置图标，但是PhotoShop挨个处理图片未免有些麻烦，<br>
+<img src="https://www.z4a.net/images/2020/07/08/Snipaste_2020-07-08_09-18-08.png" alt="Snipaste_2020-07-08_09-18-08.png" loading="lazy"><br>
+然后我就写了这样一个程序，使用非常方便，将logo图片拖拽入窗口<br>
+<img src="https://www.z4a.net/images/2020/07/08/Snipaste_2020-07-08_09-23-11.png" alt="Snipaste_2020-07-08_09-23-11.png" loading="lazy"><br>
+即可批量生成<br>
+<img src="https://www.z4a.net/images/2020/07/08/Snipaste_2020-07-08_09-27-48.png" alt="Snipaste_2020-07-08_09-27-48.png" loading="lazy"></p>
+<p><a href="https://esoftware.oss-cn-beijing.aliyuncs.com/software/icoTool.exe">点击下载</a></p>
+<p>代码分享出来：</p>
+<pre><code># -*- coding: utf-8 -*-
+from tkinter import *
+from tkinter.messagebox import showinfo
+import windnd
+import MakeImg
+import os
+
+def dragged_files(files):
+    msg = '\n'.join((item.decode('gbk') for item in files))
+    res = MakeImg.MakeImage(msg)
+    if res:
+        # outPutPath = os.path.expanduser('~') + '\Desktop\AppIcon'
+        showinfo('制作完成',&quot;已保存到桌面\n\n 更多访问inite.cn&quot;)
+    else:
+        showinfo('制作失败', msg + &quot;\n\n 访问inite.cn&quot;)
+
+
+def main():
+    MainWin = Tk()
+    MainWin.title('Icon making tool')
+    MainWin.resizable(width=False, height=False)
+    screenwidth = MainWin.winfo_screenwidth()
+    screenheight = MainWin.winfo_screenheight()
+    size = '%dx%d+%d+%d' % (291, 255, (screenwidth - 291) / 2, (screenheight - 255) / 2)
+    MainWin.geometry(size)
+    windnd.hook_dropfiles(MainWin, func=dragged_files)
+    # MainWin.iconbitmap(&quot;ue4.ico&quot;)
+
+
+TB1_Title = StringVar()
+TB1_Title.set('Please drag and drop img in')
+TB1 = Label(MainWin, textvariable=TB1_Title, anchor=W)
+TB1.place(x=65, y=104, width=200, height=24)
+
+MainWin.mainloop()
+
+
+if __name__ == '__main__':
+main()
+</code></pre>
+<p>MakeImg.py</p>
+<pre><code># -*- coding: utf-8 -*-
+from PIL import Image
+import sys
+import os
+outPutPath = os.path.expanduser('~') + '/Desktop/AppIcon/'
+
+def MakeImage(ImageName):
+ if not os.path.exists(outPutPath):
+    os.mkdir(outPutPath)
+
+originImg = ''
+try:
+    originImg = Image.open(ImageName)
+except:
+    return False
+img0 = originImg.resize((57, 57), Image.ANTIALIAS)
+img1 = originImg.resize((114, 114), Image.ANTIALIAS)
+img2 = originImg.resize((120, 120), Image.ANTIALIAS)
+img3 = originImg.resize((180, 180), Image.ANTIALIAS)
+img4 = originImg.resize((72, 72), Image.ANTIALIAS)
+img5 = originImg.resize((144, 144), Image.ANTIALIAS)
+img6 = originImg.resize((76, 76), Image.ANTIALIAS)
+img7 = originImg.resize((152, 152), Image.ANTIALIAS)
+img8 = originImg.resize((167, 167), Image.ANTIALIAS)
+img9 = originImg.resize((1024, 1024), Image.ANTIALIAS)
+
+img0.save(outPutPath + 'dAppIcon57x57.png', &quot;png&quot;)
+img1.save(outPutPath + 'eAppIcon114x114.png', &quot;png&quot;)
+img2.save(outPutPath + 'fAppIcon120x120.png', &quot;png&quot;)
+img3.save(outPutPath + 'gAppIcon180x180.png', &quot;png&quot;)
+img4.save(outPutPath + 'hAppIcon72x72.png', &quot;png&quot;)
+img5.save(outPutPath + 'iAppIcon144x144.png', &quot;png&quot;)
+img6.save(outPutPath + 'gAppIcon76x76.png', &quot;png&quot;)
+img7.save(outPutPath + 'kAppIcon152x152.png', &quot;png&quot;)
+img8.save(outPutPath + 'lAppIcon167x167.png', &quot;png&quot;)
+img9.save(outPutPath + 'mAppIcon1024x1024.png', &quot;png&quot;)
+
+# 20x20
+img10 = originImg.resize((20, 20), Image.ANTIALIAS)
+img11 = originImg.resize((40, 40), Image.ANTIALIAS)
+img12 = originImg.resize((60, 60), Image.ANTIALIAS)
+img10.save(outPutPath + '1AppIcon20x20.png', &quot;png&quot;)
+img11.save(outPutPath + '2AppIcon40x40.png', &quot;png&quot;)
+img12.save(outPutPath + '3AppIcon60x60.png', &quot;png&quot;)
+
+# 29x29
+img13 = originImg.resize((29, 29), Image.ANTIALIAS)
+img14 = originImg.resize((58, 58), Image.ANTIALIAS)
+img15 = originImg.resize((87, 87), Image.ANTIALIAS)
+img13.save(outPutPath + '4AppIcon29x29.png', &quot;png&quot;)
+img14.save(outPutPath + '5AppIcon59x59.png', &quot;png&quot;)
+img15.save(outPutPath + '6AppIcon87x87.png', &quot;png&quot;)
+
+# 40x40
+img16 = originImg.resize((40, 40), Image.ANTIALIAS)
+img17 = originImg.resize((80, 80), Image.ANTIALIAS)
+img18 = originImg.resize((120, 120), Image.ANTIALIAS)
+img16.save(outPutPath + '7AppIcon40x40.png', &quot;png&quot;)
+img17.save(outPutPath + '8AppIcon80x80.png', &quot;png&quot;)
+img18.save(outPutPath + '9AppIcon120x120.png', &quot;png&quot;)
+
+# 50
+img19 = originImg.resize((50, 50), Image.ANTIALIAS)
+img20 = originImg.resize((100, 100), Image.ANTIALIAS)
+img21 = originImg.resize((58, 58), Image.ANTIALIAS)
+img19.save(outPutPath + 'aAppIcon50x50.png', &quot;png&quot;)
+img20.save(outPutPath + 'bAppIcon100x100.png', &quot;png&quot;)
+img21.save(outPutPath + 'cAppIcon58x58.png', &quot;png&quot;)
+return True
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[UE4 send SMS verification code]]></title>
+        <id>https://zgChihiro.github.io/post/ue4-send-sms-verification-code/</id>
+        <link href="https://zgChihiro.github.io/post/ue4-send-sms-verification-code/">
+        </link>
+        <updated>2020-07-07T17:54:22.000Z</updated>
+        <content type="html"><![CDATA[<!-- more -->
+<p>Plugin：<br>
+PhoneAuthCode<br>
+About：<br>
+This plugin use Aliyun to send SMS verification code,<br>
+Authenticate the user<br>
+Considering the security problem, this plugin adopts the way of server generating verification code.<br>
+It runs on Windows and Linux systems</p>
+<figure data-type="image" tabindex="1"><img src="https://www.z4a.net/images/2020/06/20/Snipaste_2020-06-20_22-00-20.png" alt="Snipaste_2020-06-20_22-00-20.png" loading="lazy"></figure>
 <!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
+<p>Only three steps are needed to send the mobile phone verification code from the client:</p>
+<ol>
+<li>Import plugin</li>
+<li>Setup Config file</li>
+<li>use blueprints to write business logic</li>
+</ol>
+<p>look at the final result ：</p>
+<figure data-type="image" tabindex="2"><img src="https://www.z4a.net/images/2020/06/21/2.gif" alt="2.gif" loading="lazy"></figure>
+<ol>
+<li></li>
+</ol>
+<p>The plugin is imported into the project</p>
+<figure data-type="image" tabindex="3"><img src="https://www.z4a.net/images/2020/07/07/aaa.png" alt="aaa.png" loading="lazy"></figure>
+<ol start="2">
+<li></li>
+</ol>
+<p>Log in the website<br>
+<a href="https://dysms.console.aliyun.com/">https://dysms.console.aliyun.com/</a></p>
+<p>The audit to obtain: AccessKeyId 、AccessSecret 、SignName 、TemplateCode</p>
+<figure data-type="image" tabindex="4"><img src="https://www.z4a.net/images/2020/06/20/Snipaste_2020-06-20_22-42-25.png" alt="Snipaste_2020-06-20_22-42-25.png" loading="lazy"></figure>
+<ol start="3">
+<li></li>
+</ol>
+<p>Editor blueprint，<br>
+Set Config file，use Blueprint node : SendActivationCode to Send an SMS verification code</p>
+<figure data-type="image" tabindex="5"><img src="https://www.z4a.net/images/2020/07/07/22.png" alt="22.png" loading="lazy"></figure>
+<p>IP should fill in the address of the server<br>
+If you do not fill in, the default server is used<br>
+It is recommended to use your own server</p>
+<p>ServerCode Github：<br>
+<a href="https://github.com/zgChihiro/UE4_SendSMS_Server/">https://github.com/zgChihiro/UE4_SendSMS_Server/</a></p>
+<p>If you send it successfully<br>
+Message  is the phone activation code<br>
+If the send fails<br>
+Message is the error log</p>
+<p><a href="https://www.youtube.com/watch?v=9-oC4J27KDs">YuoTube</a></p>
+<p>FAQ:</p>
+<ol>
+<li>Ali cloud account needs balance to be sent successfully（0.05￥/one message）</li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[UE4手机短信验证码]]></title>
+        <id>https://zgChihiro.github.io/post/ue4-shou-ji-yan-zheng-ma/</id>
+        <link href="https://zgChihiro.github.io/post/ue4-shou-ji-yan-zheng-ma/">
+        </link>
+        <updated>2020-06-20T13:34:07.000Z</updated>
+        <content type="html"><![CDATA[<!-- more -->
+<p>插件名：PhoneAuthCode<br>
+插件简介：<br>
+本插件使用阿里云发送短信验证码，<br>
+对用户进行身份验证<br>
+考虑到安全问题，本插件采用服务器生成验证码的方式，<br>
+可运行在win和linux系统中</p>
+<figure data-type="image" tabindex="1"><img src="https://www.z4a.net/images/2020/06/20/Snipaste_2020-06-20_22-00-20.png" alt="Snipaste_2020-06-20_22-00-20.png" loading="lazy"></figure>
+<!-- more -->
+<p>仅需三步完成客户端发送手机验证码：<br>
+1.导入插件<br>
+2.配置Config文件<br>
+3.调用蓝图编写业务逻辑</p>
+<p>先看效果图：</p>
+<figure data-type="image" tabindex="2"><img src="https://www.z4a.net/images/2020/06/21/2.gif" alt="2.gif" loading="lazy"></figure>
+<ol>
+<li></li>
+</ol>
+<p>下载好插件并导入到项目跟目录</p>
+<figure data-type="image" tabindex="3"><img src="https://www.z4a.net/images/2020/07/07/aaa.png" alt="aaa.png" loading="lazy"></figure>
+<ol start="2">
+<li></li>
+</ol>
+<p>登录<br>
+<a href="https://dysms.console.aliyun.com/">https://dysms.console.aliyun.com/</a></p>
+<p>审核获取 AccessKeyId 、AccessSecret 、SignName 、TemplateCode</p>
+<figure data-type="image" tabindex="4"><img src="https://www.z4a.net/images/2020/06/20/Snipaste_2020-06-20_22-42-25.png" alt="Snipaste_2020-06-20_22-42-25.png" loading="lazy"></figure>
+<ol start="3">
+<li></li>
+</ol>
+<p>打开项目填写蓝图代码，<br>
+配置Config，然后使用 SendActivationCode 发送短信验证</p>
+<figure data-type="image" tabindex="5"><img src="https://www.z4a.net/images/2020/07/07/22.png" alt="22.png" loading="lazy"></figure>
+<p>其中IP应填服务器的公网iP<br>
+如果不填则默认使用临时服务器，建议大家配置自己的服务器</p>
+<p>服务器开源：<br>
+<a href="https://github.com/zgChihiro/UE4_SendSMS_Server/">https://github.com/zgChihiro/UE4_SendSMS_Server/</a></p>
+<p>如果请求成功返回的Message就是手机验证码<br>
+如果失败返回的Message就是错误信息</p>
+<p><a href="https://www.bilibili.com/video/BV1LA411e7U6">bilibili</a></p>
+<p>常见问题：</p>
+<ol>
+<li>阿里云账号需要有余额才可以发送成功，（0.05￥/条）</li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[利用QQ昵称作为软件版本号]]></title>
+        <id>https://zgChihiro.github.io/post/li-yong-qq-ni-cheng-zuo-wei-ruan-jian-ban-ben-hao/</id>
+        <link href="https://zgChihiro.github.io/post/li-yong-qq-ni-cheng-zuo-wei-ruan-jian-ban-ben-hao/">
+        </link>
+        <updated>2019-12-01T06:26:01.000Z</updated>
+        <content type="html"><![CDATA[<p>如果没钱买服务器，</p>
+<p>用这个接口获取昵称，</p>
+<pre><code>http://users.qzone.qq.com/fcg-bin/cgi_get_portrait.fcg?uins=QQ号
+</code></pre>
+<p>QQ昵称也就是你软件最新的版本号，</p>
+<p>每发布一版就在QQ里修改一下就可以了，</p>
+<p>你的软件可以存放在OSS系统里，</p>
+<p>软件的版本号，和最新的版本号(QQ昵称)进行对比</p>
+<p>判断是否需要更新</p>
+<p>当然这只是一种解决方案</p>
+<p>这样就省掉了服务器的钱实现了软件的在线更新</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[浅聊教育]]></title>
+        <id>https://zgChihiro.github.io/post/qian-liao-jiao-yu/</id>
+        <link href="https://zgChihiro.github.io/post/qian-liao-jiao-yu/">
+        </link>
+        <updated>2019-10-23T12:11:48.000Z</updated>
+        <content type="html"><![CDATA[<p>我是农村出来的，我父母也是小学水平，和大多数小孩一样，小时候被逼迫着背上书包去学校接受那些枯燥的知识，我是一步一个脚印从幼儿班走到大学毕业的，所以我会把我的感触分享出来。</p>
+<p><img src="https://www.z4a.net/images/2019/10/23/timg.jpg" alt="img1" loading="lazy"><br>
+“读书改变命运”不知道有多少的人民教师和家长说过这样的话，我始终对这句话心存质疑，直到毕业后建立了一些自我认知，才有了一些关于教育的见解。首先我并不否定读书可以改变命运，但我认为这并不是一条很好的道路，甚至在当今时代可以说是一条枯燥且异常拥堵的路。<br>
+<img src="https://www.z4a.net/images/2019/10/23/timg1.jpg" alt="img1" loading="lazy"><br>
+1977年文化大革命结束，中国恢复高考，那个时候中国百废待兴，政界、商界、军界……各个部门需要人才，知识份子的身价也就水涨船高，后来中国还提出了深化改革的口号，世界500强企业纷纷入驻中国，那时候随便会说两句英语就会被外企要走，工作一两年就能买一套房，现在那批人各个都变成了富豪。这些现象也被我们的长辈看到，然后他们就会告诉自己的后代“读书改变命运”<br>
+<img src="https://www.z4a.net/images/2019/10/23/u3457080975354984341fm214gp0.jpg" alt="img1" loading="lazy"></p>
+<p>然而，如今这个时代大学生遍地都是，岗位饱和比较严重，加上中国经济发展，房价节节攀升，在加上现在的年轻人自制力比较差，成为网贷、房租、名牌消费的一波又一波的韭菜。通过高考实现屌丝逆袭显得不像之前那么容易了。<br>
+<img src="https://www.z4a.net/images/2019/10/23/timg-1.jpg" alt="img1" loading="lazy"><br>
+所以现在他们所谓的读书改变命运 无非就是找一份工作，在大城市里买房落户，甚至挤破头能抢一个学区房，奢望让自己的后代能享受更好的教育。然后自己在为银行打几十年的工还贷款。我并不认识这就是改变了命运。<br>
+除了高考还有一些人改变了命运实现了阶级突破。80年代有利用体制内声望集资办工厂的，90年代有买卖产权的，21世纪的制造业，后来的房地产,互联网，P2P , 数字货币……但是随着法律的健全这些通道也越来越少，阶级壁垒也逐渐形成，在想创业发现社会上90%的资源都被上层垄断，资金，技术，流量，品牌口碑……这些我们手里掌握的越来越少<br>
+<img src="https://www.z4a.net/images/2019/10/23/Snipaste_2019-10-23_21-00-55.png" alt="img1" loading="lazy"><br>
+相比通过高考实现阶级突破我更看好自主创业，虽然九死一生，但是我们光着脚有什么好怕的，在互联网的浪潮里编程和新媒体始终是有热度的两颗心脏，除此之外还可以关注一下区块链，5G，VR,AR,MR,物联网，大数据，云计算，我觉得最重要的是尽早建立自我认知，有一定认知能力之后在选择适合自己的路线走就好了，最可悲的是按照别人的指令执行自己的人生，最后枉费十几年青春发现自己站错了跑道。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[我理解的积极向上]]></title>
+        <id>https://zgChihiro.github.io/post/ji-ji-xiang-shang/</id>
+        <link href="https://zgChihiro.github.io/post/ji-ji-xiang-shang/">
+        </link>
+        <updated>2019-10-20T07:03:24.000Z</updated>
+        <content type="html"><![CDATA[<p>也是我静下来后想践行的一些事情</p>
+<p>学习自身技能，好好挣钱<br>
+学习市场，寻找商机，尝试创业<br>
+学习投资理财增长财务知识<br>
+多读书<br>
+搞懂那些曾迷惑自己的问题，比如风水，宗教，宇宙<br>
+结识一些有趣且积极的人<br>
+多出门转转，增长眼界<br>
+多和家人沟通<br>
+学习如何用心去爱一个人</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[22岁的我为什么恐惧结婚]]></title>
+        <id>https://zgChihiro.github.io/post/22-sui-de-wo-wei-shi-me-kong-ju-jie-hun/</id>
+        <link href="https://zgChihiro.github.io/post/22-sui-de-wo-wei-shi-me-kong-ju-jie-hun/">
+        </link>
+        <updated>2019-09-28T14:33:01.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="国家统计局和民政局公布数据2018年结婚率-72创下十年新低这个数据甚至一年会比一年低08年上半年中国有540万对新人结婚193万对夫妻离婚">国家统计局和民政局公布数据，2018年结婚率 7.2%，创下十年新低，这个数据甚至一年会比一年低，08年上半年，中国有540万对新人结婚，193万对夫妻离婚</h1>
+<p><img src="https://www.z4a.net/images/2019/09/28/20190320092811125.jpg" alt="20190320092811125.jpg" loading="lazy"><br>
+<img src="https://www.z4a.net/images/2019/09/28/_20190928220841.jpg" alt="_20190928220841.jpg" loading="lazy"></p>
+<p>最近陆续收到朋友和同学的结婚请帖，才意识到，自己就快到那个结婚的年纪了，<br>
+最结婚的恐惧也油然而生<br>
+主要出于以下几点</p>
+<ol>
+<li>钱可以自己赚，家务可以自己做，饭自己做，没时间就点外卖，生活完全可以独立，不知道为什么要结婚</li>
+<li>结婚就有可能意味着要放弃梦想，才华，时间和自由</li>
+<li>与其孤独终老，更害怕和一个让自己感到孤独的人一起终老</li>
+<li>即使娶到爱情，也害怕输给婚姻</li>
+<li>结婚不是填空题，而是选择题，每个人有选择权，才是最大的政治自由</li>
+<li>始终认为高质量的单身胜过低质量的婚姻</li>
+</ol>
+<p>另外结婚后也就意味着肩上除了社会的责任又多了一层责任，不仅要背负房贷车贷，上有老，生活还总有一堆乱七八糟的问题。另外那位曾经惊艳美丽的女孩子，心甘情愿脱下高跟鞋，为了你素面朝天，所以作为男人就有这个责任，就是你要让她觉得你值得，这个家值得。以前，我很崇拜高仓健这样的男性的，高大，坚毅，从来不笑，似乎承担着一切世界的苦难与责任。可是渐渐的，我对男性的理解越来越平凡了</p>
+<p>然后在想想自己目前的情况<br>
+一人吃饱，全家管够，无拘无束，潇洒自在。想买什么自己买，想旅游就去旅游，想学什么就尝试。而且这是一个最适合用来走南闯北，认识世界的年纪，是一段用来找回自我的绝无仅有的时光。最适合用来多读书，多旅行，多交朋友，多赚钱，如果用来结婚就太不值得了。</p>
+<h1 id="希望大家都能始于爱情陷于付出终于爱情">希望大家都能始于爱情，陷于付出，终于爱情</h1>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[域名出售]]></title>
+        <id>https://zgChihiro.github.io/post/yu-ming-chu-shou/</id>
+        <link href="https://zgChihiro.github.io/post/yu-ming-chu-shou/">
+        </link>
+        <updated>2019-09-22T01:33:28.000Z</updated>
+        <content type="html"><![CDATA[<p><a href="http://52ue4.yegoudaxue.com/">域名出售</a></p>
+<p>www.52ue4.com<br>
+www.52ue4.cn<br>
+一起出售，有意者联系：</p>
+<p>邮箱：zgChihiro@gmail.com</p>
+<p>微信：ChinaChihiro</p>
+<p>QQ:3689852</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[UE4自定义模块（还看不懂就别学了）]]></title>
+        <id>https://zgChihiro.github.io/post/ue4-zi-ding-yi-mo-kuai-sha-zi-du-neng-kan-de-dong/</id>
+        <link href="https://zgChihiro.github.io/post/ue4-zi-ding-yi-mo-kuai-sha-zi-du-neng-kan-de-dong/">
+        </link>
+        <updated>2019-08-31T18:01:36.000Z</updated>
+        <content type="html"><![CDATA[<ol>
+<li>
+<p>在Source目录下创建一个文件夹“MyMode”<br>
+<img src="https://www.z4a.net/images/2019/09/01/1.gif" alt="1.gif" loading="lazy"></p>
+</li>
+<li>
+<p>把项目自带的模块里的内容复制到MyMode文件夹并删除ModeBase<br>
+<img src="https://www.z4a.net/images/2019/09/01/2.gif" alt="2.gif" loading="lazy"></p>
+</li>
+<li>
+<p>然后修改名字<br>
+<img src="https://www.z4a.net/images/2019/09/01/3.gif" alt="3.gif" loading="lazy"></p>
+</li>
+<li>
+<p>修改MyMode.cpp和Build.cs里面的内容<br>
+<img src="https://www.z4a.net/images/2019/09/01/4.gif" alt="4.gif" loading="lazy"></p>
+</li>
+<li>
+<p>重新生成vs代码<br>
+<img src="https://www.z4a.net/images/2019/09/01/5.gif" alt="5.gif" loading="lazy"></p>
+</li>
+<li>
+<p>修改Target和启动器的内容<br>
+<img src="https://www.z4a.net/images/2019/09/01/6.gif" alt="6.gif" loading="lazy"></p>
+</li>
+<li>
+<p>生成后重启项目<br>
+<img src="https://www.z4a.net/images/2019/09/01/0.png" alt="0.png" loading="lazy"></p>
+</li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[VMWare安装macOS解决全屏问题]]></title>
+        <id>https://zgChihiro.github.io/post/vmware-an-zhuang-macos-jie-jue-quan-ping-wen-ti/</id>
+        <link href="https://zgChihiro.github.io/post/vmware-an-zhuang-macos-jie-jue-quan-ping-wen-ti/">
+        </link>
+        <updated>2019-08-31T11:31:47.000Z</updated>
+        <content type="html"><![CDATA[<!-- more -->
+<p><a href="https://segmentfault.com/q/1010000000489035">参考链接</a></p>
+<figure data-type="image" tabindex="1"><img src="https://www.z4a.net/images/2019/08/31/3abd9aaef0140f374.jpg" alt="3abd9aaef0140f374.jpg" loading="lazy"></figure>
+<!-- more -->
+<ul>
+<li>
+<p>1.<strong>vmware虚拟机对应的vmx文件里面的这部分内容要修改一下，设置一下最大分辨率</strong><br>
+svga.autodetect = &quot;FALSE&quot;<br>
+svga.maxWidth = &quot;3840&quot;<br>
+svga.maxHeight = &quot;2160&quot;</p>
+</li>
+<li>
+<p>2.<strong>按图配置显示器选项里面的最大分辨率，选择3840 x 2160</strong></p>
+</li>
+</ul>
+<p>在Mac虚拟机里的终端执行下面的命令，执行完之后重启即可</p>
+<p><code>sudo nvram AC20C489-DD86-4E99-992C-B7C742C1DDA9:width=%00%0F%00%00</code></p>
+<p><code>sudo nvram AC20C489-DD86-4E99-992C-B7C742C1DDA9:height=%70%08%00%00</code></p>
+<blockquote>
+<p>解释：<br>
+width=%00%0F%00%00 是宽度的16进制表示，将四个数字倒过来写就是 00 00 0f 00, 相当于十进制的3840<br>
+height=%70%08%00%00 是高度的16进制表示，将四个数字倒过来写就是 00 00 08 70, 相当于十进制的2160</p>
+</blockquote>
+<p>所以，上面的两条命令执行完之后，分辨率将被设置为 3840*2160， 其余的分辨率依次类推</p>
+<ul>
+<li>3.<strong>按图配置显示器选项里面的最大分辨率</strong></li>
+</ul>
+<figure data-type="image" tabindex="2"><img src="http://segmentfault.com/img/bVceIv" alt="" loading="lazy"></figure>
 ]]></content>
     </entry>
 </feed>

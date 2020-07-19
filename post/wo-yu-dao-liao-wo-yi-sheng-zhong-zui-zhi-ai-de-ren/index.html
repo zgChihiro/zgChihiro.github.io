@@ -1,0 +1,200 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>我遇到了我一生中最挚爱的人 | Gridea</title>
+<link rel="shortcut icon" href="https://zgChihiro.github.io/favicon.ico?v=1595144549666">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zgChihiro.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="我遇到了我一生中最挚爱的人 | Gridea - Atom Feed" href="https://zgChihiro.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="我喝的烂醉如泥
+她跑到床边照顾我
+我们相识不到一天
+但却初见如故
+可能是酒精让人变的矫情
+我看着她
+认定她就是我一生中的挚爱
+尽管我们相识不到一天
+酒精还真的让人模糊不清
+没有太多的情话
+“你愿意嫁给我吗？”
+她沉默了几秒钟
+然后哭着答应了..." />
+    <meta name="keywords" content="生活" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zgChihiro.github.io">
+  <img class="avatar" src="https://zgChihiro.github.io/images/avatar.png?v=1595144549666" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              我遇到了我一生中最挚爱的人
+            </h2>
+            <div class="post-info">
+              <span>
+                2019-12-15
+              </span>
+              <span>
+                1 min read
+              </span>
+              
+                <a href="https://zgChihiro.github.io/tag/05vPNx1c0/" class="post-tag">
+                  # 生活
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>我喝的烂醉如泥<br>
+她跑到床边照顾我<br>
+我们相识不到一天<br>
+但却初见如故<br>
+可能是酒精让人变的矫情<br>
+我看着她<br>
+认定她就是我一生中的挚爱<br>
+尽管我们相识不到一天<br>
+酒精还真的让人模糊不清<br>
+没有太多的情话<br>
+“你愿意嫁给我吗？”<br>
+她沉默了几秒钟<br>
+然后哭着答应了我<br>
+我不知道她为什么会哭<br>
+喜欢她的人很多<br>
+估计从没有人给过她这样的承诺<br>
+我不在乎她的过往<br>
+她不畏惧我的将来<br>
+只可惜<br>
+闹钟响了<br>
+我都没来得及问她的名字跟地址</p>
+<p>.<br>
+.<br>
+.<br>
+.<br>
+.<br>
+.</p>
+<p>我想在多睡会<br>
+可是上班要迟到了</p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://zgChihiro.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

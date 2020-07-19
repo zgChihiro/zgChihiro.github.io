@@ -1,0 +1,199 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>UE4子弹到达目的地爆炸及自身销毁 | Gridea</title>
+<link rel="shortcut icon" href="https://zgChihiro.github.io/favicon.ico?v=1595144549666">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zgChihiro.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="UE4子弹到达目的地爆炸及自身销毁 | Gridea - Atom Feed" href="https://zgChihiro.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="效果图展示：
+
+第一步我们打开子弹的蓝图我们把抛射物的重力改成0
+
+在细节里
+
+这样是为了让射出的子弹走直线
+然后我们添加一个击中事件节点
+
+击中之后我们希望在击中的地方产生爆炸
+
+然后我们在 Emitter Template 的下拉菜单中..." />
+    <meta name="keywords" content="UE4" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zgChihiro.github.io">
+  <img class="avatar" src="https://zgChihiro.github.io/images/avatar.png?v=1595144549666" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              UE4子弹到达目的地爆炸及自身销毁
+            </h2>
+            <div class="post-info">
+              <span>
+                2017-06-12
+              </span>
+              <span>
+                1 min read
+              </span>
+              
+                <a href="https://zgChihiro.github.io/tag/jCDMJY3wK2/" class="post-tag">
+                  # UE4
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>效果图展示：</p>
+<figure data-type="image" tabindex="1"><img src="https://zgChihiro.github.io/post-images/1564916484075.gif" alt="" loading="lazy"></figure>
+<p>第一步我们打开子弹的蓝图我们把抛射物的重力改成0</p>
+<p><img src="https://i.loli.net/2019/08/04/NChDkdvMon96QRa.png" alt="20170612152754929.png" loading="lazy"><br>
+在细节里<br>
+<img src="https://i.loli.net/2019/08/04/zQASCYgRsP2oBaO.png" alt="20170612152802499.png" loading="lazy"></p>
+<p>这样是为了让射出的子弹走直线<br>
+然后我们添加一个击中事件节点<br>
+<img src="https://i.loli.net/2019/08/04/BaPEiNFmjfLkZnI.png" alt="20170612152950188.png" loading="lazy"></p>
+<p>击中之后我们希望在击中的地方产生爆炸<br>
+<img src="https://imgconvert.csdnimg.cn/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNjEyMTUzMTAxMjMw" alt="这里写图片描述" loading="lazy"></p>
+<p>然后我们在 Emitter Template 的下拉菜单中选中我们希望播放的粒子效果<br>
+<img src="http://tva1.sinaimg.cn/large/0060lm7Tly1g5nugn9kxzj30bj0ewgnm.jpg" alt="这里写图片描述" loading="lazy"></p>
+<p>播放完粒子效果<br>
+如果我们立即销毁的话会失去碰撞效果<br>
+所以我们在销毁之前添加一个延时<br>
+为的是让子弹充分产生碰撞</p>
+<figure data-type="image" tabindex="2"><img src="http://tva1.sinaimg.cn/large/0060lm7Tly1g5nuh352zvj30og082jso.jpg" alt="这里写图片描述" loading="lazy"></figure>
+<p>链接好所有节点之后编译保存子弹的蓝图<br>
+在关卡编辑器中播放你就会看到自己预想的效果</p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zgChihiro.github.io/post/ue4-tian-jia-qiang-kou-huo-yan-xiao-guo/">
+              <h3 class="post-title">
+                UE4添加枪口火焰效果
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://zgChihiro.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

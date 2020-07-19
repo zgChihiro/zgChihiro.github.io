@@ -1,0 +1,201 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>根除 ff新鲜事 互联网毒瘤 | Gridea</title>
+<link rel="shortcut icon" href="https://zgChihiro.github.io/favicon.ico?v=1595144549666">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zgChihiro.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="根除 ff新鲜事 互联网毒瘤 | Gridea - Atom Feed" href="https://zgChihiro.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="国内恶心的流氓软件，
+重庆重橙网络科技有限公司
+给国内的用户恶意捆绑流氓插件
+窥探用户上网信息
+希望有关部门能监督这种不要脸的企业
+
+1.找到运行程序：win+R 打开注册表 regedit 回车。
+2.按F3, 查找 mini.flash..." />
+    <meta name="keywords" content="杂" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zgChihiro.github.io">
+  <img class="avatar" src="https://zgChihiro.github.io/images/avatar.png?v=1595144549666" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              根除 ff新鲜事 互联网毒瘤
+            </h2>
+            <div class="post-info">
+              <span>
+                2019-05-29
+              </span>
+              <span>
+                1 min read
+              </span>
+              
+                <a href="https://zgChihiro.github.io/tag/jgVKEO8h5-/" class="post-tag">
+                  # 杂
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>国内恶心的流氓软件，<br>
+重庆重橙网络科技有限公司<br>
+给国内的用户恶意捆绑流氓插件<br>
+窥探用户上网信息<br>
+希望有关部门能监督这种不要脸的企业</p>
+<figure data-type="image" tabindex="1"><img src="https://www.z4a.net/images/2019/08/06/20190601095502775.png" alt="20190601095502775.png" loading="lazy"></figure>
+<p>1.找到运行程序：win+R 打开注册表 regedit 回车。</p>
+<p>2.按F3, 查找 mini.flash.2144。</p>
+<p>3.找到的目录，点右键删除！！</p>
+<p>或者直接写个bat文件</p>
+<pre><code>@echo off
+
+taskkill /f /t /im FlashHelperService.exe
+
+ping 127.0.0.1
+
+del /f /s /q C:\Windows\SysWOW64\Macromed\Flash\FlashHelperService.exe
+
+Reg delete &quot;HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Internet Explorer\MAIN\FeatureControl\FEATURE_BROWSER_EMULATION&quot; /v &quot;FlashHelperService&quot; /f
+
+Reg delete &quot;HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\Flash Helper Service&quot; /f
+
+Reg delete &quot;HKEY_LOCAL_MACHINE\SYSTEM\ControlSet002\services\Flash Helper Service&quot; /f
+
+pause
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zgChihiro.github.io/post/ue4-zhi-ftext-he-fname-zhi-jian-de-lei-xing-zhuan-huan/">
+              <h3 class="post-title">
+                UE4之FText和FName之间的类型转换
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://zgChihiro.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

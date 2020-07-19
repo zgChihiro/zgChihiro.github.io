@@ -1,0 +1,355 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>UE4引用第三方库Lib以及dll | Gridea</title>
+<link rel="shortcut icon" href="https://zgChihiro.github.io/favicon.ico?v=1595144549666">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zgChihiro.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="UE4引用第三方库Lib以及dll | Gridea - Atom Feed" href="https://zgChihiro.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="####前段时间在研究UE4引入外部的函数库，但是由于网上的相关文章并不多，大都东拼西凑，或者故意写的很花哨，不利于新手学习，或者直接无脑的转载，比如各种感谢A先生……，很多文章我都照着做了但都未成功，我都怀疑那些发布文章的大佬自己有没有链..." />
+    <meta name="keywords" content="UE4" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zgChihiro.github.io">
+  <img class="avatar" src="https://zgChihiro.github.io/images/avatar.png?v=1595144549666" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              UE4引用第三方库Lib以及dll
+            </h2>
+            <div class="post-info">
+              <span>
+                2018-08-27
+              </span>
+              <span>
+                5 min read
+              </span>
+              
+                <a href="https://zgChihiro.github.io/tag/jCDMJY3wK2/" class="post-tag">
+                  # UE4
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>####<strong>前段时间在研究UE4引入外部的函数库，但是由于网上的相关文章并不多，大都东拼西凑，或者故意写的很花哨，不利于新手学习，或者直接无脑的转载，比如各种感谢A先生……，很多文章我都照着做了但都未成功，我都怀疑那些发布文章的大佬自己有没有链接成功，上文和下文明显驴唇不对马嘴，最起码把函数名字改成一样的吧，明显都是东拼西凑的一片文章，拿出来发布，赚点人气。</strong></p>
+<p>####<strong>不过也有一些大佬的文章确实写的不错，慷慨解囊，在这里我这位名不见经传的小博主向这些行业里无私奉献，对我们新手不厌其烦的解答的那些大佬深深鞠躬</strong></p>
+<p>###好了废话不多说了</p>
+<p>首先要知道C++引入和UE4引入第三方库是不一样的<br>
+C++只需要一行代码就可以</p>
+<pre><code>#pragma comment(lib, &quot;mylib.lib&quot;)
+</code></pre>
+<p>UE4也可以自己写，不过需要额外的配置，比较麻烦，引擎为了解决这些繁琐的东西，就用C#去管理了</p>
+<p>既然要链接第三方库我们就要有第三方库，<br>
+如何创建我这里就不多说了，</p>
+<p>大家可以看我之前写过的一篇文章</p>
+<h1 id="cdll-lib的定义以及引用"><a href="https://blog.csdn.net/qq_36409711/article/details/78924564">C++dll、lib的定义以及引用</a></h1>
+<p>需要注意的是，我们创建的第三方库是分64位 和 32位的<br>
+本教程使用64位作为演示<br>
+<img src="https://www.z4a.net/images/2019/08/05/20180827144836412.png" alt="20180827144836412.png" loading="lazy"></p>
+<p>然后我们UE4创建一个空的C++项目，取消初学者选项</p>
+<p><strong>在项目的根目录创建ThirdParty文件夹</strong><br>
+<strong>并创建两个子文件夹</strong><br>
+<strong>分别是include和lib</strong><br>
+<strong>存放我们的lib文件和.h文件</strong></p>
+<figure data-type="image" tabindex="1"><img src="https://www.z4a.net/images/2019/08/05/20180827145303935.png" alt="20180827145303935.png" loading="lazy"></figure>
+<p>打开项目的 Bulid.cs 文件<br>
+<img src="https://www.z4a.net/images/2019/08/05/20180827145029715.png" alt="20180827145029715.png" loading="lazy"></p>
+<p>填写如下代码</p>
+<pre><code>// Fill out your copyright notice in the Description page of Project Settings.
+
+using UnrealBuildTool;
+using System.IO;
+
+public class UseLib : ModuleRules
+{
+
+    private string ModulePath
+    {
+        get
+        {
+            return ModuleDirectory;
+        }
+    }
+
+    private string ThirdPartyPath
+    {
+        get
+        {
+            return Path.GetFullPath(Path.Combine(ModulePath, &quot;../../ThirdParty&quot;));
+        }
+    }
+
+
+    public UseLib(ReadOnlyTargetRules Target) : base(Target)
+	{
+		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
+	
+		PublicDependencyModuleNames.AddRange(new string[] { &quot;Core&quot;, &quot;CoreUObject&quot;, &quot;Engine&quot;, &quot;InputCore&quot; });
+
+		PrivateDependencyModuleNames.AddRange(new string[] {  });
+
+
+        PublicIncludePaths.Add(Path.Combine(ThirdPartyPath, &quot;include&quot;));
+        PublicAdditionalLibraries.Add(Path.Combine(ThirdPartyPath,&quot;lib&quot;,&quot;Mylib.lib&quot;));
+        PublicAdditionalLibraries.Add(Path.Combine(ThirdPartyPath,&quot;lib&quot;,&quot;MylibTest.lib&quot;));
+                       
+	}
+}
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://www.z4a.net/images/2019/08/05/20180827145418888.png" alt="20180827145418888.png" loading="lazy"></figure>
+<p>剩下的就是在我们需要的地方直接引入头文件就可以了</p>
+<pre><code>#include &quot;../../ThirdParty/inlcude/MyLibClass.h&quot;
+
+float AUseLibActor::GetArea(float r)
+{
+	Round *pRound = new Round();
+	return pRound-&gt;getCircleArea(r);
+}
+</code></pre>
+<p><img src="https://www.z4a.net/images/2019/08/05/20180827145635973.png" alt="20180827145635973.png" loading="lazy"><br>
+<img src="https://www.z4a.net/images/2019/08/05/20180827145727692.png" alt="20180827145727692.png" loading="lazy"><br>
+<img src="https://www.z4a.net/images/2019/08/05/20180827145736801.png" alt="20180827145736801.png" loading="lazy"></p>
+<p>如果有移植需求的话可以写到插件里<br>
+方法一样，<br>
+也可以创建一个模板，在项目的bulid.cs里添加就好了</p>
+<p>####上面是引入lib文件的方法，接下来讲解如何在UE4中引入动态链接库dll，动态链接库会比较简单一些，它的特点就是可以动态的增加和删除，</p>
+<p>###首先我们创建一个DLL文件，</p>
+<p>打开VS创建一个Windows控制台应用程序<br>
+64位，配置类型.dll</p>
+<figure data-type="image" tabindex="3"><img src="https://www.z4a.net/images/2019/08/05/2018083112543084.png" alt="2018083112543084.png" loading="lazy"></figure>
+<p>创建一个MyDllTest.cpp的类</p>
+<p>编写如下代码</p>
+<pre><code>//.h
+#pragma once
+#define DLL_EXPORT __declspec(dllexport)
+#ifdef __cplusplus
+extern &quot;C&quot;
+{
+	#endif	
+		float DLL_EXPORT getCircleArea(float radius);
+	#ifdef __cplusplus
+
+}
+
+#endif
+
+</code></pre>
+<pre><code>//.cpp
+#include &quot;MyDllTest.h&quot;
+
+float DLL_EXPORT getCircleArea(float radius)
+{
+	return (3.14 * (radius * radius));
+}
+</code></pre>
+<figure data-type="image" tabindex="4"><img src="https://www.z4a.net/images/2019/08/05/20180831125725527.png" alt="20180831125725527.png" loading="lazy"></figure>
+<figure data-type="image" tabindex="5"><img src="https://www.z4a.net/images/2019/08/05/2018083112574442.png" alt="2018083112574442.png" loading="lazy"></figure>
+<p>##然后F7编译出来，在项目的 x64 文件夹里拿到我们的dll文件<br>
+##在UE4目录下创建一个新的文件夹，名字随便，我这里用的&quot;DLL&quot;<br>
+##将我们的dll文件放入到这个文件夹</p>
+<p>打开UE4创建一个C++类，选择BlueprintFunctionLibrary作为其父类<br>
+<img src="https://www.z4a.net/images/2019/08/05/20180831130222567.png" alt="20180831130222567.png" loading="lazy"></p>
+<p>编写代码如下</p>
+<pre><code>//.h
+#pragma once
+
+#include &quot;CoreMinimal.h&quot;
+#include &quot;Kismet/BlueprintFunctionLibrary.h&quot;
+#include &quot;MyBlueprintFunctionLibrary.generated.h&quot;
+
+/**
+ * 
+ */
+UCLASS()
+class USEDLL_API UMyBlueprintFunctionLibrary : public UBlueprintFunctionLibrary
+{
+	GENERATED_BODY()
+	
+public:
+	UFUNCTION(BlueprintCallable, Category = &quot;Chihiri Library&quot;)
+		static float getCircleArea(float radius);
+	
+	
+};
+
+</code></pre>
+<pre><code>//.cpp
+#include &quot;MyBlueprintFunctionLibrary.h&quot;
+#include &quot;Runtime/Core/Public/Misc/Paths.h&quot;
+#include &quot;Engine.h&quot;
+
+typedef float(*_getCircleArea)(float radius);
+
+
+float UMyBlueprintFunctionLibrary::getCircleArea(float radius)
+{
+	FString filePath = FPaths::Combine(*FPaths::GameDir(), TEXT(&quot;DLL/&quot;), TEXT(&quot;DllTest.dll&quot;)); // Concatenate the plugins folder and the DLL file.       
+
+	if (FPaths::FileExists(filePath))		//Can the file be found?
+	{
+
+		void *DLLHandle;
+
+		DLLHandle = FPlatformProcess::GetDllHandle(*filePath); 
+		if (DLLHandle != NULL)
+		{
+			_getCircleArea DLLgetCircleArea = NULL; 
+			FString procName = &quot;getCircleArea&quot;;					 //The name of the function defined in the DLL
+			DLLgetCircleArea = (_getCircleArea)FPlatformProcess::GetDllExport(DLLHandle, *procName); // Export the DLL function.
+			if (DLLgetCircleArea != NULL)
+			{
+				float out = DLLgetCircleArea(radius); // Call the DLL function, with arguments corresponding to the signature and return type of the function.
+				return out; // return to UE
+			}
+		}
+	}
+	else
+	{
+		GEngine-&gt;AddOnScreenDebugMessage(-1, 5.0f, FColor::Green, TEXT(&quot;Dll file not found !!!&quot;));
+	}
+	return 1.00f;
+}
+
+</code></pre>
+<figure data-type="image" tabindex="6"><img src="https://www.z4a.net/images/2019/08/05/20180831130405685.png" alt="20180831130405685.png" loading="lazy"></figure>
+<figure data-type="image" tabindex="7"><img src="https://www.z4a.net/images/2019/08/05/20180831130437814.png" alt="20180831130437814.png" loading="lazy"></figure>
+<p>然后编译一把，在ue4项目的蓝图中就能找到我们的函数了<br>
+<img src="https://www.z4a.net/images/2019/08/05/20180831130539479.png" alt="20180831130539479.png" loading="lazy"></p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#cdll-lib%E7%9A%84%E5%AE%9A%E4%B9%89%E4%BB%A5%E5%8F%8A%E5%BC%95%E7%94%A8">C++dll、lib的定义以及引用</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zgChihiro.github.io/post/ue4-fpaths-ge-mu-lu/">
+              <h3 class="post-title">
+                UE4 FPaths各目录
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://zgChihiro.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

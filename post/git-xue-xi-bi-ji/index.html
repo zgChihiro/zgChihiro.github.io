@@ -1,0 +1,225 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>git学习笔记 | Gridea</title>
+<link rel="shortcut icon" href="https://zgChihiro.github.io/favicon.ico?v=1595144549666">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zgChihiro.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="git学习笔记 | Gridea - Atom Feed" href="https://zgChihiro.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="工作区 &gt;&gt; 暂存区 &gt;&gt; 分支
+leangit &gt;&gt; stage(index) &gt;&gt;master
+配置git信息
+**git config --global user.name
+git co..." />
+    <meta name="keywords" content="git" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zgChihiro.github.io">
+  <img class="avatar" src="https://zgChihiro.github.io/images/avatar.png?v=1595144549666" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              git学习笔记
+            </h2>
+            <div class="post-info">
+              <span>
+                2017-03-23
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+                <a href="https://zgChihiro.github.io/tag/1f3zX3KGtF/" class="post-tag">
+                  # git
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>工作区 &gt;&gt; 暂存区 &gt;&gt; 分支<br>
+leangit &gt;&gt; stage(index) &gt;&gt;master</p>
+<p>配置git信息<br>
+**git config --global user.name<br>
+git config --global user.email **</p>
+<p>ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;电脑生成钥匙<br>
+cat ~/.ssh/id_rsa.pub 查看本地钥匙</p>
+<p>ssh复制到粘贴版<br>
+↓↓↓↓↓<br>
+<strong>clip &lt; ~/.ssh/id_rsa.pub</strong></p>
+<p>文件添加仓库的两步</p>
+<p>mkdir 创建文件夹</p>
+<p>git init 将目录编程git可以管理的仓库</p>
+<p>git add readme.txt<br>
+git commit -m &quot;提示 或者时间&quot;<br>
+git remote add origin git@github.com:q3689852/仓库名字.git本地库上传github</p>
+<p>pwd 显示当前目录</p>
+<p>git status 查看仓库状态（文件是否被修改）<br>
+git diff 查看文件修改的不同（别修改内容）工作区和暂存区的区别</p>
+<p>git log 查看之前的版本<br>
+git log --pretty=oneline 上者的简约版</p>
+<p>cat readme.txt 可以展示出此文件的内容</p>
+<p>git reset --hard HEAD^ 版本回滚^表示一个版本多个用~加数字<br>
+git reset --hard 3628164 加版本号的前几位可任意滚</p>
+<p>git checkout -- readme.txt 撤销修改工作区的文件<br>
+git reset HEAD -- readme.txt 暂存区的修改撤销掉，重新放回工作区</p>
+<p>git reflog 列出版本滚动记录</p>
+<p>rm readme.txt 删除文件</p>
+<p>git clong 链接 下载项目到本地</p>
+<p>git branch 列出本地分支<br>
+git branch VR_17_dgz 新建分支<br>
+git checkout -b VR_17_dgz 新建分支屏切换到当前分支<br>
+git checkout VR_17_dgz 跳转到此分支<br>
+git checkout - 切换到上一个分支</p>
+<p>将新分支发布在github上： git push origin Branch1<br>
+在本地删除一个分支： git branch -d Branch1<br>
+在github远程端删除一个分支： git push origin :Branch1   (分支名前的冒号代表删除)</p>
+<p>git merge name 将name合并到当前分支(自身被覆盖)<br>
+git merge --no-ff -m &quot;TiShi&quot; name 和上着的区别是会多产生一个提交<br>
+git log --graph 查看分支合并图</p>
+<p>git stash 隐藏工作现场/暂停<br>
+git stash list 查看被隐藏的列表<br>
+git stash pop 恢复隐藏</p>
+<p>git remote add origin git@github.com:q3689852/库名.git<br>
+git push -u origin master</p>
+<p>git checkout --文件夹或文件 恢复工作区</p>
+<p>大文件的解决方法<br>
+下载安装LFS<br>
+https://git-lfs.github.com/<br>
+git lfs install 初始化<br>
+git lfs track“* .psd” 大文件</p>
+<p>ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;电脑生成钥匙<br>
+cat ~/.ssh/id_rsa.pub 查看本地钥匙</p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zgChihiro.github.io/post/han-shu-mo-ban/">
+              <h3 class="post-title">
+                函数模板
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://zgChihiro.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

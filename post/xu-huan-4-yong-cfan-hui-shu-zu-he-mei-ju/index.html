@@ -1,0 +1,225 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>虚幻4用C++返回数组和枚举 | Gridea</title>
+<link rel="shortcut icon" href="https://zgChihiro.github.io/favicon.ico?v=1595144549666">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zgChihiro.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="虚幻4用C++返回数组和枚举 | Gridea - Atom Feed" href="https://zgChihiro.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="
+有时候出于开发需求，需要返回一个数组
+但是用C++的方法返回的话，经常会报错
+因为虚幻引擎内部封装了一个强大TArray
+而且要求开发者必须使用它的东西
+自己研究了2-3天，终于把问题解决了，
+其实非常简单
+首先在.h文件中定义一个函数暴..." />
+    <meta name="keywords" content="UE4" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zgChihiro.github.io">
+  <img class="avatar" src="https://zgChihiro.github.io/images/avatar.png?v=1595144549666" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              虚幻4用C++返回数组和枚举
+            </h2>
+            <div class="post-info">
+              <span>
+                2017-12-07
+              </span>
+              <span>
+                1 min read
+              </span>
+              
+                <a href="https://zgChihiro.github.io/tag/jCDMJY3wK2/" class="post-tag">
+                  # UE4
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <!-- more -->
+<p>有时候出于开发需求，需要返回一个数组<br>
+但是用C++的方法返回的话，经常会报错<br>
+因为虚幻引擎内部封装了一个强大TArray<br>
+而且要求开发者必须使用它的东西<br>
+自己研究了2-3天，终于把问题解决了，<br>
+其实非常简单</p>
+<p>首先在.h文件中定义一个函数暴露给蓝图</p>
+<pre><code>	UFUNCTION(BlueprintCallable)
+	TArray&lt;int&gt; PrintArr();
+</code></pre>
+<p>然后在.cpp文件中定义</p>
+<pre><code>TArray&lt;int&gt; ACppArrReturnGameModeBase::PrintArr()
+{
+	TArray&lt;int&gt; arr;
+	arr.Add(1);
+	arr.Add(2);
+	return arr;
+}
+</code></pre>
+<p>然后就可以去蓝图中调用了<br>
+<img src="https://www.z4a.net/images/2019/08/04/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcxMjA3MDkyMDI4NzI2.png" alt="aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcxMjA3MDkyMDI4NzI2.png" loading="lazy"></p>
+<!-- more -->
+<p>返回枚举的方法：</p>
+<pre><code>UENUM()
+namespace MyType
+{
+	enum Type
+	{
+		Type_1,
+		Type_2,
+		Type_3,
+		Type_4,
+		Type_5,
+		Type_6,
+	}
+}
+UCLASS()
+class ATestActor:public AActor
+{
+
+
+UPROPERTY(EditDafaultsOnly,Category = KWord)
+	TEnumAsByte&lt;MyType::Type&gt; CustonA;
+	
+	UPROPERTY(EditDafaultsOnly,Category = KWord,AdvancedDisplay)
+	TEnumAsByte&lt;MyType::Type&gt; CustonB;
+
+}
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zgChihiro.github.io/post/ps-zhi-zuo-diao-ke-xiao-guo/">
+              <h3 class="post-title">
+                PS制作雕刻效果
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://zgChihiro.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

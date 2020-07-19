@@ -1,0 +1,204 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>VMWare安装macOS解决全屏问题 | Gridea</title>
+<link rel="shortcut icon" href="https://zgChihiro.github.io/favicon.ico?v=1595144549666">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zgChihiro.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="VMWare安装macOS解决全屏问题 | Gridea - Atom Feed" href="https://zgChihiro.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="
+参考链接
+
+
+
+
+1.vmware虚拟机对应的vmx文件里面的这部分内容要修改一下，设置一下最大分辨率
+svga.autodetect = &quot;FALSE&quot;
+svga.maxWidth = &quot;3840&quot..." />
+    <meta name="keywords" content="VMware" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zgChihiro.github.io">
+  <img class="avatar" src="https://zgChihiro.github.io/images/avatar.png?v=1595144549666" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              VMWare安装macOS解决全屏问题
+            </h2>
+            <div class="post-info">
+              <span>
+                2019-08-31
+              </span>
+              <span>
+                2 min read
+              </span>
+              
+                <a href="https://zgChihiro.github.io/tag/GRUmedGOgh/" class="post-tag">
+                  # VMware
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <!-- more -->
+<p><a href="https://segmentfault.com/q/1010000000489035">参考链接</a></p>
+<figure data-type="image" tabindex="1"><img src="https://www.z4a.net/images/2019/08/31/3abd9aaef0140f374.jpg" alt="3abd9aaef0140f374.jpg" loading="lazy"></figure>
+<!-- more -->
+<ul>
+<li>
+<p>1.<strong>vmware虚拟机对应的vmx文件里面的这部分内容要修改一下，设置一下最大分辨率</strong><br>
+svga.autodetect = &quot;FALSE&quot;<br>
+svga.maxWidth = &quot;3840&quot;<br>
+svga.maxHeight = &quot;2160&quot;</p>
+</li>
+<li>
+<p>2.<strong>按图配置显示器选项里面的最大分辨率，选择3840 x 2160</strong></p>
+</li>
+</ul>
+<p>在Mac虚拟机里的终端执行下面的命令，执行完之后重启即可</p>
+<p><code>sudo nvram AC20C489-DD86-4E99-992C-B7C742C1DDA9:width=%00%0F%00%00</code></p>
+<p><code>sudo nvram AC20C489-DD86-4E99-992C-B7C742C1DDA9:height=%70%08%00%00</code></p>
+<blockquote>
+<p>解释：<br>
+width=%00%0F%00%00 是宽度的16进制表示，将四个数字倒过来写就是 00 00 0f 00, 相当于十进制的3840<br>
+height=%70%08%00%00 是高度的16进制表示，将四个数字倒过来写就是 00 00 08 70, 相当于十进制的2160</p>
+</blockquote>
+<p>所以，上面的两条命令执行完之后，分辨率将被设置为 3840*2160， 其余的分辨率依次类推</p>
+<ul>
+<li>3.<strong>按图配置显示器选项里面的最大分辨率</strong></li>
+</ul>
+<figure data-type="image" tabindex="2"><img src="http://segmentfault.com/img/bVceIv" alt="" loading="lazy"></figure>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zgChihiro.github.io/post/zui-jian-dan-de-bat-yan-chi-fang-fa/">
+              <h3 class="post-title">
+                最简单的bat延迟方法
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://zgChihiro.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

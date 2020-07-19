@@ -1,0 +1,188 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>phpstudy遇到80端口占用 | Gridea</title>
+<link rel="shortcut icon" href="https://zgChihiro.github.io/favicon.ico?v=1595144549666">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zgChihiro.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="phpstudy遇到80端口占用 | Gridea - Atom Feed" href="https://zgChihiro.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="和舍友一起利用课余时间搭建小网站
+因为iis比较麻烦，所以决定用phpstudy搭建，
+但是发现新买的服务器无法使用Apache，
+开启后一秒自己自动关闭，提示80端口被占用了，
+于是通过百度尝试各种方法最后还是解决了
+解决方案：
+　　在命..." />
+    <meta name="keywords" content="建站" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zgChihiro.github.io">
+  <img class="avatar" src="https://zgChihiro.github.io/images/avatar.png?v=1595144549666" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              phpstudy遇到80端口占用
+            </h2>
+            <div class="post-info">
+              <span>
+                2017-03-26
+              </span>
+              <span>
+                2 min read
+              </span>
+              
+                <a href="https://zgChihiro.github.io/tag/Sq_nCV-zOQO/" class="post-tag">
+                  # 建站
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>和舍友一起利用课余时间搭建小网站<br>
+因为iis比较麻烦，所以决定用phpstudy搭建，<br>
+但是发现新买的服务器无法使用Apache，<br>
+开启后一秒自己自动关闭，提示80端口被占用了，<br>
+于是通过百度尝试各种方法最后还是解决了</p>
+<p>解决方案：<br>
+　　在命令行输入netstat -aon可以查看80端口是被谁占用了。发现是被系统占用了。所以：<br>
+　　发现pid是4的进程占用着80端口，这还是一个系统进程，kill不掉。所以只能另想办法：<br>
+　　1、打开运行输入，regedit 也就是打开笔记本的注册表<br>
+　　2、找到：HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\HTTP<br>
+　　3、在右边找到Start这一项，将其改为0<br>
+　　4、重启系统，System进程不会占用80端口，也可通过netstat -aon查看，发现80端口确实已经不被占用了<br>
+　　5、最后一步，重启之后，再启动phpstudy就可以了。</p>
+<p>提示：更改完之后，有的服务器重启phpstudy后可以直接使用，有的还是显示80端口被占用，此时需要你重启你的服务器就ok！</p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zgChihiro.github.io/post/rong-qi-he-die-dai-qi/">
+              <h3 class="post-title">
+                容器和迭代器
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://zgChihiro.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

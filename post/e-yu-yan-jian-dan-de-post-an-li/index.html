@@ -1,0 +1,228 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>E语言简单的Post案例 | Gridea</title>
+<link rel="shortcut icon" href="https://zgChihiro.github.io/favicon.ico?v=1595144549666">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zgChihiro.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="E语言简单的Post案例 | Gridea - Atom Feed" href="https://zgChihiro.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="简单的AI小案例
+
+首先添加精益模块
+
+然后代码如下：
+.版本 2
+.支持库 iext
+.支持库 EThread
+
+.程序集 窗口程序集_启动窗口
+
+.子程序 _编辑框1_按下某键, 逻辑型
+.参数 键代码, 整数型
+.参数 功能键状态, ..." />
+    <meta name="keywords" content="E语言" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zgChihiro.github.io">
+  <img class="avatar" src="https://zgChihiro.github.io/images/avatar.png?v=1595144549666" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              E语言简单的Post案例
+            </h2>
+            <div class="post-info">
+              <span>
+                2019-08-29
+              </span>
+              <span>
+                2 min read
+              </span>
+              
+                <a href="https://zgChihiro.github.io/tag/YfCYXP7Xr8/" class="post-tag">
+                  # E语言
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>简单的AI小案例<br>
+<img src="https://www.z4a.net/images/2019/08/29/1.gif" alt="1.gif" loading="lazy"></p>
+<p>首先添加精益模块<br>
+<img src="https://www.z4a.net/images/2019/08/29/Snipaste_2019-08-29_21-42-12.png" alt="Snipaste_2019-08-29_21-42-12.png" loading="lazy"></p>
+<p>然后代码如下：</p>
+<pre><code>.版本 2
+.支持库 iext
+.支持库 EThread
+
+.程序集 窗口程序集_启动窗口
+
+.子程序 _编辑框1_按下某键, 逻辑型
+.参数 键代码, 整数型
+.参数 功能键状态, 整数型
+
+.判断开始 (键代码 ＝ #回车键)
+    _按钮1_被单击 ()
+.默认
+
+.判断结束
+
+
+
+.子程序 Post请求函数
+.局部变量 POST地址, 文本型
+.局部变量 POST数据, 文本型
+.局部变量 网页返回, 文本型
+.局部变量 转换后文本, 文本型
+
+'网上随便找的接口
+POST地址 ＝ “http://api.qingyunke.com/api.php?key=free&amp;appid=0&amp;msg=” ＋ #引号 ＋ 编辑框1.内容 ＋ #引号
+网页返回 ＝ 到文本 (网页_访问S (POST地址, 1, POST数据))
+转换后文本 ＝ 编码_Utf8到Ansi (到字节集 (网页返回))
+
+
+透明标签1.标题 ＝ 取文本中间 (转换后文本, 24, 取文本长度 (转换后文本) － 25)
+
+
+' POST数据 ＝ “aaa”
+
+.子程序 _按钮1_被单击
+
+
+启动线程 (&amp;Post请求函数, , )
+透明标签1.标题 ＝ “Loading ……”
+
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zgChihiro.github.io/post/ying-dan-tui-jian/">
+              <h3 class="post-title">
+                影单推荐
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://zgChihiro.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

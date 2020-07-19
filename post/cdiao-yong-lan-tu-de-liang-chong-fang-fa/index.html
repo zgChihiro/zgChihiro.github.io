@@ -1,0 +1,227 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>C++调用蓝图的两种方法 | Gridea</title>
+<link rel="shortcut icon" href="https://zgChihiro.github.io/favicon.ico?v=1595144549666">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zgChihiro.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="C++调用蓝图的两种方法 | Gridea - Atom Feed" href="https://zgChihiro.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="
+	我们都知道，蓝图的开发效率高，而C++的执行效率高，有时候一些功能C++开发难度及高，而使用蓝图就简单多了，因为蓝图有好多给我们开发者封装好的蓝图节点，我们直接使用就好了，比如官方的时间轴，如果我们用C++写就会相当麻烦，
+
+	这篇博客..." />
+    <meta name="keywords" content="UE4" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zgChihiro.github.io">
+  <img class="avatar" src="https://zgChihiro.github.io/images/avatar.png?v=1595144549666" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              C++调用蓝图的两种方法
+            </h2>
+            <div class="post-info">
+              <span>
+                2017-12-25
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+                <a href="https://zgChihiro.github.io/tag/jCDMJY3wK2/" class="post-tag">
+                  # UE4
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <!-- more -->
+<pre><code>	我们都知道，蓝图的开发效率高，而C++的执行效率高，有时候一些功能C++开发难度及高，而使用蓝图就简单多了，因为蓝图有好多给我们开发者封装好的蓝图节点，我们直接使用就好了，比如官方的时间轴，如果我们用C++写就会相当麻烦，
+
+	这篇博客就记录作者在开发过程中使用C++的多播代理调用蓝图的时间轴，从而实现动态缓慢开门关门效果0
+</code></pre>
+<p>效果图：<br>
+<img src="http://tva1.sinaimg.cn/large/0060lm7Tly1g5nyfs4d2xg30eh0a9e81.gif" alt="这里写图片描述" loading="lazy"></p>
+<p>首先附上<a href="https://docs.unrealengine.com/latest/CHN/Programming/UnrealArchitecture/Delegates/Multicast/index.html">官方链接</a></p>
+<p>虽然官方有教程，但是寥寥几个字，相信大家还是会看的一脸懵，<br>
+那么就开始看这篇博客吧，</p>
+<p>首先声明一下这个门是Actor的，在Actor里我创建了一个OpenDoor的C++组件，并提前定义了开门关门函数，可以接收玩家输入，也可以用触发器，随便能判断开关门条件即可， 这里不做详细教程，我只写多播代理的使用方法，如果连映射输入都不会建议查看官方文档</p>
+<p>好教程开始，<br>
+1，首先打开OpenDoor()组件在UClass()的头上创建代理</p>
+<pre><code>DECLARE_DYNAMIC_MULTICAST_DELEGATE(FTestRequst);
+</code></pre>
+<p>2，创建之后声明两个代理，分别是开门关门</p>
+<pre><code>	UPROPERTY(BlueprintAssignable)
+		FTestRequst OnOpenDoorRequest;
+
+	UPROPERTY(BlueprintAssignable)
+		FTestRequst OnCloseDoorRequest;
+</code></pre>
+<p>3，然后在开门关门的函数里使用代理播放广播</p>
+<pre><code>void UOpenDoor::OpenDoor()
+{
+	OnOpenDoorRequest.Broadcast();
+}
+
+void UOpenDoor::closeDoor()
+{
+	OnCloseDoorRequest.Broadcast();
+}
+</code></pre>
+<p>4，编译保存，确定无误<br>
+5，打开门Actor的蓝图选中OpenDoor组件，这个时候就可以为我们的广播定义功能了<br>
+<img src="http://tva1.sinaimg.cn/large/0060lm7Tly1g5nyfsj9quj30e507kjrx.jpg" alt="这里写图片描述" loading="lazy">，</p>
+<p>6，之后我们就可以在蓝图中使用时间轴控制我们的门了<br>
+<img src="http://tva1.sinaimg.cn/large/0060lm7Tly1g5nyft29usj30rk0bqwhf.jpg" alt="这里写图片描述" loading="lazy"></p>
+<p>7，最后编译保存执行就好了</p>
+<!-- more -->
+<p>下面介绍第二种方法</p>
+<p>1，首先我们创建一个C++类，我用的是Pawn、如果创建Pawn要在游戏中修改掉Pawn，这个很简单你，这里不做教程<br>
+<img src="http://tva1.sinaimg.cn/large/0060lm7Tly1g5nyfis3hvj304804hglm.jpg" alt="这里写图片描述" loading="lazy"><br>
+2，基于c++创建一个蓝图类，如果创建不了就修改C++代码，<code>UCLASS(Blurprintable)</code>	把class暴露给蓝图，然后就成继承一个蓝图的Pawn类了，<br>
+3，打来蓝图的Pawn类，我们创建一个函数，让它随便输出一下东西，<br>
+作为演示，我们就把这个函数的参数输出出来，<br>
+<img src="http://tva1.sinaimg.cn/large/0060lm7Tly1g5nyfj1341j30nj0af3z1.jpg" alt="这里写图片描述" loading="lazy"><br>
+4，这时候我们回到我们的VS中来，在BeginPlay()里写入如下代码</p>
+<pre><code>	#include &quot;OutputDevice.h&quot;
+	FString cmd = FString::Printf(TEXT(&quot;TestFun HelloWorld&quot;));
+	FOutputDeviceDebug device;
+	CallFunctionByNameWithArguments(*cmd, device, NULL, true);
+</code></pre>
+<p>编译保存<br>
+回到项目中播放<br>
+<img src="http://tva1.sinaimg.cn/large/0060lm7Tly1g5nyfj7wzoj309p058wfk.jpg" alt="这里写图片描述" loading="lazy"></p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zgChihiro.github.io/post/ju-yu-wang-zhong-controller-chong-yao-lan-tu-jie-dian/">
+              <h3 class="post-title">
+                局域网中Controller重要蓝图节点
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://zgChihiro.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

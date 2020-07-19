@@ -1,0 +1,244 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>检测VC库是否存在 | Gridea</title>
+<link rel="shortcut icon" href="https://zgChihiro.github.io/favicon.ico?v=1595144549666">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zgChihiro.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="检测VC库是否存在 | Gridea - Atom Feed" href="https://zgChihiro.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="本篇文章整理自网络，所以没有标注原创，原创我也找不到
+通过MSI的API来查询 ，参见MSDN说明 MsiQueryProductState
+MsiQueryProductState的输入参数为产品ID，其返回值为产品安装状态，若返回值为I..." />
+    <meta name="keywords" content="杂" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zgChihiro.github.io">
+  <img class="avatar" src="https://zgChihiro.github.io/images/avatar.png?v=1595144549666" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              检测VC库是否存在
+            </h2>
+            <div class="post-info">
+              <span>
+                2019-07-04
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+                <a href="https://zgChihiro.github.io/tag/jgVKEO8h5-/" class="post-tag">
+                  # 杂
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p><em><strong>本篇文章整理自网络，所以没有标注原创，原创我也找不到</strong></em></p>
+<h2 id="通过msi的api来查询-参见msdn说明-msiqueryproductstate">通过MSI的API来查询 ，参见MSDN说明 MsiQueryProductState</h2>
+<h2 id="msiqueryproductstate的输入参数为产品id其返回值为产品安装状态若返回值为installstate_default则表示已安装">MsiQueryProductState的输入参数为产品ID，其返回值为产品安装状态，若返回值为INSTALLSTATE_DEFAULT则表示已安装。</h2>
+<h2 id="返回值及安装状态">返回值及安装状态：</h2>
+<blockquote>
+<p>INSTALLSTATE	返回值      	产品的安装状态 INSTALLSTATE_UNKNOWN	-1	该产品未被广告或安装<br>
+INSTALLSTATE_ADVERTISED        	1	该产品已广告但未安装<br>
+INSTALLSTATE_ABSENT	2	该产品为不同的用户安装<br>
+INSTALLSTATE_DEFAULT	5	该产品已为当前用户安装</p>
+</blockquote>
+<pre><code>#include &quot;stdafx.h&quot;
+#include &lt;Windows.h&gt; 
+#include &lt;stdio.h&gt;
+#include &lt;msi.h&gt;
+#pragma comment(lib,&quot;Msi.lib&quot;)
+
+int main()
+{
+	INSTALLSTATE install_state;
+	install_state = MsiQueryProductState(L&quot;{071c9b48-7c32-4621-a0ac-3f809523288f}&quot;);  //for x64 runtime
+	if (install_state == INSTALLSTATE_DEFAULT)
+	{
+		::MessageBox(NULL, L&quot;已经安装&quot;, L&quot;Success&quot;, MB_OK | MB_ICONINFORMATION);
+	}
+	else
+	{
+		::MessageBox(NULL, L&quot;请安装&quot;, L&quot;Error&quot;, MB_OK | MB_ICONERROR);
+	}
+	getchar();
+}
+</code></pre>
+<p>另外提供他们在注册表里的键值</p>
+<blockquote>
+<pre><code>Visual C++ 2005 runtime files
+Visual C++ 2005 Redistributable Package (x86) - {A49F249F-0C91-497F-86DF-B2585E8E76B7}
+Visual C++ 2005 Redistributable Package (x64) - {6E8E85E8-CE4B-4FF5-91F7-04999C9FAE6A}
+Visual C++ 2005 Redistributable Package (ia64) - {03ED71EA-F531-4927-AABD-1C31BCE8E187}
+ 
+Visual C++ 2005 SP1 runtime files
+ 
+Visual C++ 2005 SP1 Redistributable Package (x86) - {7299052B-02A4-4627-81F2-1818DA5D550D}
+Visual C++ 2005 SP1 Redistributable Package (x64) - {071C9B48-7C32-4621-A0AC-3F809523288F}
+Visual C++ 2005 SP1 Redistributable Package (ia64) - {0F8FB34E-675E-42ED-850B-29D98C2ECE08}
+ 
+Visual C++ 2005 SP1 ATL Security Update runtime files
+Visual C++ 2005 SP1 ATL Security Update Redistributable Package (x86) - {837B34E3-7C30-493C-8F6A-2B0F04E2912C}
+Visual C++ 2005 SP1 ATL Security Update Redistributable Package (x64) - {6CE5BAE9-D3CA-4B99-891A-1DC6C118A5FC}
+Visual C++ 2005 SP1 ATL Security Update Redistributable Package (ia64) - {85025851-A784-46D8-950D-05CB3CA43A13}
+ 
+Visual C++ 2008 runtime files
+* VC 9.0 (x86) - {FF66E9F6-83E7-3A3E-AF14-8DE9A809A6A4} 
+* VC 9.0 (x64) - {350AA351-21FA-3270-8B7A-835434E766AD}
+* VC 9.0 (ia64) - {2B547B43-DB50-3139-9EBE-37D419E0F5FA} 
+ 
+Visual C++ 2008 SP1 runtime files
+* VC 9.0 SP1 (x86) - {9A25302D-30C0-39D9-BD6F-21E6EC160475}
+* VC 9.0 SP1 (x64) - {8220EEFE-38CD-377E-8595-13398D740ACE}
+* VC 9.0 SP1 (ia64) - {5827ECE1-AEB0-328E-B813-6FC68622C1F9}
+ 
+Visual C++ 2008 SP1 ATL Security Update runtime files
+* VC 9.0 SP1 ATL (x86) - {1F1C2DFC-2D24-3E06-BCB8-725134ADF989}
+* VC 9.0 SP1 ATL (x64) - {4B6C7001-C7D6-3710-913E-5BC23FCE91E6}
+* VC 9.0 SP1 ATL (ia64) - {977AD349-C2A8-39DD-9273-285C08987C7B}
+</code></pre>
+</blockquote>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E9%80%9A%E8%BF%87msi%E7%9A%84api%E6%9D%A5%E6%9F%A5%E8%AF%A2-%E5%8F%82%E8%A7%81msdn%E8%AF%B4%E6%98%8E-msiqueryproductstate">通过MSI的API来查询 ，参见MSDN说明 MsiQueryProductState</a></li>
+<li><a href="#msiqueryproductstate%E7%9A%84%E8%BE%93%E5%85%A5%E5%8F%82%E6%95%B0%E4%B8%BA%E4%BA%A7%E5%93%81id%E5%85%B6%E8%BF%94%E5%9B%9E%E5%80%BC%E4%B8%BA%E4%BA%A7%E5%93%81%E5%AE%89%E8%A3%85%E7%8A%B6%E6%80%81%E8%8B%A5%E8%BF%94%E5%9B%9E%E5%80%BC%E4%B8%BAinstallstate_default%E5%88%99%E8%A1%A8%E7%A4%BA%E5%B7%B2%E5%AE%89%E8%A3%85">MsiQueryProductState的输入参数为产品ID，其返回值为产品安装状态，若返回值为INSTALLSTATE_DEFAULT则表示已安装。</a></li>
+<li><a href="#%E8%BF%94%E5%9B%9E%E5%80%BC%E5%8F%8A%E5%AE%89%E8%A3%85%E7%8A%B6%E6%80%81">返回值及安装状态：</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zgChihiro.github.io/post/ue4-zhi-da-kai-xu-ni-jian-pan/">
+              <h3 class="post-title">
+                UE4之打开虚拟键盘
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://zgChihiro.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

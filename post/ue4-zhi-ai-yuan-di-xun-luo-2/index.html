@@ -1,0 +1,198 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>UE4之AI原地巡逻( 2 ) | Gridea</title>
+<link rel="shortcut icon" href="https://zgChihiro.github.io/favicon.ico?v=1595144549666">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zgChihiro.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="UE4之AI原地巡逻( 2 ) | Gridea - Atom Feed" href="https://zgChihiro.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="上节我们已经制作了会追玩家的AI
+但是如果AI在没有看到玩家之前
+会傻呆呆的站着
+现在我们就制作一个会原地巡逻的AI
+并且看到玩家之后会追赶玩家
+
+首先我们打开AI的蓝图
+创建一个事件Tick（事件Tick就是每帧执行）
+
+然后创建一个bo..." />
+    <meta name="keywords" content="UE4" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zgChihiro.github.io">
+  <img class="avatar" src="https://zgChihiro.github.io/images/avatar.png?v=1595144549666" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              UE4之AI原地巡逻( 2 )
+            </h2>
+            <div class="post-info">
+              <span>
+                2017-06-20
+              </span>
+              <span>
+                1 min read
+              </span>
+              
+                <a href="https://zgChihiro.github.io/tag/jCDMJY3wK2/" class="post-tag">
+                  # UE4
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>上节我们已经制作了会追玩家的AI<br>
+但是如果AI在没有看到玩家之前<br>
+会傻呆呆的站着<br>
+现在我们就制作一个会原地巡逻的AI<br>
+并且看到玩家之后会追赶玩家<br>
+<img src="https://www.z4a.net/images/2019/08/04/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNjIwMDkwODI3NDk1.gif" alt="aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNjIwMDkwODI3NDk1.gif" loading="lazy"><br>
+首先我们打开AI的蓝图<br>
+创建一个事件Tick（事件Tick就是每帧执行）<br>
+<img src="https://www.z4a.net/images/2019/08/04/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNjIwMDkwOTQ0NTEz.png" alt="aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNjIwMDkwOTQ0NTEz.png" loading="lazy"><br>
+然后创建一个bool的变量is see 默认为假 用来存放AI是否看见了玩家<br>
+发现与未发现分别执行两个动作<br>
+此时我们需要一个分支<br>
+<img src="https://www.z4a.net/images/2019/08/04/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNjIwMDkxMjEyODQ3.png" alt="aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNjIwMDkxMjEyODQ3.png" loading="lazy"><br>
+如果看见了 我们希望AI去追赶玩家<br>
+<img src="https://www.z4a.net/images/2019/08/04/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNjIwMDkxMzE3ODMx.png" alt="aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNjIwMDkxMzE3ODMx.png" loading="lazy"><br>
+如果AI没有发现玩家的时候我们希望它在自己的基础上随机产生一个坐标<br>
+并且每间隔1秒移动一次</p>
+<p><img src="https://www.z4a.net/images/2019/08/04/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNjIwMDkxNjU1OTU5.png" alt="aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNjIwMDkxNjU1OTU5.png" loading="lazy"><br>
+这里的GetRandomPointInNavigableRadius是随机产生一个坐标的意思<br>
+radius是半径可以根据自己需求适当修改</p>
+<p>添加好这些节点之后就可以进游戏体验了</p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zgChihiro.github.io/post/ue4-zhi-ai-zhui-wan-jia-1/">
+              <h3 class="post-title">
+                UE4之AI追玩家( 1 )
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://zgChihiro.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,201 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>UE4之AI追玩家( 1 ) | Gridea</title>
+<link rel="shortcut icon" href="https://zgChihiro.github.io/favicon.ico?v=1595144549666">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zgChihiro.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="UE4之AI追玩家( 1 ) | Gridea - Atom Feed" href="https://zgChihiro.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="效果图：
+
+首先我们找到我们的第三人称人物
+复制一份，作为我们的AI
+
+打开我们新创建的AI蓝图
+删除掉事件图表里的所有蓝图节点
+和组件里的CameraBoom和FollowCamera
+然后添加一个感官PawnSensing
+
+然后在AI..." />
+    <meta name="keywords" content="UE4" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zgChihiro.github.io">
+  <img class="avatar" src="https://zgChihiro.github.io/images/avatar.png?v=1595144549666" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              UE4之AI追玩家( 1 )
+            </h2>
+            <div class="post-info">
+              <span>
+                2017-06-16
+              </span>
+              <span>
+                1 min read
+              </span>
+              
+                <a href="https://zgChihiro.github.io/tag/jCDMJY3wK2/" class="post-tag">
+                  # UE4
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>效果图：<br>
+<img src="https://www.z4a.net/images/2019/08/04/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNjE2MTAzMzAyODYz.gif" alt="aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNjE2MTAzMzAyODYz.gif" loading="lazy"></p>
+<p>首先我们找到我们的第三人称人物<br>
+复制一份，作为我们的AI<br>
+<img src="https://www.z4a.net/images/2019/08/04/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNjE2MTA0NTQxMjcy.png" alt="aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNjE2MTA0NTQxMjcy.png" loading="lazy"><br>
+打开我们新创建的AI蓝图<br>
+删除掉事件图表里的所有蓝图节点<br>
+和组件里的CameraBoom和FollowCamera<br>
+然后添加一个感官PawnSensing<br>
+<img src="https://www.z4a.net/images/2019/08/04/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNjE2MTA1MTQ0NjY2.png" alt="aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNjE2MTA1MTQ0NjY2.png" loading="lazy"><br>
+然后在AI 的事件图标里添加如下节点</p>
+<figure data-type="image" tabindex="1"><img src="https://www.z4a.net/images/2019/08/04/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNjE2MTA1NTQ0OTQ5.png" alt="aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNjE2MTA1NTQ0OTQ5.png" loading="lazy"></figure>
+<p>编译保存 关闭AI的蓝图<br>
+将制作好的AI拖放如关卡<br>
+<img src="https://www.z4a.net/images/2019/08/04/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNjE2MTEwMDAyOTgy.png" alt="aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNjE2MTEwMDAyOTgy.png" loading="lazy"><br>
+在关卡中拖入一个Nav Mesh Bounds Volume<br>
+使其包住整个关卡<br>
+<img src="https://www.z4a.net/images/2019/08/04/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNjE2MTA1NzE4NjQ3.png" alt="aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNjE2MTA1NzE4NjQ3.png" loading="lazy"></p>
+<p>保存后运行关卡<br>
+当玩家进入AI的视线之后AI会追赶玩家<br>
+如果感觉AI 的移动速度过快的话在<br>
+AI的细节面板中可以对AI的行走速度进行限制</p>
+<figure data-type="image" tabindex="2"><img src="https://www.z4a.net/images/2019/08/04/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNjE2MTEwMzQ1MjY1.png" alt="aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNjE2MTEwMzQ1MjY1.png" loading="lazy"></figure>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zgChihiro.github.io/post/ue4-zhi-zuo-yi-tuan-bi-zhen-de-huo-yan/">
+              <h3 class="post-title">
+                UE4制作一团逼真的火焰
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://zgChihiro.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

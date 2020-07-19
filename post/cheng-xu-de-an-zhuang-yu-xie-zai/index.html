@@ -1,0 +1,197 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>程序的安装与卸载 | Gridea</title>
+<link rel="shortcut icon" href="https://zgChihiro.github.io/favicon.ico?v=1595144549666">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zgChihiro.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="程序的安装与卸载 | Gridea - Atom Feed" href="https://zgChihiro.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="开发安装包有很多种方法，
+本文提供一种思路
+程序的安装与卸载分两个部分
+一个是安装 一个是卸载
+安装程序 负责联网下载程序的压缩包，解压，创建快捷方式，检测与修复项目运行环境 ，写入注册表 ，生成卸载程序到项目目录，以及进入项目
+卸载程序 ..." />
+    <meta name="keywords" content="杂" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zgChihiro.github.io">
+  <img class="avatar" src="https://zgChihiro.github.io/images/avatar.png?v=1595144549666" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              程序的安装与卸载
+            </h2>
+            <div class="post-info">
+              <span>
+                2019-07-12
+              </span>
+              <span>
+                2 min read
+              </span>
+              
+                <a href="https://zgChihiro.github.io/tag/jgVKEO8h5-/" class="post-tag">
+                  # 杂
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>开发安装包有很多种方法，</p>
+<p>本文提供一种思路</p>
+<p>程序的安装与卸载分两个部分</p>
+<p>一个是安装 一个是卸载</p>
+<p>安装程序 负责联网下载程序的压缩包，解压，创建快捷方式，检测与修复项目运行环境 ，写入注册表 ，生成卸载程序到项目目录，以及进入项目</p>
+<p>卸载程序 负责 删除整个项目，删除自身，删除注册表，删除快捷方式，</p>
+<p>大体就是这个思路，然后逐一实现出来就行了</p>
+<p>其中注册表部分为了要在win10系统的 “卸载与更新程序”发现 需要写在这个路径下<br>
+<img src="https://www.z4a.net/images/2019/08/06/20190712164058649.png" alt="20190712164058649.png" loading="lazy"></p>
+<p>这样当我想想卸载的时候就可以用系统卸载它了</p>
+<figure data-type="image" tabindex="1"><img src="https://www.z4a.net/images/2019/08/06/20190712164234551.png" alt="20190712164234551.png" loading="lazy"></figure>
+<p>其中</p>
+<p>DisplayIcon是显示的图标</p>
+<p>DisplayName是显示的名字</p>
+<p>DisplayVersion是显示的版本号</p>
+<p>Publisher是作者名字</p>
+<p>UninstallString是卸载程序的路径</p>
+<p>除此之外还有很多，可以直接参考同在Uninstall目录下的其他程序</p>
+<p>最后卸载的时候系统根据UninstallString提供的目录找到卸载程序，然后执行它</p>
+<figure data-type="image" tabindex="2"><img src="https://www.z4a.net/images/2019/08/06/20190712164557581.gif" alt="20190712164557581.gif" loading="lazy"></figure>
+<p>添加到快速启动栏<br>
+只需要放在下面这个路径里就可以了</p>
+<p>C:\ProgramData\Microsoft\Windows\Start Menu\Programs<br>
+<img src="https://www.z4a.net/images/2019/08/06/20190805101812906.png" alt="20190805101812906.png" loading="lazy"></p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zgChihiro.github.io/post/jing-mo-an-zhuang-vc-huan-jing/">
+              <h3 class="post-title">
+                静默安装VC环境
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://zgChihiro.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

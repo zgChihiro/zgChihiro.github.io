@@ -1,0 +1,197 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>UE4之将人物映射到UI上 | Gridea</title>
+<link rel="shortcut icon" href="https://zgChihiro.github.io/favicon.ico?v=1595144549666">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zgChihiro.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="UE4之将人物映射到UI上 | Gridea - Atom Feed" href="https://zgChihiro.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="效果图：
+
+第一步：
+首相创建一个Actor
+添加一个SkeletalMesh
+然后添加一个SceneCaptureComponent2D
+和Light
+要让SceneCaptureComponent2D对向SkeletaMesh
+如果，不..." />
+    <meta name="keywords" content="UE4" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zgChihiro.github.io">
+  <img class="avatar" src="https://zgChihiro.github.io/images/avatar.png?v=1595144549666" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              UE4之将人物映射到UI上
+            </h2>
+            <div class="post-info">
+              <span>
+                2017-12-18
+              </span>
+              <span>
+                1 min read
+              </span>
+              
+                <a href="https://zgChihiro.github.io/tag/jCDMJY3wK2/" class="post-tag">
+                  # UE4
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>效果图：<br>
+<img src="https://www.z4a.net/images/2019/08/04/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcxMTMwMTk0OTA4MjAy.gif" alt="aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcxMTMwMTk0OTA4MjAy.gif" loading="lazy"><br>
+第一步：<br>
+首相创建一个Actor<br>
+添加一个SkeletalMesh<br>
+然后添加一个SceneCaptureComponent2D<br>
+和Light<br>
+要让SceneCaptureComponent2D对向SkeletaMesh<br>
+如果，不知道怎么转可以添加一个Arrow</p>
+<figure data-type="image" tabindex="1"><img src="https://www.z4a.net/images/2019/08/04/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcxMTMwMTk1MTE2NTE3.png" alt="aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcxMTMwMTk1MTE2NTE3.png" loading="lazy"></figure>
+<p>然后在目录里添加一个渲染目标<br>
+<img src="https://www.z4a.net/images/2019/08/04/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcxMTMwMTk1NDU5MzQ2.png" alt="aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcxMTMwMTk1NDU5MzQ2.png" loading="lazy"></p>
+<p>回到刚才的Actor选中SceneCaptureComponent2D、<br>
+在细节中把	TextureTarget  选成我们刚才创建的渲染目标<br>
+编译，保存</p>
+<p>然后创建材质，如图设置</p>
+<figure data-type="image" tabindex="2"><img src="https://www.z4a.net/images/2019/08/04/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcxMTMwMTk1ODU0Mzk0.png" alt="aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcxMTMwMTk1ODU0Mzk0.png" loading="lazy"></figure>
+<p>设置好之后，创建UI，添加一个img控件<br>
+<img src="https://www.z4a.net/images/2019/08/04/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcxMTMwMjAwMjM2OTE0.png" alt="aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcxMTMwMjAwMjM2OTE0.png" loading="lazy"></p>
+<p>然后就在关卡蓝图添加进去就OK了<br>
+<img src="https://www.z4a.net/images/2019/08/04/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcxMTMwMjAwNTA2MzEy.png" alt="aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcxMTMwMjAwNTA2MzEy.png" loading="lazy"></p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zgChihiro.github.io/post/ue4-xiang-ying-wan-jia-shu-ru-chong-yao-dai-ma-duan/">
+              <h3 class="post-title">
+                UE4响应玩家输入重要代码段
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://zgChihiro.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

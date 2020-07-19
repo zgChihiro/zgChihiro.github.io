@@ -1,0 +1,245 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>函数模板 | Gridea</title>
+<link rel="shortcut icon" href="https://zgChihiro.github.io/favicon.ico?v=1595144549666">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zgChihiro.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="函数模板 | Gridea - Atom Feed" href="https://zgChihiro.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="
+故名思意 函数模板就是定义一个函数的模板
+首先清楚
+函数模板的声明方式
+template
+&lt;返回类型&gt;&lt;函数名&gt;(参数表)
+{
+    函数体
+}
+然后看下面案例
+
+代码1
+
+#include
+using name..." />
+    <meta name="keywords" content="C++" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zgChihiro.github.io">
+  <img class="avatar" src="https://zgChihiro.github.io/images/avatar.png?v=1595144549666" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              函数模板
+            </h2>
+            <div class="post-info">
+              <span>
+                2017-03-23
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+                <a href="https://zgChihiro.github.io/tag/9h75_cgd0L/" class="post-tag">
+                  # C++
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <!-- more -->
+<p>故名思意 函数模板就是定义一个函数的模板</p>
+<p>首先清楚</p>
+<p>函数模板的声明方式</p>
+<p>template</p>
+<p>&lt;返回类型&gt;&lt;函数名&gt;(参数表)<br>
+{<br>
+    函数体<br>
+}</p>
+<p>然后看下面案例</p>
+<!-- more -->
+<p>代码1</p>
+<pre><code>
+#include
+using namespace std;
+int int_add(int a,int b)                              //定义函数int_add用于int型数据相加
+{
+ int c;
+ c=a+b;
+ return c;
+} 
+double dou_add(double a,double b)     //定义函数dou_add用于double型函数相加
+{
+ double c;
+ c=a+b;
+ return c;
+}
+int main()
+{
+ cout&lt;&lt;int_add(5,3)&lt;&lt;endl;              //调用int_add函数
+ cout&lt;&lt;dou_add(5.35,5.5)&lt;&lt;endl;  //调用dou_add函数
+ return 0;
+}
+</code></pre>
+<!-- more -->
+<p>代码2</p>
+<pre><code>#include
+using namespace std;
+int n_add(int a,int b)                              //定义函数n_add用于int型数据相加
+{
+ int c;
+ c=a+b;
+ return c;
+} 
+double n_add(double a,double b)    //定义函数n_add用于double型函数相加
+{
+ double c;
+ c=a+b;
+ return c;
+}
+int main()
+{
+ cout&lt;&lt;n_add(5,3)&lt;&lt;endl;             //调用n_add函数
+ cout&lt;&lt;n_add(5.35,5.5)&lt;&lt;endl;   //调用n_add函数
+ return 0;
+}
+</code></pre>
+<!-- more -->
+<p>我们可以清晰的看到代码三简化很多</p>
+<p>首先分析示例代码1，该代码根据不同的的数据（int和double两种）相加，分别定义了两个不同的函数int_add和dou_add，当不同类型的数据相加时，我们人工的设定使用对应的函数进行操作。</p>
+<p>示例代码2相比1而言，在函数的调用形式上进行了简化，使用了函数的重载技术，对于所有的数据，统一使用函数n_add进行操作，编译系统会根据数据的类型自动调用对应的函数。</p>
+<p>示例代码3相比2而言，则有在函数体上进行了简化，如果我们使用了函数模板，我们就没有必要去一一书写对应的函数，我们只需要构造相应的模板，然后系统会自动判断数据的类型，然后替代对应的虚拟类型，</p>
+<p>比如，当操作n_add(5.35,5.5)时，系统会自动判断数据为doubl型，然后就会将函数模板中的T替换成double：</p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zgChihiro.github.io/post/czhi-sui-ji-shu-chong-zi/">
+              <h3 class="post-title">
+                C++置随机数种子
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://zgChihiro.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

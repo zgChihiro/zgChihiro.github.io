@@ -1,0 +1,234 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>UE4关于材质的几个小技巧 | Gridea</title>
+<link rel="shortcut icon" href="https://zgChihiro.github.io/favicon.ico?v=1595144549666">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zgChihiro.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="UE4关于材质的几个小技巧 | Gridea - Atom Feed" href="https://zgChihiro.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="相信很多程序出身的开发者对美术不是很了解
+但是开发过程中又需要美术部分的一些技巧，
+今天我就来安利一些UE4美术方面的技巧
+希望能够帮助到大家
+不用 PS 也可以制作法线
+
+制作毛玻璃
+
+
+次表面材质
+
+
+
+Fresnel节点
+
+乘以基础材..." />
+    <meta name="keywords" content="UE4" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zgChihiro.github.io">
+  <img class="avatar" src="https://zgChihiro.github.io/images/avatar.png?v=1595144549666" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              UE4关于材质的几个小技巧
+            </h2>
+            <div class="post-info">
+              <span>
+                2018-06-10
+              </span>
+              <span>
+                1 min read
+              </span>
+              
+                <a href="https://zgChihiro.github.io/tag/jCDMJY3wK2/" class="post-tag">
+                  # UE4
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>相信很多程序出身的开发者对美术不是很了解<br>
+但是开发过程中又需要美术部分的一些技巧，<br>
+今天我就来安利一些UE4美术方面的技巧<br>
+希望能够帮助到大家</p>
+<h1 id="不用-ps-也可以制作法线">不用 PS 也可以制作法线</h1>
+<figure data-type="image" tabindex="1"><img src="https://www.z4a.net/images/2019/08/05/20180610202050449.png" alt="20180610202050449.png" loading="lazy"></figure>
+<h1 id="制作毛玻璃">制作毛玻璃</h1>
+<figure data-type="image" tabindex="2"><img src="https://www.z4a.net/images/2019/08/05/20180610121416345.jpg" alt="20180610121416345.jpg" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://www.z4a.net/images/2019/08/05/20180610121425813.jpg" alt="20180610121425813.jpg" loading="lazy"></figure>
+<h1 id="次表面材质">次表面材质</h1>
+<figure data-type="image" tabindex="4"><img src="https://www.z4a.net/images/2019/08/05/2018061020202793.png" alt="2018061020202793.png" loading="lazy"></figure>
+<figure data-type="image" tabindex="5"><img src="https://www.z4a.net/images/2019/08/05/20180610202020614.png" alt="20180610202020614.png" loading="lazy"></figure>
+<figure data-type="image" tabindex="6"><img src="https://www.z4a.net/images/2019/08/05/2018061020202793.png" alt="2018061020202793.png" loading="lazy"></figure>
+<h1 id="fresnel节点">Fresnel节点</h1>
+<figure data-type="image" tabindex="7"><img src="https://www.z4a.net/images/2019/08/05/2018061020214535.png" alt="2018061020214535.png" loading="lazy"></figure>
+<h1 id="乘以基础材质使其变旧-新手素材">乘以基础材质使其变旧  (新手素材)</h1>
+<figure data-type="image" tabindex="8"><img src="https://www.z4a.net/images/2019/08/05/20180610202537958.png" alt="20180610202537958.png" loading="lazy"></figure>
+<h1 id="customrotator自定义旋转">CustomRotator	自定义旋转</h1>
+<pre><code>![这里写图片描述](https://img-blog.csdn.net/20180610203925814?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NDA5NzEx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
+</code></pre>
+<h1 id="flattennormal法线平展">FlattenNormal	法线平展</h1>
+<h1 id="desatruation饱和度">Desatruation	饱和度</h1>
+<h1 id="边缘高亮">边缘高亮</h1>
+<p><img src="https://www.z4a.net/images/2019/08/05/20180701184920336.png" alt="20180701184920336.png" loading="lazy"><br>
+<img src="https://www.z4a.net/images/2019/08/05/20180701184929417.png" alt="20180701184929417.png" loading="lazy"></p>
+<h1 id="线框材质">线框材质</h1>
+<p><img src="https://www.z4a.net/images/2019/08/05/20180710150804229.png" alt="20180710150804229.png" loading="lazy"><br>
+<img src="https://www.z4a.net/images/2019/08/05/2018071015075751.png" alt="2018071015075751.png" loading="lazy"></p>
+<h1 id="缩放模型材质保持">缩放模型材质保持</h1>
+<p><img src="https://www.z4a.net/images/2019/08/05/20180727151112662.gif" alt="20180727151112662.gif" loading="lazy"><br>
+<img src="https://www.z4a.net/images/2019/08/05/20180727151122842.jpg" alt="20180727151122842.jpg" loading="lazy"></p>
+<h1 id="实时让画面居中">实时让画面居中</h1>
+<figure data-type="image" tabindex="9"><img src="https://www.z4a.net/images/2019/08/05/20180818120605734.png" alt="20180818120605734.png" loading="lazy"></figure>
+<h1 id="虚边效果">虚边效果</h1>
+<p><img src="https://www.z4a.net/images/2019/08/05/20181205172440685.png" alt="20181205172440685.png" loading="lazy"><br>
+持续更新中……</p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E4%B8%8D%E7%94%A8-ps-%E4%B9%9F%E5%8F%AF%E4%BB%A5%E5%88%B6%E4%BD%9C%E6%B3%95%E7%BA%BF">不用 PS 也可以制作法线</a></li>
+<li><a href="#%E5%88%B6%E4%BD%9C%E6%AF%9B%E7%8E%BB%E7%92%83">制作毛玻璃</a></li>
+<li><a href="#%E6%AC%A1%E8%A1%A8%E9%9D%A2%E6%9D%90%E8%B4%A8">次表面材质</a></li>
+<li><a href="#fresnel%E8%8A%82%E7%82%B9">Fresnel节点</a></li>
+<li><a href="#%E4%B9%98%E4%BB%A5%E5%9F%BA%E7%A1%80%E6%9D%90%E8%B4%A8%E4%BD%BF%E5%85%B6%E5%8F%98%E6%97%A7-%E6%96%B0%E6%89%8B%E7%B4%A0%E6%9D%90">乘以基础材质使其变旧  (新手素材)</a></li>
+<li><a href="#customrotator%E8%87%AA%E5%AE%9A%E4%B9%89%E6%97%8B%E8%BD%AC">CustomRotator	自定义旋转</a></li>
+<li><a href="#flattennormal%E6%B3%95%E7%BA%BF%E5%B9%B3%E5%B1%95">FlattenNormal	法线平展</a></li>
+<li><a href="#desatruation%E9%A5%B1%E5%92%8C%E5%BA%A6">Desatruation	饱和度</a></li>
+<li><a href="#%E8%BE%B9%E7%BC%98%E9%AB%98%E4%BA%AE">边缘高亮</a></li>
+<li><a href="#%E7%BA%BF%E6%A1%86%E6%9D%90%E8%B4%A8">线框材质</a></li>
+<li><a href="#%E7%BC%A9%E6%94%BE%E6%A8%A1%E5%9E%8B%E6%9D%90%E8%B4%A8%E4%BF%9D%E6%8C%81">缩放模型材质保持</a></li>
+<li><a href="#%E5%AE%9E%E6%97%B6%E8%AE%A9%E7%94%BB%E9%9D%A2%E5%B1%85%E4%B8%AD">实时让画面居中</a></li>
+<li><a href="#%E8%99%9A%E8%BE%B9%E6%95%88%E6%9E%9C">虚边效果</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zgChihiro.github.io/post/ue4-du-xie-pei-zhi/">
+              <h3 class="post-title">
+                UE4读写配置
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://zgChihiro.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

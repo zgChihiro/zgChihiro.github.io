@@ -1,0 +1,193 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>UE4使用久了会吞噬大量的C盘空间，如何清理 | Gridea</title>
+<link rel="shortcut icon" href="https://zgChihiro.github.io/favicon.ico?v=1595144549666">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zgChihiro.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="UE4使用久了会吞噬大量的C盘空间，如何清理 | Gridea - Atom Feed" href="https://zgChihiro.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="UE4使用久了缓存会吞噬大量的C盘空间，今天教大家如何清理
+打开如图所示的文件路径，直接删除Common文件夹
+
+也可以修改引擎的 BaseEngine.ini 文件
+Local=(Type=FileSystem, ReadOnly=fal..." />
+    <meta name="keywords" content="UE4" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zgChihiro.github.io">
+  <img class="avatar" src="https://zgChihiro.github.io/images/avatar.png?v=1595144549666" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              UE4使用久了会吞噬大量的C盘空间，如何清理
+            </h2>
+            <div class="post-info">
+              <span>
+                2019-02-28
+              </span>
+              <span>
+                1 min read
+              </span>
+              
+                <a href="https://zgChihiro.github.io/tag/jCDMJY3wK2/" class="post-tag">
+                  # UE4
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="ue4使用久了缓存会吞噬大量的c盘空间今天教大家如何清理">UE4使用久了缓存会吞噬大量的C盘空间，今天教大家如何清理</h1>
+<h2 id="打开如图所示的文件路径直接删除common文件夹">打开如图所示的文件路径，直接删除Common文件夹</h2>
+<figure data-type="image" tabindex="1"><img src="https://www.z4a.net/images/2019/08/05/20190228095030618.png" alt="20190228095030618.png" loading="lazy"></figure>
+<h2 id="也可以修改引擎的-baseengineini-文件">也可以修改引擎的 BaseEngine.ini 文件</h2>
+<p>Local=(Type=FileSystem, ReadOnly=false, Clean=false, Flush=false, PurgeTransient=true, DeleteUnused=true, UnusedFileAge=34, FoldersToClean=-1, Path=&quot;%ENGINEVERSIONAGNOSTICUSERDIR%DerivedDataCache&quot;)</p>
+<p>中的%ENGINEVERSIONAGNOSTICUSERDIR%DerivedDataCache<br>
+修改为%GAMEDIR%DerivedDataCache，修改完的内容为</p>
+<p>Local=(Type=FileSystem, ReadOnly=false, Clean=false, Flush=false, PurgeTransient=true, DeleteUnused=true, UnusedFileAge=34, FoldersToClean=-1, Path=&quot;%GAMEDIR%DerivedDataCache&quot;)</p>
+<p>这样缓存就会被改为游戏目录，就不会去占用C盘了</p>
+<p>如果不想被Git管理的话就在<br>
+.gitignore中添加一行</p>
+<pre><code>DerivedDataCache/
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#ue4%E4%BD%BF%E7%94%A8%E4%B9%85%E4%BA%86%E7%BC%93%E5%AD%98%E4%BC%9A%E5%90%9E%E5%99%AC%E5%A4%A7%E9%87%8F%E7%9A%84c%E7%9B%98%E7%A9%BA%E9%97%B4%E4%BB%8A%E5%A4%A9%E6%95%99%E5%A4%A7%E5%AE%B6%E5%A6%82%E4%BD%95%E6%B8%85%E7%90%86">UE4使用久了缓存会吞噬大量的C盘空间，今天教大家如何清理</a>
+<ul>
+<li><a href="#%E6%89%93%E5%BC%80%E5%A6%82%E5%9B%BE%E6%89%80%E7%A4%BA%E7%9A%84%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84%E7%9B%B4%E6%8E%A5%E5%88%A0%E9%99%A4common%E6%96%87%E4%BB%B6%E5%A4%B9">打开如图所示的文件路径，直接删除Common文件夹</a></li>
+<li><a href="#%E4%B9%9F%E5%8F%AF%E4%BB%A5%E4%BF%AE%E6%94%B9%E5%BC%95%E6%93%8E%E7%9A%84-baseengineini-%E6%96%87%E4%BB%B6">也可以修改引擎的 BaseEngine.ini 文件</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zgChihiro.github.io/post/51-dan-pian-ji-chu-xue-zhe-zhi-shi-nao-tu/">
+              <h3 class="post-title">
+                51单片机初学者知识脑图
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://zgChihiro.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

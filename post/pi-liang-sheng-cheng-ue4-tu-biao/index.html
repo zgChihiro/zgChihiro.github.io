@@ -1,0 +1,293 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>批量生成UE4图标 | Gridea</title>
+<link rel="shortcut icon" href="https://zgChihiro.github.io/favicon.ico?v=1595144549666">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zgChihiro.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="批量生成UE4图标 | Gridea - Atom Feed" href="https://zgChihiro.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="
+UE4 开发项目需要设置图标，但是PhotoShop挨个处理图片未免有些麻烦，
+
+然后我就写了这样一个程序，使用非常方便，将logo图片拖拽入窗口
+
+即可批量生成
+
+点击下载
+代码分享出来：
+# -*- coding: utf-8 -*-..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zgChihiro.github.io">
+  <img class="avatar" src="https://zgChihiro.github.io/images/avatar.png?v=1595144549666" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              批量生成UE4图标
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-07-08
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <!-- more -->
+<p>UE4 开发项目需要设置图标，但是PhotoShop挨个处理图片未免有些麻烦，<br>
+<img src="https://www.z4a.net/images/2020/07/08/Snipaste_2020-07-08_09-18-08.png" alt="Snipaste_2020-07-08_09-18-08.png" loading="lazy"><br>
+然后我就写了这样一个程序，使用非常方便，将logo图片拖拽入窗口<br>
+<img src="https://www.z4a.net/images/2020/07/08/Snipaste_2020-07-08_09-23-11.png" alt="Snipaste_2020-07-08_09-23-11.png" loading="lazy"><br>
+即可批量生成<br>
+<img src="https://www.z4a.net/images/2020/07/08/Snipaste_2020-07-08_09-27-48.png" alt="Snipaste_2020-07-08_09-27-48.png" loading="lazy"></p>
+<p><a href="https://esoftware.oss-cn-beijing.aliyuncs.com/software/icoTool.exe">点击下载</a></p>
+<p>代码分享出来：</p>
+<pre><code># -*- coding: utf-8 -*-
+from tkinter import *
+from tkinter.messagebox import showinfo
+import windnd
+import MakeImg
+import os
+
+def dragged_files(files):
+    msg = '\n'.join((item.decode('gbk') for item in files))
+    res = MakeImg.MakeImage(msg)
+    if res:
+        # outPutPath = os.path.expanduser('~') + '\Desktop\AppIcon'
+        showinfo('制作完成',&quot;已保存到桌面\n\n 更多访问inite.cn&quot;)
+    else:
+        showinfo('制作失败', msg + &quot;\n\n 访问inite.cn&quot;)
+
+
+def main():
+    MainWin = Tk()
+    MainWin.title('Icon making tool')
+    MainWin.resizable(width=False, height=False)
+    screenwidth = MainWin.winfo_screenwidth()
+    screenheight = MainWin.winfo_screenheight()
+    size = '%dx%d+%d+%d' % (291, 255, (screenwidth - 291) / 2, (screenheight - 255) / 2)
+    MainWin.geometry(size)
+    windnd.hook_dropfiles(MainWin, func=dragged_files)
+    # MainWin.iconbitmap(&quot;ue4.ico&quot;)
+
+
+TB1_Title = StringVar()
+TB1_Title.set('Please drag and drop img in')
+TB1 = Label(MainWin, textvariable=TB1_Title, anchor=W)
+TB1.place(x=65, y=104, width=200, height=24)
+
+MainWin.mainloop()
+
+
+if __name__ == '__main__':
+main()
+</code></pre>
+<p>MakeImg.py</p>
+<pre><code># -*- coding: utf-8 -*-
+from PIL import Image
+import sys
+import os
+outPutPath = os.path.expanduser('~') + '/Desktop/AppIcon/'
+
+def MakeImage(ImageName):
+ if not os.path.exists(outPutPath):
+    os.mkdir(outPutPath)
+
+originImg = ''
+try:
+    originImg = Image.open(ImageName)
+except:
+    return False
+img0 = originImg.resize((57, 57), Image.ANTIALIAS)
+img1 = originImg.resize((114, 114), Image.ANTIALIAS)
+img2 = originImg.resize((120, 120), Image.ANTIALIAS)
+img3 = originImg.resize((180, 180), Image.ANTIALIAS)
+img4 = originImg.resize((72, 72), Image.ANTIALIAS)
+img5 = originImg.resize((144, 144), Image.ANTIALIAS)
+img6 = originImg.resize((76, 76), Image.ANTIALIAS)
+img7 = originImg.resize((152, 152), Image.ANTIALIAS)
+img8 = originImg.resize((167, 167), Image.ANTIALIAS)
+img9 = originImg.resize((1024, 1024), Image.ANTIALIAS)
+
+img0.save(outPutPath + 'dAppIcon57x57.png', &quot;png&quot;)
+img1.save(outPutPath + 'eAppIcon114x114.png', &quot;png&quot;)
+img2.save(outPutPath + 'fAppIcon120x120.png', &quot;png&quot;)
+img3.save(outPutPath + 'gAppIcon180x180.png', &quot;png&quot;)
+img4.save(outPutPath + 'hAppIcon72x72.png', &quot;png&quot;)
+img5.save(outPutPath + 'iAppIcon144x144.png', &quot;png&quot;)
+img6.save(outPutPath + 'gAppIcon76x76.png', &quot;png&quot;)
+img7.save(outPutPath + 'kAppIcon152x152.png', &quot;png&quot;)
+img8.save(outPutPath + 'lAppIcon167x167.png', &quot;png&quot;)
+img9.save(outPutPath + 'mAppIcon1024x1024.png', &quot;png&quot;)
+
+# 20x20
+img10 = originImg.resize((20, 20), Image.ANTIALIAS)
+img11 = originImg.resize((40, 40), Image.ANTIALIAS)
+img12 = originImg.resize((60, 60), Image.ANTIALIAS)
+img10.save(outPutPath + '1AppIcon20x20.png', &quot;png&quot;)
+img11.save(outPutPath + '2AppIcon40x40.png', &quot;png&quot;)
+img12.save(outPutPath + '3AppIcon60x60.png', &quot;png&quot;)
+
+# 29x29
+img13 = originImg.resize((29, 29), Image.ANTIALIAS)
+img14 = originImg.resize((58, 58), Image.ANTIALIAS)
+img15 = originImg.resize((87, 87), Image.ANTIALIAS)
+img13.save(outPutPath + '4AppIcon29x29.png', &quot;png&quot;)
+img14.save(outPutPath + '5AppIcon59x59.png', &quot;png&quot;)
+img15.save(outPutPath + '6AppIcon87x87.png', &quot;png&quot;)
+
+# 40x40
+img16 = originImg.resize((40, 40), Image.ANTIALIAS)
+img17 = originImg.resize((80, 80), Image.ANTIALIAS)
+img18 = originImg.resize((120, 120), Image.ANTIALIAS)
+img16.save(outPutPath + '7AppIcon40x40.png', &quot;png&quot;)
+img17.save(outPutPath + '8AppIcon80x80.png', &quot;png&quot;)
+img18.save(outPutPath + '9AppIcon120x120.png', &quot;png&quot;)
+
+# 50
+img19 = originImg.resize((50, 50), Image.ANTIALIAS)
+img20 = originImg.resize((100, 100), Image.ANTIALIAS)
+img21 = originImg.resize((58, 58), Image.ANTIALIAS)
+img19.save(outPutPath + 'aAppIcon50x50.png', &quot;png&quot;)
+img20.save(outPutPath + 'bAppIcon100x100.png', &quot;png&quot;)
+img21.save(outPutPath + 'cAppIcon58x58.png', &quot;png&quot;)
+return True
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zgChihiro.github.io/post/ue4-send-sms-verification-code/">
+              <h3 class="post-title">
+                UE4 send SMS verification code
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://zgChihiro.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

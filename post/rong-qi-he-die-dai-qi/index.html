@@ -1,0 +1,265 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>容器和迭代器 | Gridea</title>
+<link rel="shortcut icon" href="https://zgChihiro.github.io/favicon.ico?v=1595144549666">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zgChihiro.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="容器和迭代器 | Gridea - Atom Feed" href="https://zgChihiro.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="
+容器的概念很好理解 
+所谓迭代器就是一种检查容器内元素并遍历元素的数据类型
+初学写的一个小案例：
+#include &quot;stdafx.h&quot;
+#include
+#include
+#include&quot;vector&q..." />
+    <meta name="keywords" content="C++" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zgChihiro.github.io">
+  <img class="avatar" src="https://zgChihiro.github.io/images/avatar.png?v=1595144549666" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              容器和迭代器
+            </h2>
+            <div class="post-info">
+              <span>
+                2017-03-23
+              </span>
+              <span>
+                2 min read
+              </span>
+              
+                <a href="https://zgChihiro.github.io/tag/9h75_cgd0L/" class="post-tag">
+                  # C++
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <!-- more -->
+<p>容器的概念很好理解 <br>
+所谓迭代器就是一种检查容器内元素并遍历元素的数据类型<br>
+初学写的一个小案例：</p>
+<pre><code>#include &quot;stdafx.h&quot;
+#include
+#include
+#include&quot;vector&quot;   //使用容器必须加上此头文件
+
+using namespace std;
+
+void main11()
+{
+vector v1;         //v1是一个容器
+//往容器里存入数据
+v1.push_back(1);
+v1.push_back(3);
+v1.push_back(5);
+v1.push_back(7);
+v1.push_back(9);
+
+cout &lt;&lt; &quot;容器v1的长度：&quot; &lt;&lt; v1.size() &lt;&lt; endl;    //输出容器的长度
+cout &lt;&lt;&quot;容器的第三个元素：&quot;&lt;&lt; v1[3] &lt;&lt; endl; //输出容器的第三个元素
+//vector ::iterator iter; //定义一个自己类型的迭代器  iter是名字
+//定义一个名为iter的变量，它的数据类型是由vector定义的iterator类型。
+
+for (vector ::iterator iter = v1.begin(); iter != v1.end(); iter++)
+{
+	cout &lt;&lt; *iter &lt;&lt; &quot;  &quot;; //遍历输出
+}
+	cout &lt;&lt; endl;
+}
+
+int main()
+{
+main11();
+    return 0;
+}
+</code></pre>
+<!-- more -->
+<p>案例二 <br>
+这是一个存放指针的容器案例</p>
+<pre><code>#include &quot;stdafx.h&quot;
+#include
+#include
+#include&quot;vector&quot;   //使用容器必须加上此头文件
+
+using namespace std;
+
+class Teacher
+{
+	public:
+	int age;
+	char name[64];
+	public:
+	void printT()
+	{
+		cout &lt;&lt; &quot;年龄是：&quot; &lt;&lt; age &lt;&lt; endl;
+	}
+};
+</code></pre>
+<pre><code>void main12()
+{
+Teacher t1, t2, t3;
+Teacher *p1, *p2, *p3;
+t1.age = 31;
+t2.age = 32;
+t3.age = 33;
+p1 = &amp;t1;
+p2 = &amp;t2;
+p3 = &amp;t3;
+vector v1;
+
+v1.push_back(p1);
+v1.push_back(p2);
+v1.push_back(p3);
+for (vector ::iterator iter = v1.begin(); iter != v1.end(); iter++)
+	{
+		cout &lt;&lt; (*iter)-&gt;age &lt;&lt; &quot;  &quot;;
+	}
+
+cout &lt;&lt; endl;
+}
+	int main()
+{
+	//main11();
+	main12();
+    return 0;
+}
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zgChihiro.github.io/post/git-xue-xi-bi-ji/">
+              <h3 class="post-title">
+                git学习笔记
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://zgChihiro.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

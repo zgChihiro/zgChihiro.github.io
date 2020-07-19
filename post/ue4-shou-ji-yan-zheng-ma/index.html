@@ -1,0 +1,218 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>UE4手机短信验证码 | Gridea</title>
+<link rel="shortcut icon" href="https://zgChihiro.github.io/favicon.ico?v=1595144549666">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zgChihiro.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="UE4手机短信验证码 | Gridea - Atom Feed" href="https://zgChihiro.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="
+插件名：PhoneAuthCode
+插件简介：
+本插件使用阿里云发送短信验证码，
+对用户进行身份验证
+考虑到安全问题，本插件采用服务器生成验证码的方式，
+可运行在win和linux系统中
+
+
+仅需三步完成客户端发送手机验证码：
+1.导入插..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zgChihiro.github.io">
+  <img class="avatar" src="https://zgChihiro.github.io/images/avatar.png?v=1595144549666" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              UE4手机短信验证码
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-06-20
+              </span>
+              <span>
+                1 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <!-- more -->
+<p>插件名：PhoneAuthCode<br>
+插件简介：<br>
+本插件使用阿里云发送短信验证码，<br>
+对用户进行身份验证<br>
+考虑到安全问题，本插件采用服务器生成验证码的方式，<br>
+可运行在win和linux系统中</p>
+<figure data-type="image" tabindex="1"><img src="https://www.z4a.net/images/2020/06/20/Snipaste_2020-06-20_22-00-20.png" alt="Snipaste_2020-06-20_22-00-20.png" loading="lazy"></figure>
+<!-- more -->
+<p>仅需三步完成客户端发送手机验证码：<br>
+1.导入插件<br>
+2.配置Config文件<br>
+3.调用蓝图编写业务逻辑</p>
+<p>先看效果图：</p>
+<figure data-type="image" tabindex="2"><img src="https://www.z4a.net/images/2020/06/21/2.gif" alt="2.gif" loading="lazy"></figure>
+<ol>
+<li></li>
+</ol>
+<p>下载好插件并导入到项目跟目录</p>
+<figure data-type="image" tabindex="3"><img src="https://www.z4a.net/images/2020/07/07/aaa.png" alt="aaa.png" loading="lazy"></figure>
+<ol start="2">
+<li></li>
+</ol>
+<p>登录<br>
+<a href="https://dysms.console.aliyun.com/">https://dysms.console.aliyun.com/</a></p>
+<p>审核获取 AccessKeyId 、AccessSecret 、SignName 、TemplateCode</p>
+<figure data-type="image" tabindex="4"><img src="https://www.z4a.net/images/2020/06/20/Snipaste_2020-06-20_22-42-25.png" alt="Snipaste_2020-06-20_22-42-25.png" loading="lazy"></figure>
+<ol start="3">
+<li></li>
+</ol>
+<p>打开项目填写蓝图代码，<br>
+配置Config，然后使用 SendActivationCode 发送短信验证</p>
+<figure data-type="image" tabindex="5"><img src="https://www.z4a.net/images/2020/07/07/22.png" alt="22.png" loading="lazy"></figure>
+<p>其中IP应填服务器的公网iP<br>
+如果不填则默认使用临时服务器，建议大家配置自己的服务器</p>
+<p>服务器开源：<br>
+<a href="https://github.com/zgChihiro/UE4_SendSMS_Server/">https://github.com/zgChihiro/UE4_SendSMS_Server/</a></p>
+<p>如果请求成功返回的Message就是手机验证码<br>
+如果失败返回的Message就是错误信息</p>
+<p><a href="https://www.bilibili.com/video/BV1LA411e7U6">bilibili</a></p>
+<p>常见问题：</p>
+<ol>
+<li>阿里云账号需要有余额才可以发送成功，（0.05￥/条）</li>
+</ol>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zgChihiro.github.io/post/li-yong-qq-ni-cheng-zuo-wei-ruan-jian-ban-ben-hao/">
+              <h3 class="post-title">
+                利用QQ昵称作为软件版本号
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://zgChihiro.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

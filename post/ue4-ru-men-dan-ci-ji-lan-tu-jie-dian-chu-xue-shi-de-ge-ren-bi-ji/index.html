@@ -1,0 +1,328 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>UE4入门单词及蓝图节点 (初学时的个人笔记) | Gridea</title>
+<link rel="shortcut icon" href="https://zgChihiro.github.io/favicon.ico?v=1595144549666">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zgChihiro.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="UE4入门单词及蓝图节点 (初学时的个人笔记) | Gridea - Atom Feed" href="https://zgChihiro.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="因为作者英语水平很渣，学习UE4又面临众多陌生单词
+于是将见到的所有默认的单词都一一记录，每天看一遍，
+尽量保重自己第二次碰见的时候能认识，然后日积月累
+遇到的陌生单词也越来越多，记录得也越来越多，
+就有了这么一个单词表，害怕自己弄丢，就写..." />
+    <meta name="keywords" content="UE4" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zgChihiro.github.io">
+  <img class="avatar" src="https://zgChihiro.github.io/images/avatar.png?v=1595144549666" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              UE4入门单词及蓝图节点 (初学时的个人笔记)
+            </h2>
+            <div class="post-info">
+              <span>
+                2017-11-05
+              </span>
+              <span>
+                6 min read
+              </span>
+              
+                <a href="https://zgChihiro.github.io/tag/jCDMJY3wK2/" class="post-tag">
+                  # UE4
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>因为作者英语水平很渣，学习UE4又面临众多陌生单词<br>
+于是将见到的所有默认的单词都一一记录，每天看一遍，<br>
+尽量保重自己第二次碰见的时候能认识，然后日积月累<br>
+遇到的陌生单词也越来越多，记录得也越来越多，<br>
+就有了这么一个单词表，害怕自己弄丢，就写成了博客</p>
+<p>VR生词表<br>
+Alignment	对准<br>
+Screen		屏幕<br>
+Rendering	渲染<br>
+ParticleSystem	粒子组件<br>
+variable	变量<br>
+Asset		资产 VR中创建new asset<br>
+trigger		触发<br>
+details		细节<br>
+Editable	可编辑的<br>
+Tooltip		工具提示<br>
+Default		默认<br>
+shapes		形状<br>
+collision	碰撞<br>
+feometry	几何<br>
+props		道具<br>
+Atmosphere	大气层<br>
+Materials	材料<br>
+shading		阴影<br>
+Subsurface	地下<br>
+Texture		纹理<br>
+Sample		样本<br>
+peraona		人物角色<br>
+character	是pawn的一种类型，增加了可以来回走动的能力<br>
+brightness	亮度<br>
+brush		刷子(地貌)<br>
+Brush Settings	画刷<br>
+tool strength	工具强度<br>
+parameter	参数<br>
+error		错误<br>
+avatar		头像<br>
+enabled		启用<br>
+scale		规模<br>
+hollow		空心<br>
+custom		定制<br>
+controller	控制器<br>
+duration	持续时间(print string 中的参数)<br>
+target		目标<br>
+density		密度<br>
+random 		随机<br>
+rotation	旋转<br>
+Damage		伤害<br>
+Total Damage 	总伤害<br>
+hidden		隐藏（visibility 能见度的参数）</p>
+<p>组件：<br>
+PawnSensing	角色的传感（AI）<br>
+radial force actor 径向力</p>
+<p>节点：<br>
+random integer in range 随机获取一个整数<br>
+Spawn Actor from Class	添加一个actor<br>
+delay			延迟<br>
+launch character	发射角色<br>
+RandomStreams		随机流<br>
+set Random Streams seed	置随机数种子<br>
+location		位置(x,y,x)		<br>
+rotation		旋转(p,y,r)<br>
+transform		转变(上面两者的总和)<br>
+texture sample		基本材质<br>
+vectorParameter		基本颜色<br>
+add			材质颜色相加<br>
+Subtract		材质颜色相减<br>
+Multiply		乘<br>
+ForEachLoop		遍历数组</p>
+<p>layer blend		层混合(合成一张基本颜色)<br>
+multiply		层计算<br>
+创建控件		事件beginplay创建开始菜单<br>
+add to viewport		添加到视口 常用将常见的HUD添加到游戏视口<br>
+Remove from Parent	从视口中删除<br>
+Spawn Actor from Class	（从类中生成Actor）<br>
+常量			按住1左键<br>
+数组			按住3左键<br>
+贴图			按住T左键</p>
+<p>reverse 		反向<br>
+set visibility		设置可见度  用来隐藏设置面板<br>
+Execute Console Command	执行控制台命令填入参数“r.setRes XxY”修改分辨率<br>
+Execute Console Command	执行控制台命令填入参数“HighResShot3840x2160”截图<br>
+Spawn Emitter at Location 从指定位置播放粒子系统<br>
+Spawn Decal at Location   从指定位置添加贴画<br>
+Destroy Actor 		（销毁Actor）<br>
+Open Level		跳转关卡<br>
+create save game object	创建保存游戏对象<br>
+save game to slot	将游戏保存到插槽<br>
+Load Game from Shot 	从插槽加载游戏<br>
+Load Stream Level	加载流关卡<br>
+Unload Stream Level	删除流关卡<br>
+play animation		播放动画<br>
+序列(sequ)			同时执行<br>
+getRandomPointInNavigableRadius 随机获取一个坐标<br>
+custom event		添加自定义事件<br>
+DestroyActor		制定Actor从游戏世界中消失<br>
+AttachToComponent	武器绑定手臂蓝图节点<br>
+make vector		制作矢量<br>
+add torque		增加扭曲<br>
+add controller yaw input	屏幕视口左右偏移<br>
+add controller pitch input	屏幕视口上下偏移<br>
+add Movement Input       添加运动输入<br>
+get forward vector      得到向前向量<br>
+Set Game Paused		游戏暂停<br>
+Set Tickable when Paused 不受游戏暂停控制</p>
+<p>Progress Bar		进度条<br>
+Set Percent		设置进度条的值<br>
+Slider			滑块<br>
+Widge Switcher		选项卡<br>
+Get All Actors Of Class	通过类获取场景中的物体<br>
+Set Material		设置材质<br>
+Set Actor Scale 3D	设置actor大小<br>
+Enable input		设置接收控制器输入(先获取控制器)<br>
+Does Implement Intergace判断是否继承类接口<br>
+get num of tracking sensors	获取头盔的位置和传感<br>
+Get Player Camera Manager	获得玩家视口信息<br>
+Set Play Rate			设置时间轴的速率<br>
+Make Literal String		制作文字字符串<br>
+Get Substring			得到子串</p>
+<p>actor：<br>
+blocking volume		玻璃墙<br>
+SpringArm		弹簧臂<br>
+Scene 			场景组件，可以附加其他组件，如3dUI</p>
+<p>UE4蓝图book知识点<br>
+GetDate			读取节点<br>
+EndPlay			结束游戏事件<br>
+Make Literal String	制作字符串<br>
+Make Literal int	制作数字<br>
+数学表达式		右键底部数学表达式<br>
+Set Array Elem		修改数组中指定元素的值<br>
+Remove Index		删除数组制定元素<br>
+Append			链接字符串<br>
+AddActorLocalRotation	改变物体的旋转<br>
+AddActorLocalOffset	改变物体的位置<br>
+AddActorLocalTransform	改变的物体方向或移动<br>
+AddActorWorldRotation	物体相对于世界坐标旋转<br>
+AddActorWorldOffset	物体相对于世界坐标移动<br>
+AddActorworldTransform	物体沿着世界坐标方向或角度移动<br>
+GetPlayerController	获取控制器<br>
+IsInputKeyDown		检查按键<br>
+Add Force		为物体施加力<br>
+Show Mouse Cursor	设置鼠标<br>
+Get Actor Forward Vector获取玩家正前方<br>
+Add Controller Pitch Input	摄像机沿Y轴旋转<br>
+Add Controller Yaw Input	摄像机沿Z轴旋转<br>
+Add Controller Roll Input	摄像机沿X轴旋转</p>
+<p>save<br>
+Create Save Game Object	创建保存游戏节点<br>
+SaveGametoSlot		保存游戏到插槽<br>
+LoadGameFromSlot	读取游戏插槽<br>
+SceneCaptureComponent2D	捕捉零件</p>
+<p>组件<br>
+FloatingPawnMovement	actor移动组件</p>
+<p>打包安卓笔记<br>
+项目设置---Android--orientation--portrait 		该竖屏<br>
+项目设置---Android--Enable Gradle instead of Ant 	取消下载<br>
+项目设置---Android--Enable 				继承OBB</p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zgChihiro.github.io/post/qt-jie-jue-cheng-xu-que-shao-dll-wen-ti/">
+              <h3 class="post-title">
+                QT解决程序缺少dll问题
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://zgChihiro.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

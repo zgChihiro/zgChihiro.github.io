@@ -1,0 +1,183 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>UE4将武器绑定到手上 | Gridea</title>
+<link rel="shortcut icon" href="https://zgChihiro.github.io/favicon.ico?v=1595144549666">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zgChihiro.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="UE4将武器绑定到手上 | Gridea - Atom Feed" href="https://zgChihiro.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="一开始不会绑，直接把武器拖拽到手臂的组件下，然后就会出现枪现对于屏幕静止的状态，而并非跟随的手臂一起运动
+然后终于研究懂了 所以抽出时间写了这篇博客
+1， 把武器放到UE4的目录里 如图
+
+2，找到手的骨骼添加插槽，在插槽上添加预览资源，选..." />
+    <meta name="keywords" content="UE4" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zgChihiro.github.io">
+  <img class="avatar" src="https://zgChihiro.github.io/images/avatar.png?v=1595144549666" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              UE4将武器绑定到手上
+            </h2>
+            <div class="post-info">
+              <span>
+                2017-06-09
+              </span>
+              <span>
+                1 min read
+              </span>
+              
+                <a href="https://zgChihiro.github.io/tag/jCDMJY3wK2/" class="post-tag">
+                  # UE4
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>一开始不会绑，直接把武器拖拽到手臂的组件下，然后就会出现枪现对于屏幕静止的状态，而并非跟随的手臂一起运动</p>
+<p>然后终于研究懂了 所以抽出时间写了这篇博客</p>
+<p>1， 把武器放到UE4的目录里 如图</p>
+<figure data-type="image" tabindex="1"><img src="https://i.loli.net/2019/08/04/FEiYMkGxduOWn9p.png" alt="20170609150817497.png" loading="lazy"></figure>
+<p>2，找到手的骨骼添加插槽，在插槽上添加预览资源，选自己的武器</p>
+<figure data-type="image" tabindex="2"><img src="https://i.loli.net/2019/08/04/Epleu4mwaIRXqfY.png" alt="20170609151031029.png" loading="lazy"></figure>
+<p>3，在动画里修改插槽的位置</p>
+<figure data-type="image" tabindex="3"><img src="https://i.loli.net/2019/08/04/4ElOcoh1sIS2e8D.png" alt="20170609151122810.png" loading="lazy"></figure>
+<p>4，在玩家的时间图表里添加蓝图节点，Location Rule 选择Snap to Target</p>
+<figure data-type="image" tabindex="4"><img src="https://i.loli.net/2019/08/04/vp4GcPSO7aykq1j.png" alt="20170609151316735.png" loading="lazy"></figure>
+<p>然后在关卡编辑器中运行一下，你会发现武器已经绑定到手臂上了</p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zgChihiro.github.io/post/html5-video-biao-qian-bu-neng-bo-fang-mp4-de-wen-ti/">
+              <h3 class="post-title">
+                html5 video标签不能播放mp4的问题
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://zgChihiro.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

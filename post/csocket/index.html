@@ -1,0 +1,270 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>C++Socket | Gridea</title>
+<link rel="shortcut icon" href="https://zgChihiro.github.io/favicon.ico?v=1595144549666">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zgChihiro.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="C++Socket | Gridea - Atom Feed" href="https://zgChihiro.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="电脑与电脑之间的通讯其实是Socket与Socket之间的通讯
+学习Socket是网络开发的必经之路
+学习Socket之前最好有点TCP/IP协议的基础
+下图是我在学习过程之中整理的笔记，后期会继续完善
+如果看不清右击在新建标签中打开
+
+知..." />
+    <meta name="keywords" content="C++" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zgChihiro.github.io">
+  <img class="avatar" src="https://zgChihiro.github.io/images/avatar.png?v=1595144549666" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              C++Socket
+            </h2>
+            <div class="post-info">
+              <span>
+                2017-12-30
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+                <a href="https://zgChihiro.github.io/tag/9h75_cgd0L/" class="post-tag">
+                  # C++
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>电脑与电脑之间的通讯其实是Socket与Socket之间的通讯<br>
+学习Socket是网络开发的必经之路<br>
+学习Socket之前最好有点TCP/IP协议的基础<br>
+下图是我在学习过程之中整理的笔记，后期会继续完善<br>
+如果看不清右击在新建标签中打开<br>
+<img src="https://www.z4a.net/images/2019/08/05/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcxMjMwMTMwODA0MTE3.png" alt="aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcxMjMwMTMwODA0MTE3.png" loading="lazy"></p>
+<p>知道网络协议之后便可以开始敲Socket了<br>
+先看效果图：<br>
+<img src="https://www.z4a.net/images/2019/08/05/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcxMjMwMTMxNzIwMjgy.gif" alt="aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcxMjMwMTMxNzIwMjgy.gif" loading="lazy"><br>
+下面是SocketC++的源代码<br>
+IDE：Visual Studio 2017</p>
+<p>其中sin_addr函数过旧<br>
+需要把cpp的属性SDL检查关掉<br>
+不然编辑器编译不通过</p>
+<pre><code>//server
+#include &quot;stdafx.h&quot;
+#include &lt;stdio.h&gt;
+#include &lt;winsock2.h&gt;							//包含socket的头文件
+#pragma comment (lib, &quot;ws2_32.lib&quot;)				//加载 ws2_32.dll
+int main() {
+	WSADATA wsaData;							//定义一个结构体对象
+	WSAStartup(MAKEWORD(2, 2), &amp;wsaData);		//初始化WSAStartup()函数,,,(规范的版本号，指向WSADATA结构体的指针),,,MSKEWORD(2,2)主版本号2，副版本号2
+	
+	SOCKET servSock = socket(PF_INET, SOCK_STREAM, 0);		//参数（1）IP地址类型PF_INET6为IPv6，（2）数据传输方式 SOCK_STREAM 和 SOCK_DGRAM （3）传输协议 IPPROTO_TCP 和 IPPTOTO_UDP，如果写0系统会自动计算处使用那种协议
+	sockaddr_in sockAddr;										//创建sockaddr_in结构体变量
+	memset(&amp;sockAddr, 0, sizeof(sockAddr));						//每个字节都用0填充
+	sockAddr.sin_family = PF_INET;								//使用IPv4地址
+	sockAddr.sin_port = htons(1234);							//端口号   要用到htons()函数转换
+	sockAddr.sin_addr.s_addr = inet_addr(&quot;127.0.0.1&quot;);			//具体的IP地址32位
+	
+	bind(servSock, (SOCKADDR*)&amp;sockAddr, sizeof(SOCKADDR));				//绑定套接字，
+	printf(&quot;绑定套接字成功\n&quot;);
+	listen(servSock, 20);								
+	printf(&quot;服务器已经进入监听状态\n&quot;);
+	SOCKADDR clntAddr;
+	int nSize = sizeof(SOCKADDR);
+	SOCKET clntSock = accept(servSock, (SOCKADDR*)&amp;clntAddr, &amp;nSize);		
+	printf(&quot;accept函数执行完毕开始接收用户输入\n&quot;);
+
+	  
+	printf(&quot;输入一句话并按回车\n&quot;);
+	char tack[10];
+
+	scanf(&quot;%s&quot;, &amp;tack);
+
+	//向客户端发送数据
+	send(clntSock, tack, strlen(tack) + sizeof(char), NULL);	
+
+	printf(&quot;数据发送成功\n&quot;);
+
+	//关闭套接字
+	closesocket(clntSock);
+	closesocket(servSock);
+	//终止 DLL 的使用
+	WSACleanup();
+	system(&quot;PAUSE&quot;);
+	return 0;
+}
+</code></pre>
+<pre><code>//client
+#include &quot;stdafx.h&quot;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;WinSock2.h&gt;						//包含WinSock2.h头文件
+#pragma comment(lib, &quot;ws2_32.lib&quot;)			//加载 ws2_32.dll 
+int main() {
+	WSADATA wsaData;
+	WSAStartup(MAKEWORD(2, 2), &amp;wsaData);		//初始化版本
+	SOCKET sock = socket(PF_INET, SOCK_STREAM, 0);		//创建用户端socket
+
+	//向服务器发起请求
+	sockaddr_in sockAddr;								//创建sockAddr结构体
+	memset(&amp;sockAddr, 0, sizeof(sockAddr));				 //每个字节都用0填充
+	sockAddr.sin_family = PF_INET;
+	sockAddr.sin_port = htons(1234);
+	sockAddr.sin_addr.s_addr = inet_addr(&quot;127.0.0.1&quot;);
+
+	connect(sock, (SOCKADDR*)&amp;sockAddr, sizeof(SOCKADDR));		//建立链接
+	printf(&quot;客户端发送链接请求\n&quot;);
+
+
+	//接收服务器传回的数据
+	char szBuffer[MAXBYTE] = { 0 };
+	recv(sock, szBuffer, MAXBYTE, NULL);
+	printf(&quot;接收服务器传回的消息函数\n&quot;);
+
+	//输出接收到的数据
+	printf(&quot;服务器: %s\n&quot;, szBuffer);
+	
+	//关闭套接字、终止使用 DLL
+	closesocket(sock);
+	WSACleanup();
+	system(&quot;PAUSE&quot;);
+	return 0;
+}
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zgChihiro.github.io/post/c-dlllib-de-ding-yi-yi-ji-yin-yong/">
+              <h3 class="post-title">
+                 C++ dll、lib 的定义以及引用，
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://zgChihiro.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

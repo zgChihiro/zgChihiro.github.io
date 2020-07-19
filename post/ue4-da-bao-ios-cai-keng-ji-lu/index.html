@@ -1,0 +1,203 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>UE4打包IOS踩坑记录 | Gridea</title>
+<link rel="shortcut icon" href="https://zgChihiro.github.io/favicon.ico?v=1595144549666">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zgChihiro.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="UE4打包IOS踩坑记录 | Gridea - Atom Feed" href="https://zgChihiro.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="
+1，首先我们浏览到引擎的Engine\Binaries\DotNET\IOS\目录，并运行iPhonePackager.exe
+
+选择我们的mobileprovision文件和p12文件，成功右边会有对勾提示
+这里有一个坑，4.19版本会..." />
+    <meta name="keywords" content="UE4" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zgChihiro.github.io">
+  <img class="avatar" src="https://zgChihiro.github.io/images/avatar.png?v=1595144549666" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              UE4打包IOS踩坑记录
+            </h2>
+            <div class="post-info">
+              <span>
+                2018-07-08
+              </span>
+              <span>
+                2 min read
+              </span>
+              
+                <a href="https://zgChihiro.github.io/tag/jCDMJY3wK2/" class="post-tag">
+                  # UE4
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <figure data-type="image" tabindex="1"><img src="https://www.z4a.net/images/2019/08/05/20180708205322931.png" alt="20180708205322931.png" loading="lazy"></figure>
+<p>1，首先我们浏览到引擎的Engine\Binaries\DotNET\IOS\目录，并运行iPhonePackager.exe</p>
+<figure data-type="image" tabindex="2"><img src="https://www.z4a.net/images/2019/08/05/20180708205048736.png" alt="20180708205048736.png" loading="lazy"></figure>
+<p>选择我们的mobileprovision文件和p12文件，成功右边会有对勾提示<br>
+这里有一个坑，4.19版本会报错<br>
+<img src="https://www.z4a.net/images/2019/08/05/20180708205441876.png" alt="20180708205441876.png" loading="lazy"><br>
+这是因为新版本没有“UE4Game-Info.plist”文件<br>
+需要自己手动从低版本拷过来，</p>
+<figure data-type="image" tabindex="3"><img src="https://www.z4a.net/images/2019/08/05/20180708205622307.png" alt="20180708205622307.png" loading="lazy"></figure>
+<p>然后就是项目设置里把需要填写的东西都填写清楚</p>
+<p>这是设置旋转<br>
+<img src="https://www.z4a.net/images/2019/08/05/20180710150901818.png" alt="20180710150901818.png" loading="lazy"></p>
+<p>然后还有一个坑，如果打包AR的话需要加一行代码</p>
+<figure data-type="image" tabindex="4"><img src="https://www.z4a.net/images/2019/08/05/20180708205721486.png" alt="20180708205721486.png" loading="lazy"></figure>
+<pre><code>&lt;key&gt;NSCameraUsageDescription&lt;/key&gt;\n&lt;string&gt;The camera is used for augmenting reality&lt;/string&gt;
+</code></pre>
+<p>然后还要把谷歌的ARCore插件关闭</p>
+<p>如果打包的的是C++项目就必须用Mac的XCode打包</p>
+<p>可能一开始没有设置图标的朋友会和我一样踩到这个坑</p>
+<figure data-type="image" tabindex="5"><img src="https://www.z4a.net/images/2019/08/05/20180711110900420.png" alt="20180711110900420.png" loading="lazy"></figure>
+<p>为什么我把所有的图标都换掉了，打包出来还是默认图标<br>
+不要着急，等个一两天再去打包，<br>
+这点，我也不确定什么原因<br>
+总之 等了几天在打包我这边就修改过来了</p>
+<p><img src="https://www.z4a.net/images/2019/08/05/20180718140010806.png" alt="20180718140010806.png" loading="lazy"><br>
+<img src="https://www.z4a.net/images/2019/08/05/20180718140022367.png" alt="20180718140022367.png" loading="lazy"></p>
+<p>如果图片显示这样，修改一下参数</p>
+<p>图片尺寸必须是 2 的次方</p>
+<figure data-type="image" tabindex="6"><img src="https://www.z4a.net/images/2019/08/05/20180718140208545.jpg" alt="20180718140208545.jpg" loading="lazy"></figure>
+<p>如果在踩到坑后续会更新</p>
+<p>希望这篇踩坑记录能帮助到大家</p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zgChihiro.github.io/post/ue4-cong-wai-bu-xiu-gai-cai-zhi-can-shu/">
+              <h3 class="post-title">
+                UE4从外部修改材质参数
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://zgChihiro.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

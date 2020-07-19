@@ -1,0 +1,217 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>UE4制作一团逼真的火焰 | Gridea</title>
+<link rel="shortcut icon" href="https://zgChihiro.github.io/favicon.ico?v=1595144549666">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zgChihiro.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="UE4制作一团逼真的火焰 | Gridea - Atom Feed" href="https://zgChihiro.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="效果图：
+首先往内容浏览器中导入一张素材
+
+我们用导入的火焰素材做一个材质球
+
+需要注意的是我们要把材质的混合模式改成半透明
+
+这样计算出来的材质球才会有透明的效果
+
+材质球做好之后我们新建一个粒子系统
+
+并把 Required 更改成我们..." />
+    <meta name="keywords" content="UE4" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zgChihiro.github.io">
+  <img class="avatar" src="https://zgChihiro.github.io/images/avatar.png?v=1595144549666" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              UE4制作一团逼真的火焰
+            </h2>
+            <div class="post-info">
+              <span>
+                2017-06-15
+              </span>
+              <span>
+                2 min read
+              </span>
+              
+                <a href="https://zgChihiro.github.io/tag/jCDMJY3wK2/" class="post-tag">
+                  # UE4
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>效果图：<a href="https://postimg.cc/CBC46yCh"><img src="https://i.postimg.cc/76dQhwf2/a-HR0c-Dov-L2lt-Zy5ib-G9n-Lm-Nz-ZG4ubm-V0-Lz-Iw-MTcw-Nj-E1-MTk0-Nz-E3-NTQ4.gif" alt="a-HR0c-Dov-L2lt-Zy5ib-G9n-Lm-Nz-ZG4ubm-V0-Lz-Iw-MTcw-Nj-E1-MTk0-Nz-E3-NTQ4.gif" loading="lazy"></a></p>
+<p>首先往内容浏览器中导入一张素材<br>
+<a href="https://postimg.cc/jWHNRHDv"><img src="https://i.postimg.cc/R08TQG4r/a-HR0c-Dov-L2lt-Zy5ib-G9n-Lm-Nz-ZG4ubm-V0-Lz-Iw-MTcw-Nj-E1-MTk0-ODQy-OTU3.png" alt="a-HR0c-Dov-L2lt-Zy5ib-G9n-Lm-Nz-ZG4ubm-V0-Lz-Iw-MTcw-Nj-E1-MTk0-ODQy-OTU3.png" loading="lazy"></a><br>
+我们用导入的火焰素材做一个材质球<br>
+<a href="https://postimg.cc/Z9tpk75C"><img src="https://i.postimg.cc/XvX8CtMc/a-HR0c-Dov-L2lt-Zy5ib-G9n-Lm-Nz-ZG4ubm-V0-Lz-Iw-MTcw-Nj-E1-MTk0-OTUy-Mzgw.png" alt="a-HR0c-Dov-L2lt-Zy5ib-G9n-Lm-Nz-ZG4ubm-V0-Lz-Iw-MTcw-Nj-E1-MTk0-OTUy-Mzgw.png" loading="lazy"></a><br>
+需要注意的是我们要把材质的混合模式改成半透明<br>
+<a href="https://postimg.cc/4HNpLYNP"><img src="https://i.postimg.cc/prKkdjww/a-HR0c-Dov-L2lt-Zy5ib-G9n-Lm-Nz-ZG4ubm-V0-Lz-Iw-MTcw-Nj-E1-MTk1-MTM2-Mj-Qy.png" alt="a-HR0c-Dov-L2lt-Zy5ib-G9n-Lm-Nz-ZG4ubm-V0-Lz-Iw-MTcw-Nj-E1-MTk1-MTM2-Mj-Qy.png" loading="lazy"></a><br>
+这样计算出来的材质球才会有透明的效果<br>
+<a href="https://postimg.cc/w7MhDRrT"><img src="https://i.postimg.cc/ncY0bvY7/a-HR0c-Dov-L2lt-Zy5ib-G9n-Lm-Nz-ZG4ubm-V0-Lz-Iw-MTcw-Nj-E1-MTk1-Mj-E1-NTk4.png" alt="a-HR0c-Dov-L2lt-Zy5ib-G9n-Lm-Nz-ZG4ubm-V0-Lz-Iw-MTcw-Nj-E1-MTk1-Mj-E1-NTk4.png" loading="lazy"></a><br>
+材质球做好之后我们新建一个粒子系统<br>
+<a href="https://postimg.cc/PN2WLQ2R"><img src="https://i.postimg.cc/WbPXH9rT/a-HR0c-Dov-L2lt-Zy5ib-G9n-Lm-Nz-ZG4ubm-V0-Lz-Iw-MTcw-Nj-E1-MTk1-NDM3-MTE0.png" alt="a-HR0c-Dov-L2lt-Zy5ib-G9n-Lm-Nz-ZG4ubm-V0-Lz-Iw-MTcw-Nj-E1-MTk1-NDM3-MTE0.png" loading="lazy"></a><br>
+并把 Required 更改成我们刚制作好的材质球<br>
+这时候左边会变成6X6的小火焰<br>
+然后右击发射器空白处找到subUV<br>
+添加一个Subimage Index<br>
+<a href="https://postimg.cc/fkw7Trjd"><img src="https://i.postimg.cc/44cWwCYW/a-HR0c-Dov-L2lt-Zy5ib-G9n-Lm-Nz-ZG4ubm-V0-Lz-Iw-MTcw-Nj-E1-Mj-Ax-NDI0-NTAx.png" alt="a-HR0c-Dov-L2lt-Zy5ib-G9n-Lm-Nz-ZG4ubm-V0-Lz-Iw-MTcw-Nj-E1-Mj-Ax-NDI0-NTAx.png" loading="lazy"></a><br>
+添加好之后<br>
+我们发射器点击Required<br>
+在细节里找到Sub UV<br>
+我们把Interpolation Method 改成随机Random<br>
+再把下面子图横向和纵向都改成6如图：<br>
+<a href="https://postimg.cc/ppSKCXNQ"><img src="https://i.postimg.cc/CxhJFzm2/a-HR0c-Dov-L2lt-Zy5ib-G9n-Lm-Nz-ZG4ubm-V0-Lz-Iw-MTcw-Nj-E1-Mj-Aw-Mz-I4-Mj-Yw.png" alt="a-HR0c-Dov-L2lt-Zy5ib-G9n-Lm-Nz-ZG4ubm-V0-Lz-Iw-MTcw-Nj-E1-Mj-Aw-Mz-I4-Mj-Yw.png" loading="lazy"></a><br>
+这时候火焰会变成一团<br>
+而不是开始时候的6X6<br>
+我们再次右击发射器空白处<br>
+在size栏里添加一个Size By Life<br>
+打开Size By Life的曲线编辑器进行修改<br>
+知道视口中的火焰变得更逼真<br>
+<a href="https://postimg.cc/TKWg4MGz"><img src="https://i.postimg.cc/3xt1WYqx/a-HR0c-Dov-L2lt-Zy5ib-G9n-Lm-Nz-ZG4ubm-V0-Lz-Iw-MTcw-Nj-E1-Mj-Ax-ODM0-Nz-M3.png" alt="a-HR0c-Dov-L2lt-Zy5ib-G9n-Lm-Nz-ZG4ubm-V0-Lz-Iw-MTcw-Nj-E1-Mj-Ax-ODM0-Nz-M3.png" loading="lazy"></a><br>
+当我们做完这些工作之后火焰就已经差不多了<br>
+但是真是的火焰不可能从一个点生成<br>
+所以我们要修改火焰的生成位置<br>
+然后我们再次右击发射器空白处<br>
+找到Location中的Sphere添加进来<br>
+单击Sphere在细节中把Constant的值改成10<br>
+然后保存退出<br>
+我们把修改好的粒子系统拖拽到场景中<br>
+就可以看到逼真的火焰效果了</p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zgChihiro.github.io/post/ue4-zhi-liu-guan-qia/">
+              <h3 class="post-title">
+                UE4之流关卡
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://zgChihiro.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

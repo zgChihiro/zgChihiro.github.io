@@ -1,0 +1,322 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ESP8266使用MQTT接入阿里IoT | Gridea</title>
+<link rel="shortcut icon" href="https://zgChihiro.github.io/favicon.ico?v=1595144549666">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zgChihiro.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="ESP8266使用MQTT接入阿里IoT | Gridea - Atom Feed" href="https://zgChihiro.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="成果展示图：
+
+登陆https://nodemcu-build.com/index.php
+选择以下19个模块生成bin文件
+adc crypto dht encoder file gpio i2c mqtt net node pwm sj..." />
+    <meta name="keywords" content="Esp8266" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zgChihiro.github.io">
+  <img class="avatar" src="https://zgChihiro.github.io/images/avatar.png?v=1595144549666" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              ESP8266使用MQTT接入阿里IoT
+            </h2>
+            <div class="post-info">
+              <span>
+                2019-03-20
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+                <a href="https://zgChihiro.github.io/tag/is5y-w-J9p/" class="post-tag">
+                  # Esp8266
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>成果展示图：<br>
+<img src="https://www.z4a.net/images/2019/08/06/20190411162328956.gif" alt="20190411162328956.gif" loading="lazy"></p>
+<p>登陆https://nodemcu-build.com/index.php<br>
+选择以下19个模块生成bin文件</p>
+<pre><code>adc crypto dht encoder file gpio i2c mqtt net node pwm sjson sntp spi tmr u8g2 uart websocket wifi
+</code></pre>
+<p>使用工具刷入ESP8266<br>
+<img src="https://www.z4a.net/images/2019/08/06/20190411161035603.png" alt="20190411161035603.png" loading="lazy"><br>
+使用ESPlorer编写程序</p>
+<pre><code>-----[定义引脚，]-------------
+pin=4	
+gpio.mode(pin,gpio.OUTPUT)
+gpio.write(pin,gpio.HIGH)
+
+
+-----[wifi config]-------------
+---------------------------
+cfg={}  
+cfg.ssid=&quot;Chihiro&quot;
+cfg.pwd=&quot;88888888&quot;
+
+-----[阿里三元组]-------------
+----------------------------
+ProductKey =&quot;aaaaaaaaa&quot;   
+ClientId =wifi.sta.getmac()  
+DeviceName =&quot;sp01&quot;  
+DeviceSecret=&quot;bbbbbbbbbbbbbbbbb&quot;
+RegionId=&quot;cn-shanghai&quot;     
+
+myMQTTport=1883    --port
+myMQTT=nil        --client
+
+
+myMQTThost=ProductKey..&quot;.iot-as-mqtt.&quot;..RegionId..&quot;.aliyuncs.com&quot;   --host
+myMQTTusername=DeviceName..&quot;&amp;&quot;..ProductKey          --username
+
+topic0=&quot;/a1REbk4YN1c/${deviceName}/user/get&quot;  
+topic1=&quot;/a1REbk4YN1c/${deviceName}/user/my&quot; 
+topic2=&quot;/sys/a1REbk4YN1c/sp01/thing/event/property/post&quot;
+
+----[wifi connect]---------------
+wifi.setmode(wifi.STATION)  
+wifi.sta.config(cfg)       
+wifi.sta.connect()          
+
+
+wifi.eventmon.register(wifi.eventmon.STA_GOT_IP, function(T)
+     print(&quot;Connected, IP is &quot;..wifi.sta.getip())
+end)
+
+wifi.eventmon.register(wifi.eventmon.STA_DISCONNECTED, function(T)
+     print(&quot;wifi disconnect&quot;)
+end)
+
+
+
+function GetNetTime()
+    sntp.sync({&quot;0.nodemcu.pool.ntp.org&quot;,&quot;1.nodemcu.pool.ntp.org&quot;,&quot;2.nodemcu.pool.ntp.org&quot;,&quot;3.nodemcu.pool.ntp.org&quot;,&quot;www.beijing-time.org&quot;},
+         function(sec, usec, server, info)
+                 print('sync', sec, usec, server)       
+         end,
+         function()
+            print(&quot;get time error&quot;)
+         end)  
+    return 0
+end
+
+--------MQTT------------------
+myMQTTtimes='6666'
+hmacdata=&quot;clientId&quot;..ClientId..&quot;deviceName&quot;..DeviceName..&quot;productKey&quot;..ProductKey..&quot;timestamp&quot;..myMQTTtimes  
+myMQTTpassword=crypto.toHex(crypto.hmac(&quot;sha1&quot;,hmacdata,DeviceSecret))    
+myMQTTClientId=ClientId..&quot;|securemode=3,signmethod=hmacsha1,timestamp=&quot;..myMQTTtimes..&quot;|&quot;  
+
+
+-----[创建MQTT客户端]-------------
+myMQTT=mqtt.Client(myMQTTClientId, 120,myMQTTusername,myMQTTpassword) 
+
+   
+-----[客户端发起请求连接]-------------
+MQTTconnectFlag=0
+tmr.alarm(0,1000,1,function()
+    if myMQTT~=nil then
+        print(&quot;Attempting client connect...&quot;)
+        myMQTT:connect(myMQTThost, myMQTTport,0,MQTTSuccess,MQTTFailed)
+    end
+end)
+
+-----[MQTT连接成功]-------------
+function MQTTSuccess(client)
+    print(&quot;MQTT connected&quot;)
+    client:subscribe(topic0,0, function(conn)    
+        print(&quot;subscribe success&quot;) 
+    end) 
+    myMQTT=client
+    MQTTconnectFlag=1
+    tmr.stop(0)    
+end
+
+-----[MQTT连接失败]-------------
+function MQTTFailed(client,reson)
+    print(&quot;Fail reson:&quot;..reson)
+    MQTTconnectFlag=0
+    tmr.start(0)    
+end
+
+------[设备offline 事件]-----
+myMQTT:on(&quot;offline&quot;, function(client) 
+    print (&quot;offline&quot;) 
+    tmr.start(0)
+end)
+
+-----[开灯]-------------
+function OpenLed()
+    gpio.write(pin,0)
+end
+
+-----[关灯]-------------
+function CloseLed()
+    gpio.write(pin,1)
+end
+
+
+myMQTT:on(&quot;message&quot;, function(client, topic, data) 
+    print(topic ..&quot;:&quot;) 
+   if data ~= nil then
+        print(data)
+        if string.find(data, [[&quot;LightSwitch&quot;:0]])~=nil then
+            print(&quot;CloseLED&quot;)
+            CloseLed()
+        elseif string.find(data, [[&quot;LightSwitch&quot;:1]])~=nil then
+            print(&quot;OpenLed&quot;)  
+            OpenLed()       
+        elseif data==&quot;fs&quot;  then
+            myMQTT:publish(topic2,&quot;{\&quot;id\&quot;: \&quot;123\&quot;,\&quot;version\&quot;: \&quot;1.0\&quot;,\&quot;params\&quot;: { \&quot;CurrentTemperature\&quot;: {\&quot;value\&quot;: 23.3},\&quot;CurrentHumidity\&quot;: { \&quot;value\&quot;: 31.6, }},\&quot;method\&quot;: \&quot;thing.event.property.post\&quot;}&quot;,0,0,function(client) print(&quot;send ok&quot; ) end )     
+        else
+            gpio.write(pin,1) 
+        end    
+    end     
+end)
+
+--------[定时上传]------------
+--tmr.alarm(1, 5000, 1, function()  
+   -- if MQTTconnectFlag==1 and myMQTT~=nil then   
+       -- myMQTT:publish(topic0,&quot;this is data upload&quot;,0,0,function(client)
+                       -- print(&quot;send ok&quot; ) 
+        --end)
+   --end
+--end)
+
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zgChihiro.github.io/post/esp8266-an-zhuang-wifi-sha-shou-han-gu-jian/">
+              <h3 class="post-title">
+                ESP8266安装Wifi杀手（含固件）
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://zgChihiro.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
