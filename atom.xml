@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zgChihiro.github.io</id>
     <title>董国政</title>
-    <updated>2020-07-21T08:31:58.158Z</updated>
+    <updated>2020-07-22T08:44:06.145Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zgChihiro.github.io"/>
     <link rel="self" href="https://zgChihiro.github.io/atom.xml"/>
@@ -10,6 +10,19 @@
     <logo>https://zgChihiro.github.io/images/avatar.png</logo>
     <icon>https://zgChihiro.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 董国政</rights>
+    <entry>
+        <title type="html"><![CDATA[分享两个好玩的接口]]></title>
+        <id>https://zgChihiro.github.io/post/fen-xiang-liang-ge-hao-wan-de-jie-kou/</id>
+        <link href="https://zgChihiro.github.io/post/fen-xiang-liang-ge-hao-wan-de-jie-kou/">
+        </link>
+        <updated>2020-07-22T08:43:33.000Z</updated>
+        <content type="html"><![CDATA[<p>直接get就可以</p>
+<p>二次元图片接口<br>
+http://www.dmoe.cc/random.php</p>
+<p>淘宝买家秀接口<br>
+https://api.66mz8.com/api/rand.tbimg.php</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[批量生成UE4图标]]></title>
         <id>https://zgChihiro.github.io/post/pi-liang-sheng-cheng-ue4-tu-biao/</id>
@@ -385,42 +398,6 @@ www.52ue4.cn<br>
 <img src="https://www.z4a.net/images/2019/09/01/0.png" alt="0.png" loading="lazy"></p>
 </li>
 </ol>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[VMWare安装macOS解决全屏问题]]></title>
-        <id>https://zgChihiro.github.io/post/vmware-an-zhuang-macos-jie-jue-quan-ping-wen-ti/</id>
-        <link href="https://zgChihiro.github.io/post/vmware-an-zhuang-macos-jie-jue-quan-ping-wen-ti/">
-        </link>
-        <updated>2019-08-31T11:31:47.000Z</updated>
-        <content type="html"><![CDATA[<!-- more -->
-<p><a href="https://segmentfault.com/q/1010000000489035">参考链接</a></p>
-<figure data-type="image" tabindex="1"><img src="https://www.z4a.net/images/2019/08/31/3abd9aaef0140f374.jpg" alt="3abd9aaef0140f374.jpg" loading="lazy"></figure>
-<!-- more -->
-<ul>
-<li>
-<p>1.<strong>vmware虚拟机对应的vmx文件里面的这部分内容要修改一下，设置一下最大分辨率</strong><br>
-svga.autodetect = &quot;FALSE&quot;<br>
-svga.maxWidth = &quot;3840&quot;<br>
-svga.maxHeight = &quot;2160&quot;</p>
-</li>
-<li>
-<p>2.<strong>按图配置显示器选项里面的最大分辨率，选择3840 x 2160</strong></p>
-</li>
-</ul>
-<p>在Mac虚拟机里的终端执行下面的命令，执行完之后重启即可</p>
-<p><code>sudo nvram AC20C489-DD86-4E99-992C-B7C742C1DDA9:width=%00%0F%00%00</code></p>
-<p><code>sudo nvram AC20C489-DD86-4E99-992C-B7C742C1DDA9:height=%70%08%00%00</code></p>
-<blockquote>
-<p>解释：<br>
-width=%00%0F%00%00 是宽度的16进制表示，将四个数字倒过来写就是 00 00 0f 00, 相当于十进制的3840<br>
-height=%70%08%00%00 是高度的16进制表示，将四个数字倒过来写就是 00 00 08 70, 相当于十进制的2160</p>
-</blockquote>
-<p>所以，上面的两条命令执行完之后，分辨率将被设置为 3840*2160， 其余的分辨率依次类推</p>
-<ul>
-<li>3.<strong>按图配置显示器选项里面的最大分辨率</strong></li>
-</ul>
-<figure data-type="image" tabindex="2"><img src="http://segmentfault.com/img/bVceIv" alt="" loading="lazy"></figure>
 ]]></content>
     </entry>
 </feed>
