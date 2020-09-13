@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zgChihiro.github.io</id>
     <title>董国政</title>
-    <updated>2020-08-12T14:20:20.399Z</updated>
+    <updated>2020-09-13T13:27:46.732Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zgChihiro.github.io"/>
     <link rel="self" href="https://zgChihiro.github.io/atom.xml"/>
@@ -10,6 +10,35 @@
     <logo>https://zgChihiro.github.io/images/avatar.png</logo>
     <icon>https://zgChihiro.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 董国政</rights>
+    <entry>
+        <title type="html"><![CDATA[关于作者]]></title>
+        <id>https://zgChihiro.github.io/post/guan-yu-zuo-zhe/</id>
+        <link href="https://zgChihiro.github.io/post/guan-yu-zuo-zhe/">
+        </link>
+        <updated>2020-09-13T13:26:06.000Z</updated>
+        <content type="html"><![CDATA[<p>hello 非常感谢你时间来了解我<br>
+我叫董国政，是一名97年的程序猿</p>
+<p>以前还在工作的时候搭建过52ue4技术论坛，后来因为某些原因被迫关闭了，<br>
+在后来因为不喜欢企业的条条框框和996文化，<br>
+于是在2020年的4月份放弃了高薪的工作岗位。<br>
+在偏远的城市角落租了一间安静的房子开始了独居生活，</p>
+<p>我看上去是一个吊儿郎当的人，<br>
+因为我不想把编程当时我谋生的工具，<br>
+我一直把它视为我最忠诚的伙伴。</p>
+<p>也就在那时候我开始重新审视和构建了自己的知识体系。<br>
+我有了做独立开发的想法<br>
+于是我搭建了官方网站 inite.cn<br>
+并开始了第一款游戏的尝试“initeBox”<br>
+它是一款可以网络联机的AR游戏<br>
+开发过程使我收获了大量的知识和经验<br>
+这些都是我在企业工作中无法获得的<br>
+这款项目就像自己的孩子一样一点点完善和成长<br>
+我还在bilibili为它开设了视频专栏<br>
+我在视频中分享我在探索过程中收获的经验和技巧<br>
+这是一项非赢利的项目，<br>
+我只是希望通过这些结识行业里更多优秀的朋友</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[分享两个好玩的接口]]></title>
         <id>https://zgChihiro.github.io/post/fen-xiang-liang-ge-hao-wan-de-jie-kou/</id>
@@ -369,44 +398,6 @@ www.52ue4.cn<br>
 <p>邮箱：zgChihiro@gmail.com</p>
 <p>微信：ChinaChihiro</p>
 <p>QQ:3689852</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[UE4自定义模块（还看不懂就别学了）]]></title>
-        <id>https://zgChihiro.github.io/post/ue4-zi-ding-yi-mo-kuai-sha-zi-du-neng-kan-de-dong/</id>
-        <link href="https://zgChihiro.github.io/post/ue4-zi-ding-yi-mo-kuai-sha-zi-du-neng-kan-de-dong/">
-        </link>
-        <updated>2019-08-31T18:01:36.000Z</updated>
-        <content type="html"><![CDATA[<ol>
-<li>
-<p>在Source目录下创建一个文件夹“MyMode”<br>
-<img src="https://www.z4a.net/images/2019/09/01/1.gif" alt="1.gif" loading="lazy"></p>
-</li>
-<li>
-<p>把项目自带的模块里的内容复制到MyMode文件夹并删除ModeBase<br>
-<img src="https://www.z4a.net/images/2019/09/01/2.gif" alt="2.gif" loading="lazy"></p>
-</li>
-<li>
-<p>然后修改名字<br>
-<img src="https://www.z4a.net/images/2019/09/01/3.gif" alt="3.gif" loading="lazy"></p>
-</li>
-<li>
-<p>修改MyMode.cpp和Build.cs里面的内容<br>
-<img src="https://www.z4a.net/images/2019/09/01/4.gif" alt="4.gif" loading="lazy"></p>
-</li>
-<li>
-<p>重新生成vs代码<br>
-<img src="https://www.z4a.net/images/2019/09/01/5.gif" alt="5.gif" loading="lazy"></p>
-</li>
-<li>
-<p>修改Target和启动器的内容<br>
-<img src="https://www.z4a.net/images/2019/09/01/6.gif" alt="6.gif" loading="lazy"></p>
-</li>
-<li>
-<p>生成后重启项目<br>
-<img src="https://www.z4a.net/images/2019/09/01/0.png" alt="0.png" loading="lazy"></p>
-</li>
-</ol>
 ]]></content>
     </entry>
 </feed>
