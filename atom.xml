@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zgChihiro.github.io</id>
     <title>董国政</title>
-    <updated>2020-10-08T08:06:36.968Z</updated>
+    <updated>2020-10-12T07:59:46.886Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zgChihiro.github.io"/>
     <link rel="self" href="https://zgChihiro.github.io/atom.xml"/>
@@ -313,50 +313,6 @@ Message is the error log</p>
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[我理解的积极向上]]></title>
-        <id>https://zgChihiro.github.io/post/ji-ji-xiang-shang/</id>
-        <link href="https://zgChihiro.github.io/post/ji-ji-xiang-shang/">
-        </link>
-        <updated>2019-10-20T07:03:24.000Z</updated>
-        <content type="html"><![CDATA[<p>也是我静下来后想践行的一些事情</p>
-<p>学习自身技能，好好挣钱<br>
-学习市场，寻找商机，尝试创业<br>
-学习投资理财增长财务知识<br>
-多读书<br>
-搞懂那些曾迷惑自己的问题，比如风水，宗教，宇宙<br>
-结识一些有趣且积极的人<br>
-多出门转转，增长眼界<br>
-多和家人沟通<br>
-学习如何用心去爱一个人</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[22岁的我为什么恐惧结婚]]></title>
-        <id>https://zgChihiro.github.io/post/22-sui-de-wo-wei-shi-me-kong-ju-jie-hun/</id>
-        <link href="https://zgChihiro.github.io/post/22-sui-de-wo-wei-shi-me-kong-ju-jie-hun/">
-        </link>
-        <updated>2019-09-28T14:33:01.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="国家统计局和民政局公布数据2018年结婚率-72创下十年新低这个数据甚至一年会比一年低08年上半年中国有540万对新人结婚193万对夫妻离婚">国家统计局和民政局公布数据，2018年结婚率 7.2%，创下十年新低，这个数据甚至一年会比一年低，08年上半年，中国有540万对新人结婚，193万对夫妻离婚</h1>
-<p><img src="https://www.z4a.net/images/2019/09/28/20190320092811125.jpg" alt="20190320092811125.jpg" loading="lazy"><br>
-<img src="https://www.z4a.net/images/2019/09/28/_20190928220841.jpg" alt="_20190928220841.jpg" loading="lazy"></p>
-<p>最近陆续收到朋友和同学的结婚请帖，才意识到，自己就快到那个结婚的年纪了，<br>
-最结婚的恐惧也油然而生<br>
-主要出于以下几点</p>
-<ol>
-<li>钱可以自己赚，家务可以自己做，饭自己做，没时间就点外卖，生活完全可以独立，不知道为什么要结婚</li>
-<li>结婚就有可能意味着要放弃梦想，才华，时间和自由</li>
-<li>与其孤独终老，更害怕和一个让自己感到孤独的人一起终老</li>
-<li>即使娶到爱情，也害怕输给婚姻</li>
-<li>结婚不是填空题，而是选择题，每个人有选择权，才是最大的政治自由</li>
-<li>始终认为高质量的单身胜过低质量的婚姻</li>
-</ol>
-<p>另外结婚后也就意味着肩上除了社会的责任又多了一层责任，不仅要背负房贷车贷，上有老，生活还总有一堆乱七八糟的问题。另外那位曾经惊艳美丽的女孩子，心甘情愿脱下高跟鞋，为了你素面朝天，所以作为男人就有这个责任，就是你要让她觉得你值得，这个家值得。以前，我很崇拜高仓健这样的男性的，高大，坚毅，从来不笑，似乎承担着一切世界的苦难与责任。可是渐渐的，我对男性的理解越来越平凡了</p>
-<p>然后在想想自己目前的情况<br>
-一人吃饱，全家管够，无拘无束，潇洒自在。想买什么自己买，想旅游就去旅游，想学什么就尝试。而且这是一个最适合用来走南闯北，认识世界的年纪，是一段用来找回自我的绝无仅有的时光。最适合用来多读书，多旅行，多交朋友，多赚钱，如果用来结婚就太不值得了。</p>
-<h1 id="希望大家都能始于爱情陷于付出终于爱情">希望大家都能始于爱情，陷于付出，终于爱情</h1>
-]]></content>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[域名出售]]></title>
         <id>https://zgChihiro.github.io/post/yu-ming-chu-shou/</id>
         <link href="https://zgChihiro.github.io/post/yu-ming-chu-shou/">
@@ -407,6 +363,52 @@ www.52ue4.cn<br>
 <img src="https://www.z4a.net/images/2019/09/01/0.png" alt="0.png" loading="lazy"></p>
 </li>
 </ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[VMWare安装macOS解决全屏问题]]></title>
+        <id>https://zgChihiro.github.io/post/vmware-an-zhuang-macos-jie-jue-quan-ping-wen-ti/</id>
+        <link href="https://zgChihiro.github.io/post/vmware-an-zhuang-macos-jie-jue-quan-ping-wen-ti/">
+        </link>
+        <updated>2019-08-31T11:31:47.000Z</updated>
+        <content type="html"><![CDATA[<!-- more -->
+<p><a href="https://segmentfault.com/q/1010000000489035">参考链接</a></p>
+<figure data-type="image" tabindex="1"><img src="https://www.z4a.net/images/2019/08/31/3abd9aaef0140f374.jpg" alt="3abd9aaef0140f374.jpg" loading="lazy"></figure>
+<!-- more -->
+<ul>
+<li>
+<p>1.<strong>vmware虚拟机对应的vmx文件里面的这部分内容要修改一下，设置一下最大分辨率</strong><br>
+svga.autodetect = &quot;FALSE&quot;<br>
+svga.maxWidth = &quot;3840&quot;<br>
+svga.maxHeight = &quot;2160&quot;</p>
+</li>
+<li>
+<p>2.<strong>按图配置显示器选项里面的最大分辨率，选择3840 x 2160</strong></p>
+</li>
+</ul>
+<p>在Mac虚拟机里的终端执行下面的命令，执行完之后重启即可</p>
+<p><code>sudo nvram AC20C489-DD86-4E99-992C-B7C742C1DDA9:width=%00%0F%00%00</code></p>
+<p><code>sudo nvram AC20C489-DD86-4E99-992C-B7C742C1DDA9:height=%70%08%00%00</code></p>
+<blockquote>
+<p>解释：<br>
+width=%00%0F%00%00 是宽度的16进制表示，将四个数字倒过来写就是 00 00 0f 00, 相当于十进制的3840<br>
+height=%70%08%00%00 是高度的16进制表示，将四个数字倒过来写就是 00 00 08 70, 相当于十进制的2160</p>
+</blockquote>
+<p>所以，上面的两条命令执行完之后，分辨率将被设置为 3840*2160， 其余的分辨率依次类推</p>
+<ul>
+<li>3.<strong>按图配置显示器选项里面的最大分辨率</strong></li>
+</ul>
+<figure data-type="image" tabindex="2"><img src="http://segmentfault.com/img/bVceIv" alt="" loading="lazy"></figure>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[最简单的bat延迟方法]]></title>
+        <id>https://zgChihiro.github.io/post/zui-jian-dan-de-bat-yan-chi-fang-fa/</id>
+        <link href="https://zgChihiro.github.io/post/zui-jian-dan-de-bat-yan-chi-fang-fa/">
+        </link>
+        <updated>2019-08-29T14:07:44.000Z</updated>
+        <content type="html"><![CDATA[<p>ping-n 3 127.0.0.1&gt;nul</p>
+<p>如果嫌时间不够长，可以把3改大</p>
 ]]></content>
     </entry>
 </feed>
