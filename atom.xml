@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zgChihiro.github.io</id>
     <title>董国政</title>
-    <updated>2020-10-20T06:30:09.693Z</updated>
+    <updated>2020-12-26T07:36:13.494Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zgChihiro.github.io"/>
     <link rel="self" href="https://zgChihiro.github.io/atom.xml"/>
@@ -10,6 +10,29 @@
     <logo>https://zgChihiro.github.io/images/avatar.png</logo>
     <icon>https://zgChihiro.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 董国政</rights>
+    <entry>
+        <title type="html"><![CDATA[UE4获取QQ昵称]]></title>
+        <id>https://zgChihiro.github.io/post/ue4-huo-qu-qq-ni-cheng/</id>
+        <link href="https://zgChihiro.github.io/post/ue4-huo-qu-qq-ni-cheng/">
+        </link>
+        <updated>2020-12-26T07:25:03.000Z</updated>
+        <content type="html"><![CDATA[<p>前段时间群里有小伙伴问我如何限制软件的启动，UE4开发的单机软件，发给甲方，</p>
+<p>甲方拿到软件后跟他们扯皮，然后压尾款，他们是一个很小的小团队</p>
+<p>让他们搭服务写后台代码又不现实，然后想了一下，</p>
+<p>最节省成本的就是让客户端去Get指定qq的昵称，qq是免费的，</p>
+<p>然后就花了几分钟时间写了这么一个小插件</p>
+<p>“UE4获取QQ昵称”</p>
+<p>可以作为一种校验手段</p>
+<p>还可以用qq昵称作为版本号</p>
+<p>或者通过qq修改客户端内容</p>
+<p>玩法有很多，大家自己探索把</p>
+<p>需要的插件可以在 <a href="http://www.inite.com">http://www.inite.com</a> 免费下载</p>
+<p>也可以加群一起交流466070488</p>
+<p><a href="https://www.z4a.net/image/g7jft2"><img src="https://www.z4a.net/images/2020/12/26/KY7LVSY9FWVGPESV.md.jpg" alt="KY7LVSY9FWVGPESV.md.jpg" loading="lazy"></a><br>
+<a href="https://www.z4a.net/image/g7joSG"><img src="https://www.z4a.net/images/2020/12/26/19201080-1920x1080-035014927d476c07f3310a0e1169ac42-1920x1080-035014927d476c07f3310a0e1169ac42.md.png" alt="19201080-1920x1080-035014927d476c07f3310a0e1169ac42-1920x1080-035014927d476c07f3310a0e1169ac42.md.png" loading="lazy"></a><br>
+<a href="https://www.z4a.net/image/g7jSTh"><img src="https://www.z4a.net/images/2020/12/26/192010801-1920x1080-d5bbd51cd9b2d6ca19011cde6a2c73cd-1920x1080-d5bbd51cd9b2d6ca19011cde6a2c73cd.md.png" alt="192010801-1920x1080-d5bbd51cd9b2d6ca19011cde6a2c73cd-1920x1080-d5bbd51cd9b2d6ca19011cde6a2c73cd.md.png" loading="lazy"></a></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[分享两个好玩的接口]]></title>
         <id>https://zgChihiro.github.io/post/fen-xiang-liang-ge-hao-wan-de-jie-kou/</id>
@@ -399,16 +422,6 @@ height=%70%08%00%00 是高度的16进制表示，将四个数字倒过来写就�
 <li>3.<strong>按图配置显示器选项里面的最大分辨率</strong></li>
 </ul>
 <figure data-type="image" tabindex="2"><img src="http://segmentfault.com/img/bVceIv" alt="" loading="lazy"></figure>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[最简单的bat延迟方法]]></title>
-        <id>https://zgChihiro.github.io/post/zui-jian-dan-de-bat-yan-chi-fang-fa/</id>
-        <link href="https://zgChihiro.github.io/post/zui-jian-dan-de-bat-yan-chi-fang-fa/">
-        </link>
-        <updated>2019-08-29T14:07:44.000Z</updated>
-        <content type="html"><![CDATA[<p>ping-n 3 127.0.0.1&gt;nul</p>
-<p>如果嫌时间不够长，可以把3改大</p>
 ]]></content>
     </entry>
 </feed>
